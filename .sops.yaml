@@ -1,0 +1,7 @@
+keys:
+  - &faidz age1xaw9j5akyz6gh4vxdpw6e340mns74jrz6frvxday890dthup555q0e34nc
+creation_rules:
+  - path_regex: secrets/secrets.yaml$
+    key_groups:
+    - age:
+      - *faidz
