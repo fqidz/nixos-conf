@@ -129,7 +129,7 @@ in {
         ];
         cmd_duration.disabled = true;
         directory.truncation_symbol = ".../";
-        line_break.disabled = true;
+        # line_break.disabled = true;
       };
     };
 
