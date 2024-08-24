@@ -44,6 +44,17 @@ in {
       };
     };
 
+    waybar = {
+      enable = true;
+      # settings = {
+      #   mainBar = {
+      #     output = [ "eDP-1" ];
+      #     layer = "top";
+      #     position = "top";
+      #   };
+      # };
+    };
+
     alacritty = {
       enable = true;
       settings = {

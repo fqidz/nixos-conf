@@ -14,6 +14,11 @@
     };
   };
 
+  # xdg.portal = {
+  #   enable = true;
+  #   xdgOpenUsePortal = true;
+  # };
+
   environment.sessionVariables.NIXOS_OZONE_WL = "1"; # This variable fixes electron apps in wayland
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -39,6 +44,7 @@
       efi.canTouchEfiVariables = true;
     };
   };
+
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -87,6 +93,8 @@
 
     pipewire = {
       enable = true;
+      systemWide = true;
+      audio.enable = true;
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
