@@ -37,6 +37,15 @@
     };
   };
 
+  security.sudo.extraConfig =
+  ''
+  # Save sudo across terminals
+  Defaults timestamp_type = global
+
+  # Set sudo timeout to 10 minutes
+  Defaults timestamp_timeout = 10
+  '';
+
   # Bootloader.
   boot = {
     loader = {
