@@ -1,0 +1,26 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 30,
+    "margin-top": 10,
+    "margin-left": 10,
+    "margin-bottom": 0,
+    "margin-right": 10,
+    "spacing": 0,
+
+    "modules-left": [
+        "cpu",
+        "memory",
+        "temperature",
+        "disk",
+    ],
+
+    "modules-center": [ "hyprland/workspaces" ],
+
+    "modules-right": [
+        "battery",
+        "pulseaudio",
+        "network",
+        "clock",
+    ],
+}

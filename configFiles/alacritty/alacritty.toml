@@ -1,0 +1,27 @@
+import = ["/home/faidz/.config/alacritty/rose-pine.toml"]
+
+[font]
+size = 13.0
+
+[font.bold]
+family = "RobotoMono Nerd Font"
+style = "Medium"
+
+[font.bold_italic]
+family = "RobotoMono Nerd Font"
+style = "MediumItalic"
+
+[font.italic]
+family = "RobotoMono Nerd Font"
+style = "Italic"
+
+[font.normal]
+family = "RobotoMono Nerd Font"
+
+[window]
+decorations = "None"
+opacity = 0.8
+
+[window.padding]
+x = 10
+y = 5

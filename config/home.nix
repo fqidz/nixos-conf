@@ -46,6 +46,7 @@ in {
 
     waybar = {
       enable = true;
+      systemd.enable = true;
       # settings = {
       #   mainBar = {
       #     output = [ "eDP-1" ];
@@ -53,46 +54,6 @@ in {
       #     position = "top";
       #   };
       # };
-    };
-
-    alacritty = {
-      enable = true;
-      settings = {
-        import = [ "${config.xdg.configHome}/alacritty/rose-pine.toml" ];
-
-        font = {
-          size = 13.0;
-
-          normal = {
-            family = "RobotoMono Nerd Font";
-          };
-
-          bold = {
-            family = "RobotoMono Nerd Font";
-            style = "Medium";
-          };
-
-          italic = {
-            family = "RobotoMono Nerd Font";
-            style = "Italic";
-          };
-
-          bold_italic = {
-            family = "RobotoMono Nerd Font";
-            style = "MediumItalic";
-          };
-        };
-
-        window = {
-          decorations = "None";
-          opacity = 0.8;
-          padding = {
-            x = 10;
-            y = 5;
-          };
-        };
-
-      };
     };
 
     zsh = {
@@ -145,6 +106,18 @@ in {
     };
 
   };
+
+  home.file = {
+    ".config/waybar" = {
+      enable = true;
+      source = ../configFiles/waybar;
+    };
+    ".config/alacritty" = {
+      enable = true;
+      source = ../configFiles/alacritty;
+    }
+  };
+
 
   # todo
   home.activation.install-rose-pine-alacritty-theme = lib.hm.dag.entryAfter [ "writeBoundary" ]
