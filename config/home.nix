@@ -115,17 +115,8 @@ in {
     ".config/alacritty" = {
       enable = true;
       source = ../configFiles/alacritty;
-    }
+    };
   };
-
-
-  # todo
-  home.activation.install-rose-pine-alacritty-theme = lib.hm.dag.entryAfter [ "writeBoundary" ]
-   ''
-   $DRY_RUN_CMD ${lib.getExe pkgs.wget} $VERBOSE_ARG \
-   "https://raw.githubusercontent.com/rose-pine/alacritty/main/dist/rose-pine.toml" \
-   -P "${config.xdg.configHome}/alacritty/"
-   '';
 
   systemd.user.tmpfiles.rules = [
     "d /home/${username}/.config/sops/age 0700 ${username} - - -"
