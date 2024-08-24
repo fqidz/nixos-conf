@@ -47,13 +47,6 @@ in {
     waybar = {
       enable = true;
       systemd.enable = true;
-      # settings = {
-      #   mainBar = {
-      #     output = [ "eDP-1" ];
-      #     layer = "top";
-      #     position = "top";
-      #   };
-      # };
     };
 
     zsh = {
@@ -101,7 +94,6 @@ in {
         ];
         cmd_duration.disabled = true;
         directory.truncation_symbol = ".../";
-        # line_break.disabled = true;
       };
     };
 
@@ -151,39 +143,6 @@ in {
   # };
 
   nixpkgs.config = { allowUnfree = true; };
-
-
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
-  # home.file = {
-  #   "rose-pine.toml" = {
-  #     source = pkgs.fetchFromGitHub {
-  #       owner = "rose-pine";
-  #       repo = "alacritty";
-  #     };
-  #     target = ".config/alacritty/";
-  #   }
-  # };
-
-  # Home Manager can also manage your environment variables through
-  # 'home.sessionVariables'. These will be explicitly sourced when using a
-  # shell provided by Home Manager. If you don't want to manage your shell
-  # through Home Manager then you have to manually source 'hm-session-vars.sh'
-  # located at either
-  #
-  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  /etc/profiles/per-user/faidz/etc/profile.d/hm-session-vars.sh
-  #
-  # home.sessionVariables = {
-  #   # EDITOR = "emacs";
-  # };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
