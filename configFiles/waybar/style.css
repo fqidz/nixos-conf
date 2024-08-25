@@ -1,0 +1,96 @@
+* {
+  padding: 0;    
+  margin: 0;
+  font-family: RobotoMono Nerd Font;
+  font-weight: 500;
+  font-size: 15px;
+  color: #393552;
+  background-color: #191724;
+  border-radius: 10px 10px 10px 10px;
+}
+
+window#waybar {
+  border-width: 1px;
+  border-color: #393552;
+}
+
+#custom-spacer {
+  padding-right: 3px;
+  padding-left: 2px;
+}
+
+#custom-logo,
+#cpu,
+#memory,
+#temperature,
+#disk,
+#workspaces,
+#battery,
+#backlight,
+#pulseaudio,
+#network
+#clock {
+  padding-right: 10px;
+}
+
+
+#custom-logo {
+  font-size: 18px;
+  color: #5277C3;
+  padding-right: 15px;
+  padding-left: 7px;
+}
+
+/* module-right */
+#cpu,
+#memory,
+#temperature {
+  font-size: 14px;
+  background-color: #26233a;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+#cpu {
+  padding-left: 10px;
+  color: #3e8fb0;
+  border-radius: 5px 0px 0px 5px;
+}
+
+#memory {
+  color: #f6c177;
+  border-radius: 0px 0px 0px 0px;
+}
+
+#temperature {
+  color: #eb6f92;
+  padding-right: 10px;
+  border-radius: 0px 5px 5px 0px;
+}
+
+#disk {
+  color: #c4a7e7;
+}
+
+/* module-center */
+#workspaces button {
+  padding-right: 8px;
+}
+
+#workspaces button.active {
+  color: #e0def4;
+}
+
+/* module-left */
+#battery {
+  color: #9ccfd8;
+}
+
+#battery.warning {
+  color: #f6c177;
+}
+
+#battery.critical {
+  color: #eb6f92;
+}
+

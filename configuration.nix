@@ -133,10 +133,11 @@
     (where-is-my-sddm-theme.override {
       variants = [ "qt5" ];
       themeConfig.General = {
-        backgroundFill = "#232136";
+        backgroundFill = "#191724";
         basicTextColor = "#e0def4";
         passwordInputWidth = "0.75";
-        passwordCursorColor = "#e0def4";
+        # passwordCursorColor = "#e0def4";
+        hideCursor = true;
       };
     })
   ];
