@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, lib, ... }:
+{ config, pkgs, lib, ... }:
 let
   username = "faidz";
 in
@@ -82,6 +82,10 @@ in
       initExtra = ''
         bindkey '^ ' autosuggest-accept
       '';
+    };
+
+    fastfetch = {
+      enable = true;
     };
 
     starship = {
