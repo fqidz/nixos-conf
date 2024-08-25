@@ -14,10 +14,6 @@ window#waybar {
   background-color: #191724;
 }
 
-window#waybar.solo {
-  border-color: #c4a7e7;
-}
-
 #custom-spacer {
   padding-right: 3px;
   padding-left: 2px;
@@ -78,7 +74,10 @@ window#waybar.solo {
 
 /* module-center */
 #workspaces button {
-  padding-right: 8px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  padding-right: 6px;
+  padding-left: 2px;
   color: #393552;
 }
 
@@ -104,11 +103,11 @@ window#waybar.solo {
 }
 
 #pulseaudio {
-  color: #e0def4;
+  color: #c4a7e7;
 }
 
 #network {
-  color: #e0def4;
+  color: #9ccfd8;
 }
 
 #clock {

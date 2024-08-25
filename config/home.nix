@@ -17,8 +17,11 @@ in
       (nerdfonts.override { fonts = [ "RobotoMono" ]; })
       gcc
       libgcc
+      lua-language-server
+      nil
       git
       wget
+      firefox
       alacritty
       oh-my-zsh
       neovim
@@ -27,6 +30,7 @@ in
       fastfetch
       ntfs3g
       spotify
+      obsidian
     ];
     stateVersion = "24.05";
   };
@@ -94,6 +98,22 @@ in
         directory.truncation_symbol = ".../";
       };
     };
+
+    firefox = {
+      enable = true;
+    };
+  };
+
+  services = {
+    syncthing = {
+      enable = true;
+      extraOptions = [
+        "--no-default-folder"
+        "--no-browser"
+        "--config=${config.xdg.configHome}/syncthing"
+        "--data=${config.xdg.dataHome}/syncthing"
+      ];
+    };
   };
 
   home.file = {
@@ -106,10 +126,6 @@ in
       source = ../configFiles/alacritty;
     };
   };
-
-  systemd.user.tmpfiles.rules = [
-    "d /home/${username}/.config/sops/age 0700 ${username} - - -"
-  ];
 
   nixpkgs.config = { allowUnfree = true; };
 
