@@ -15,6 +15,10 @@ in
     };
     packages = with pkgs; [
       (nerdfonts.override { fonts = [ "RobotoMono" ]; })
+      python310
+      tree-sitter
+      ripgrep
+      wl-clipboard
       gcc
       libgcc
       lua-language-server
@@ -128,6 +132,10 @@ in
     ".config/alacritty" = {
       enable = true;
       source = ../configFiles/alacritty;
+    };
+    ".config/wallpapers" = {
+      enable = true;
+      source = ../configFiles/wallpapers;
     };
   };
 

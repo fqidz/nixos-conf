@@ -7,31 +7,7 @@
 }
 
 window#waybar {
-  border-radius: 10px 10px 10px 10px;
-  border-width: 1px;
-  border-style: solid;
-  border-color: #26233a;
-  background-color: #191724;
-}
-
-@keyframes fadeBar {
-  0% {
-    border-color: rgba(38, 35, 58, 255);
-    background-color: rgba(25, 23, 36, 255);
-  }
-  100% {
-    border-color: rgba(38, 35, 58, 0);
-    background-color: rgba(25, 23, 36, 0);
-  }
-}
-
-window#waybar.empty {
-  animation-name: fadeBar;
-  animation-duration: 600ms;
-  animation-timing-function: cubic-bezier(0.5, 0, 0.75, 0);
-  animation-fill-mode: forwards;
-  border-color: rgba(38, 35, 58, 0);
-  background-color: rgba(25, 23, 36, 0);
+  background-color: rgba(0, 0, 0, 0);
 }
 
 #custom-spacer {
@@ -55,37 +31,22 @@ window#waybar.empty {
 
 
 #custom-logo {
-  font-size: 18px;
+  font-size: 20px;
   color: #5277C3;
   padding-right: 15px;
-  padding-left: 7px;
 }
 
 /* module-left */
-#cpu,
-#memory,
-#temperature {
-  font-size: 14px;
-  background-color: #26233a;
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
-
 #cpu {
-  padding-left: 10px;
   color: #3e8fb0;
-  border-radius: 5px 0px 0px 5px;
 }
 
 #memory {
   color: #f6c177;
-  border-radius: 0px 0px 0px 0px;
 }
 
 #temperature {
   color: #eb6f92;
-  padding-right: 10px;
-  border-radius: 0px 5px 5px 0px;
 }
 
 #disk {
@@ -96,7 +57,7 @@ window#waybar.empty {
 #workspaces button {
   margin-top: 8px;
   margin-bottom: 8px;
-  padding-right: 6px;
+  padding-right: 7px;
   padding-left: 2px;
   color: #393552;
 }

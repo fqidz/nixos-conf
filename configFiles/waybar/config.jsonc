@@ -1,19 +1,19 @@
 { 
     "layer": "top",
     "position": "top",
-    "height": 35,
+    "height": 30,
     "margin-top": 10,
     "margin-left": 20,
-    "margin-bottom": 0,
+    "margin-bottom": -8,
     "margin-right": 20,
     "spacing": 0,
 
     "modules-left": [
         "custom/logo",
+        "custom/spacer",
         "cpu",
         "memory",
         "temperature",
-        "custom/spacer",
         "disk",
     ],
 
@@ -53,7 +53,7 @@
 
     "temperature": {
         "interval": 10,
-        "hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input",
+        "hwmon-path": "/sys/class/hwmon/hwmon4/temp1_input",
         "critical-threshold": 60,
         "format-critical": "󰈸 {temperatureC}°C",
         "format": " {temperatureC}°C",
