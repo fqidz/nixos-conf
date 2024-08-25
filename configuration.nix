@@ -31,11 +31,11 @@
     shell = pkgs.zsh;
   };
 
-  home-manager = {
-    users = {
-      "faidz" = import ./config/home.nix;
-    };
-  };
+  # home-manager = {
+  #   users = {
+  #     "faidz" = import ./config/home.nix;
+  #   };
+  # };
 
   security.sudo.extraConfig =
   ''

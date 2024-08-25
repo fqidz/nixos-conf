@@ -1,8 +1,12 @@
-{ config, pkgs, inputs, lib, ... }: let
+{ config, pkgs, inputs, lib, spicetify-nix, ... }:
+let
   username = "faidz";
-in {
+  spicePkgs = spicetify-nix.packages.${pkgs.system}.default;
+in
+{
   imports = [
     ./packages
+    spicetify-nix.homeManagerModule
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -95,6 +99,17 @@ in {
         cmd_duration.disabled = true;
         directory.truncation_symbol = ".../";
       };
+    };
+
+    spicetify = {
+      enable = true;
+      theme = spicePkgs.themes.Dribbblish;
+      colorScheme = "rosepine";
+      # enabledExtensions = with spicePkgs.extensions; [
+      #   fullAppDisplay
+      #   shuffle
+      #   hidePodcasts
+      # ];
     };
 
   };
