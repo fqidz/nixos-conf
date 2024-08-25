@@ -14,28 +14,14 @@
     };
   };
 
-  # xdg.portal = {
-  #   enable = true;
-  #   xdgOpenUsePortal = true;
-  # };
-
   environment.sessionVariables.NIXOS_OZONE_WL = "1"; # This variable fixes electron apps in wayland
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.faidz = {
     isNormalUser = true;
     description = "faidz";
     extraGroups = [ "networkmanager" "wheel" ];
-    # packages = with pkgs; [
-    # ];
     shell = pkgs.zsh;
   };
-
-  # home-manager = {
-  #   users = {
-  #     "faidz" = import ./config/home.nix;
-  #   };
-  # };
 
   security.sudo.extraConfig =
   ''
@@ -46,7 +32,6 @@
   Defaults timestamp_timeout = 10
   '';
 
-  # Bootloader.
   boot = {
     loader = {
       systemd-boot.enable = true;
@@ -135,15 +120,14 @@
   environment.systemPackages = with pkgs; [
     vim
     (where-is-my-sddm-theme.override {
-      # variants = [ "qt6" ];
       themeConfig.General = {
         backgroundFill = "#191724";
         basicTextColor = "#e0def4";
         passwordInputWidth = "0.75";
         passwordCursorColor = "#e0def4";
-        # passwordInputCursorVisible = false;
+        passwordInputCursorVisible = true;
         cursorBlinkAnimation = true;
-        # hideCursor = true;
+        hideCursor = true;
       };
     })
   ];
