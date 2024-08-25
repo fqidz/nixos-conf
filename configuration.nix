@@ -87,8 +87,12 @@
   services = {
     displayManager.sddm = {
       enable = true;
-      theme = "where_is_my_sddm_theme_qt5";
-      package = pkgs.libsForQt5.sddm;
+      theme = "where_is_my_sddm_theme";
+      # package = pkgs.libsForQt5.sddm;
+      package = pkgs.kdePackages.sddm;
+      extraPackages = with pkgs; [
+        qt6.qt5compat
+      ];
     };
     xserver = {
       enable = true;
@@ -131,14 +135,15 @@
   environment.systemPackages = with pkgs; [
     vim
     (where-is-my-sddm-theme.override {
-      variants = [ "qt5" ];
+      # variants = [ "qt6" ];
       themeConfig.General = {
         backgroundFill = "#191724";
         basicTextColor = "#e0def4";
         passwordInputWidth = "0.75";
-        # passwordCursorColor = "#e0def4";
-        passwordInputCursorVisible = false;
-        hideCursor = true;
+        passwordCursorColor = "#e0def4";
+        # passwordInputCursorVisible = false;
+        cursorBlinkAnimation = true;
+        # hideCursor = true;
       };
     })
   ];
