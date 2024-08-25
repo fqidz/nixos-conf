@@ -8,11 +8,9 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    
-    spicetify-nix.url = "github:the-argus/spicetify-nix";
   };
 
-  outputs = { self, nixpkgs, ... }@inputs: 
+  outputs = inputs@{ self, nixpkgs, home-manager, ... }: 
   let
     system = "x86_64-linux";
   in
@@ -22,14 +20,14 @@
       specialArgs = { inherit inputs; };
       modules = [
         ./configuration.nix
-      ];
-    };
 
-    homeConfigurations.faidz = inputs.home-manager.lib.homeManagerConfiguration {
-      pkgs = import nixpkgs { inherit system; };
-      extraSpecialArgs = inputs;
-      modules = [
-        inputs.home-manager.nixosModules.default
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+
+          home-manager.users.faidz = import ./config/home.nix;
+        }
       ];
     };
   };

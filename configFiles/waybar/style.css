@@ -45,7 +45,7 @@ window#waybar.solo {
   padding-left: 7px;
 }
 
-/* module-right */
+/* module-left */
 #cpu,
 #memory,
 #temperature {
@@ -86,7 +86,7 @@ window#waybar.solo {
   color: #e0def4;
 }
 
-/* module-left */
+/* module-right */
 #battery {
   color: #9ccfd8;
 }
@@ -97,5 +97,21 @@ window#waybar.solo {
 
 #battery.discharging.critical {
   color: #eb6f92;
+}
+
+#backlight {
+  color: #ebbcba;
+}
+
+#pulseaudio {
+  color: #e0def4;
+}
+
+#network {
+  color: #e0def4;
+}
+
+#clock {
+  color: #e0def4;
 }
 

@@ -1,12 +1,10 @@
-{ config, pkgs, inputs, lib, spicetify-nix, unstable, ... }:
+{ config, pkgs, inputs, lib, ... }:
 let
   username = "faidz";
-  spicePkgs = spicetify-nix.packages.${pkgs.system}.default;
 in
 {
   imports = [
     ./packages
-    spicetify-nix.homeManagerModule
   ];
 
   home = {
@@ -96,19 +94,6 @@ in
         directory.truncation_symbol = ".../";
       };
     };
-
-    spicetify = {
-      enable = true;
-      theme = spicePkgs.themes.Dribbblish;
-      colorScheme = "rosepine";
-      spotifyPackage = unstable.spotify;
-      # enabledExtensions = with spicePkgs.extensions; [
-      #   fullAppDisplay
-      #   shuffle
-      #   hidePodcasts
-      # ];
-    };
-
   };
 
   home.file = {
