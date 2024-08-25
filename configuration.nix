@@ -102,7 +102,7 @@
 
     pipewire = {
       enable = true;
-      systemWide = true;
+      # systemWide = true;
       audio.enable = true;
       alsa.enable = true;
       alsa.support32Bit = true;
@@ -137,6 +137,7 @@
         basicTextColor = "#e0def4";
         passwordInputWidth = "0.75";
         # passwordCursorColor = "#e0def4";
+        passwordInputCursorVisible = false;
         hideCursor = true;
       };
     })
