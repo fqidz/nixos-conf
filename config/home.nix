@@ -29,7 +29,6 @@ in
       fastfetch
       ntfs3g
       spotify
-      sops
     ];
     stateVersion = "24.05";
   };
@@ -126,34 +125,6 @@ in
   systemd.user.tmpfiles.rules = [
     "d /home/${username}/.config/sops/age 0700 ${username} - - -"
   ];
-
-  sops = {
-    age.keyFile = "/home/faidz/.config/sops/age/keys.txt";
-    defaultSopsFile = ../secrets/secrets.yaml;
-    defaultSopsFormat = "yaml";
-  };
-
-  # sops = {
-  #   secrets = {
-  #     test_key = {
-  #       path = "%r/test.txt";
-  #     };
-  #   };
-  # };
-  #
-  # systemd.user.services = {
-  #   mbsync.Unit.After = [ "sops-nix.service "];
-  #   service-name = {
-  #     Unit = {
-  #       Description = "spotifyd service";
-  #     };
-  #
-  #     Service = {
-  #       ExecStart = "spotifyd --username fqidz --password $(cat $XDG_RUNTIME_DIR/test.txt)";
-  #       WorkingDirectory = /home/fqidz/spotifyd_service;
-  #     };
-  #   };
-  # };
 
   nixpkgs.config = { allowUnfree = true; };
 

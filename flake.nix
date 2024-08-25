@@ -9,8 +9,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     
-    sops-nix.url = "github:Mic92/sops-nix";
-
     spicetify-nix.url = "github:the-argus/spicetify-nix";
   };
 
@@ -32,12 +30,6 @@
       extraSpecialArgs = inputs;
       modules = [
         inputs.home-manager.nixosModules.default
-        {
-          home-manager.sharedModules = [
-            inputs.sops-nix.homeManagerModules.sops
-          ];
-        }
-        inputs.sops-nix.nixosModules.sops
       ];
     };
   };
