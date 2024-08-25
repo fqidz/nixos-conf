@@ -113,5 +113,7 @@ window#waybar.solo {
 
 #clock {
   color: #e0def4;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 

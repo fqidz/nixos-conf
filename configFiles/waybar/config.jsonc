@@ -24,7 +24,6 @@
         "backlight",
         "pulseaudio",
         "network",
-        "custom/spacer",
         "clock",
     ],
 
