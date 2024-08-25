@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, lib, spicetify-nix, ... }:
+{ config, pkgs, inputs, lib, spicetify-nix, unstable, ... }:
 let
   username = "faidz";
   spicePkgs = spicetify-nix.packages.${pkgs.system}.default;
@@ -105,6 +105,7 @@ in
       enable = true;
       theme = spicePkgs.themes.Dribbblish;
       colorScheme = "rosepine";
+      spotifyPackage = unstable.spotify;
       # enabledExtensions = with spicePkgs.extensions; [
       #   fullAppDisplay
       #   shuffle
