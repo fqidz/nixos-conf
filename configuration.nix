@@ -37,6 +37,12 @@
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
+    consoleLogLevel = 0;
+    kernelParams = [
+      "quiet"
+      "udev.log_priority=3"
+    ];
+    initrd.verbose = false;
   };
 
 
