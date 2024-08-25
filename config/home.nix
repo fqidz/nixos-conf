@@ -50,7 +50,10 @@ in
 
     waybar = {
       enable = true;
-      systemd.enable = true;
+      # systemd = {
+      #   enable = true;
+      #   target = "hyprland-session";
+      # };
     };
 
     zsh = {
