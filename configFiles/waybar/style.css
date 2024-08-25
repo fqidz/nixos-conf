@@ -4,14 +4,18 @@
   font-family: RobotoMono Nerd Font;
   font-weight: 500;
   font-size: 15px;
-  color: #393552;
-  background-color: #191724;
-  border-radius: 10px 10px 10px 10px;
 }
 
 window#waybar {
+  border-radius: 10px 10px 10px 10px;
   border-width: 1px;
+  border-style: solid;
   border-color: #393552;
+  background-color: #191724;
+}
+
+window#waybar.solo {
+  border-color: #c4a7e7;
 }
 
 #custom-spacer {
@@ -75,6 +79,7 @@ window#waybar {
 /* module-center */
 #workspaces button {
   padding-right: 8px;
+  color: #393552;
 }
 
 #workspaces button.active {
@@ -86,11 +91,11 @@ window#waybar {
   color: #9ccfd8;
 }
 
-#battery.warning {
+#battery.discharging.warning {
   color: #f6c177;
 }
 
-#battery.critical {
+#battery.discharging.critical {
   color: #eb6f92;
 }
 
