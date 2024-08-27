@@ -2,7 +2,6 @@
 {
   imports = [
     ./hardware-configuration.nix
-    "${inputs.nixpkgs-edge}/nixos/modules/programs/wayland/uwsm.nix"
   ];
     
   # Enable Hyprland
@@ -11,16 +10,6 @@
     hyprland = {
       enable = true;
       xwayland.enable = true;
-    };
-    uwsm = {
-      enable = true;
-      waylandCompositors = {
-        hyprland = {
-          prettyName = "Hyprland";
-          comment = "Hyprland compositor managed by UWSM";
-          binPath = "/run/current-system/sw/bin/Hyprland";
-        };
-      };
     };
   };
 
