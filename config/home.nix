@@ -27,13 +27,13 @@ in
       git
       brightnessctl
       hypridle
+      hyprpaper
       wget
       firefox
       alacritty
       oh-my-zsh
       neovim
       waybar
-      swaybg
       fastfetch
       ntfs3g
       obsidian
@@ -45,16 +45,6 @@ in
   fonts.fontconfig.enable = true;
 
   programs = {
-    spicetify = {
-      enable = true;
-      theme = spicePkgs.themes.dribbblish;
-      colorScheme = "rosepine";
-
-      enabledExtensions = with spicePkgs.extensions; [
-        adblock
-      ];
-    };
-
     git = {
       enable = true;
       userName = "fqidz";
@@ -66,6 +56,7 @@ in
 
     waybar = {
       enable = true;
+      systemd.enable = true;
     };
 
     zsh = {
@@ -122,7 +113,20 @@ in
     firefox = {
       enable = true;
     };
+
+    spicetify = {
+      enable = true;
+      theme = spicePkgs.themes.dribbblish;
+      colorScheme = "rosepine";
+
+      enabledExtensions = with spicePkgs.extensions; [
+        adblock
+      ];
+    };
+
   };
+
+  systemd.user.enable = true;
 
   services = {
     syncthing = {
@@ -133,6 +137,20 @@ in
         "--config=${config.xdg.configHome}/syncthing"
         "--data=${config.xdg.dataHome}/syncthing"
       ];
+    };
+
+    hyprpaper = {
+      enable = true;
+      settings = {
+        ipc = true;
+        splash = false;
+        preload = [
+          "${config.xdg.configHome}/wallpapers/rose-pine-abstract.png"
+        ];
+        wallpaper = [
+          ", ${config.xdg.configHome}/wallpapers/rose-pine-abstract.png"
+        ];
+      };
     };
 
     hypridle = {

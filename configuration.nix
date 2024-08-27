@@ -2,6 +2,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    "${inputs.nixpkgs-edge}/nixos/modules/programs/wayland/uwsm.nix"
   ];
     
   # Enable Hyprland
@@ -10,6 +11,16 @@
     hyprland = {
       enable = true;
       xwayland.enable = true;
+    };
+    uwsm = {
+      enable = true;
+      waylandCompositors = {
+        hyprland = {
+          prettyName = "Hyprland";
+          comment = "Hyprland compositor managed by UWSM";
+          binPath = "/run/current-system/sw/bin/Hyprland";
+        };
+      };
     };
   };
 
@@ -74,13 +85,17 @@
   };
 
   services = {
-    displayManager.sddm = {
+    displayManager = {
       enable = true;
-      theme = "where_is_my_sddm_theme";
-      package = pkgs.kdePackages.sddm;
-      extraPackages = with pkgs; [
-        qt6.qt5compat
-      ];
+      sessionPackages = [ pkgs.hyprland ];
+      sddm = {
+        enable = true;
+        theme = "where_is_my_sddm_theme";
+        package = pkgs.kdePackages.sddm;
+        extraPackages = with pkgs; [
+          qt6.qt5compat
+        ];
+      };
     };
 
     xserver = {
