@@ -1,5 +1,4 @@
 { config, pkgs, inputs, ... }:
-
 {
   imports = [
     ./hardware-configuration.nix
@@ -37,6 +36,9 @@
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
+    kernelPackages = pkgs.linuxPackages_6_10;
+
+    # silent boot
     consoleLogLevel = 0;
     kernelParams = [
       "quiet"
@@ -46,12 +48,8 @@
   };
 
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "nixos";
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -79,12 +77,12 @@
     displayManager.sddm = {
       enable = true;
       theme = "where_is_my_sddm_theme";
-      # package = pkgs.libsForQt5.sddm;
       package = pkgs.kdePackages.sddm;
       extraPackages = with pkgs; [
         qt6.qt5compat
       ];
     };
+
     xserver = {
       enable = true;
     };
@@ -119,6 +117,7 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
+    git
     vim
     (where-is-my-sddm-theme.override {
       themeConfig.General = {

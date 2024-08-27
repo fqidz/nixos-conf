@@ -1,6 +1,7 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, inputs, ... }:
 let
   username = "faidz";
+  spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
 in
 {
   imports = [
@@ -24,6 +25,8 @@ in
       lua-language-server
       nil
       git
+      brightnessctl
+      hypridle
       wget
       firefox
       alacritty
@@ -33,8 +36,8 @@ in
       swaybg
       fastfetch
       ntfs3g
-      spotify
       obsidian
+      spicetify-cli
     ];
     stateVersion = "24.05";
   };
@@ -42,6 +45,16 @@ in
   fonts.fontconfig.enable = true;
 
   programs = {
+    spicetify = {
+      enable = true;
+      theme = spicePkgs.themes.dribbblish;
+      colorScheme = "rosepine";
+
+      enabledExtensions = with spicePkgs.extensions; [
+        adblock
+      ];
+    };
+
     git = {
       enable = true;
       userName = "fqidz";
@@ -74,7 +87,6 @@ in
       };
 
       shellAliases = {
-          hypr-logout = "hyprctl dispatch exit";
           nix-rebuild = "sudo nixos-rebuild switch --flake /etc/nixos#default";
           spotifyr = "spotify > /dev/null &!";
       };
@@ -122,6 +134,33 @@ in
         "--data=${config.xdg.dataHome}/syncthing"
       ];
     };
+
+    hypridle = {
+      enable = true;
+      settings = {
+        general = {
+          after_sleep_cmd = "hyprctl dispatch dpms on";
+        };
+
+        listener = [
+          {
+            timeout = 150;
+            on-timeout = "brightnessctl -s set 50%-";
+            on-resume = "brightnessctl -r";
+          }
+          {
+            timeout = 280;
+            on-timeout = "hyprctl dispatch dpms off";
+            on-resume = "hyprctl dispatch dpms on";
+          }
+          {
+            timeout = 300;
+            on-timeout = "systemctl suspend";
+          }
+        ];
+      };
+    };
+
   };
 
   home.file = {
