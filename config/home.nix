@@ -189,7 +189,6 @@ in
     ".config/waybar" = {
       enable = true;
       source = ../configFiles/waybar;
-      recursive = true;
     };
     ".config/alacritty" = {
       enable = true;
