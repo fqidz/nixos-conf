@@ -16,7 +16,7 @@ in
     };
     packages = with pkgs; [
       (nerdfonts.override { fonts = [ "RobotoMono" ]; })
-      python310
+      python311
       tree-sitter
       ripgrep
       wl-clipboard
@@ -183,7 +183,6 @@ in
     playerctld = {
       enable = true;
     };
-
   };
 
   home.file = {
