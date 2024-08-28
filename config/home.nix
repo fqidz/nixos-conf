@@ -19,6 +19,7 @@ in
       python311
       tree-sitter
       ripgrep
+      fzf
       wl-clipboard
       gcc
       libgcc
@@ -28,6 +29,7 @@ in
       brightnessctl
       hypridle
       hyprpaper
+      hyprcursor
       playerctl
       wget
       firefox
@@ -100,14 +102,14 @@ in
       enable = true;
       enableZshIntegration = true;
       settings = {
-        add_newline = false;
-        format = lib.concatStrings [
-          "$all"
-          "$directory"
-          "$character"
-        ];
+        add_newline = true;
+        format = "$all$directory\n$character" ;
         cmd_duration.disabled = true;
-        directory.truncation_symbol = ".../";
+        directory = {
+          truncation_length = 0;
+          read_only = " ";
+        };
+        line_break.disabled = true;
       };
     };
 
@@ -197,6 +199,10 @@ in
     ".config/wallpapers" = {
       enable = true;
       source = ../configFiles/wallpapers;
+    };
+    ".local/share/icons" = {
+      enable = true;
+      source = ../configFiles/hyprcursors;
     };
   };
 
