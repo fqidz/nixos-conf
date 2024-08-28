@@ -28,6 +28,7 @@ in
       brightnessctl
       hypridle
       hyprpaper
+      playerctl
       wget
       firefox
       alacritty
@@ -163,7 +164,7 @@ in
         listener = [
           {
             timeout = 150;
-            on-timeout = "brightnessctl -s set 50%-";
+            on-timeout = "brightnessctl -s set 75%-";
             on-resume = "brightnessctl -r";
           }
           {
@@ -179,12 +180,17 @@ in
       };
     };
 
+    playerctld = {
+      enable = true;
+    };
+
   };
 
   home.file = {
     ".config/waybar" = {
       enable = true;
       source = ../configFiles/waybar;
+      recursive = true;
     };
     ".config/alacritty" = {
       enable = true;
