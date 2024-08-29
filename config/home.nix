@@ -212,7 +212,7 @@ in
   gtk.cursorTheme = {
     package = pkgs.rose-pine-cursor;
     name = "BreezeX-RosePine-Linux";
-    size = 24;
+    size = 28;
   };
 
   nixpkgs.config = { allowUnfree = true; };
