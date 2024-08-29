@@ -109,6 +109,9 @@ in
           truncation_length = 0;
           read_only = " ";
         };
+        git_status = {
+          deleted = " ";
+        };
         line_break.disabled = true;
       };
     };
@@ -204,6 +207,12 @@ in
       enable = true;
       source = ../configFiles/hyprcursors;
     };
+  };
+
+  gtk.cursorTheme = {
+    package = pkgs.rose-pine-cursor;
+    name = "BreezeX-RosePine-Linux";
+    size = 24;
   };
 
   nixpkgs.config = { allowUnfree = true; };
