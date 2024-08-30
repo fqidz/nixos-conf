@@ -83,6 +83,7 @@ in
       shellAliases = {
           nix-rebuild = "sudo nixos-rebuild switch --flake /etc/nixos#default";
           spotifyr = "spotify > /dev/null &!";
+          nix-dev = "nix develop -c $SHELL";
       };
 
       dirHashes = {
