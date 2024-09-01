@@ -31,6 +31,7 @@ in
       hyprpaper
       hyprcursor
       playerctl
+      tofi
       wget
       firefox
       alacritty
@@ -121,6 +122,35 @@ in
       enable = true;
     };
 
+    tofi = {
+      enable = true;
+      settings = {
+        font = "${pkgs.nerdfonts.outPath}/share/fonts/truetype/NerdFonts/RobotoMonoNerdFont-Medium.ttf";
+        font-size = 20;
+        width = 800;
+        height = 540;
+        background-color = "#191724e6";
+        text-color = "#e0def4";
+        selection-color = "#9ccfd8";
+        prompt-text = "\"\"";
+        num-results = 5;
+        result-spacing = 10;
+        outline-width = 0;
+        border-width = 1;
+        border-color = "#c4a7e7";
+        corner-radius = 10;
+        padding-top = 110;
+        padding-bottom = 20;
+        padding-right = 110;
+        padding-left = 110;
+        clip-to-padding = false;
+        hide-cursor = true;
+        text-cursor = true;
+        # matching-algorithm = "fuzzy"; # not working
+        fuzzy-match = true;
+      };
+    };
+
     spicetify = {
       enable = true;
       theme = spicePkgs.themes.dribbblish;
@@ -207,6 +237,17 @@ in
     ".local/share/icons" = {
       enable = true;
       source = ../configFiles/hyprcursors;
+    };
+  };
+
+  xdg.desktopEntries = {
+    syncthing = {
+      name = "Syncthing";
+      type = "Application";
+      genericName = "Syncthing";
+      exec = "syncthing";
+      terminal = false;
+      categories = [ "Application" "Network" ];
     };
   };
 
