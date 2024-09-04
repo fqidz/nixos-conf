@@ -85,6 +85,7 @@ in
           nix-rebuild = "sudo nixos-rebuild switch --flake /etc/nixos#default";
           spotifyr = "spotify > /dev/null &!";
           nix-dev = "nix develop -c $SHELL";
+          gitroot = "cd \"$(git rev-parse --show-toplevel)\"";
       };
 
       dirHashes = {

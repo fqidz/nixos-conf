@@ -91,12 +91,17 @@
       enable = true;
     };
 
-    printing.enable = true;
-    # avahi = {
-    #   enable = true;
-    #   nssmdns4 = true;
-    #   openFirewall = true;
-    # };
+    printing = {
+      enable = true;
+      drivers = [
+        (pkgs.callPackage ../my-packages/dcpt510w-cups-wrapper/package.nix {})
+      ];
+    };
+    avahi = {
+      enable = true;
+      nssmdns4 = true;
+      openFirewall = true;
+    };
 
     xserver.xkb = {
       layout = "us";
