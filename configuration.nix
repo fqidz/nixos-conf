@@ -93,10 +93,11 @@
 
     printing = {
       enable = true;
-      drivers = [
-        (pkgs.callPackage ../my-packages/dcpt510w-cups-wrapper/package.nix {})
-      ];
+      # drivers = [
+      #   (pkgs.callPackage ./my-packages/dcpt510w-cupswrapper/package.nix {})
+      # ];
     };
+
     avahi = {
       enable = true;
       nssmdns4 = true;

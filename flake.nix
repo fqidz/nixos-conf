@@ -19,7 +19,6 @@
   outputs = inputs@{ self, nixpkgs, home-manager, ... }: 
   let
     system = "x86_64-linux";
-    # pkgs = import nixpkgs { inherit system; };
   in
   {
     nixosConfigurations.default = nixpkgs.lib.nixosSystem {
@@ -43,13 +42,5 @@
         }
       ];
     };
-
-    # homeConfigurations.fqidz = home-manager.lib.homeManagerConfiguration {
-    #   inherit pkgs;
-    #   extraSpecialArgs = { inherit spicetify-nix; };
-    #   modules = [
-    #     ./config/home.nix
-    #   ];
-    # };
   };
 }
