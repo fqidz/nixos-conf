@@ -31,6 +31,7 @@ in
     };
     packages = with pkgs; [
       (nerdfonts.override { fonts = [ "RobotoMono" ]; })
+      roboto-mono
       python311
       tree-sitter
       ripgrep
@@ -310,7 +311,6 @@ in
       categories = [ "Application" "Network" ];
     };
   };
-
 
   nixpkgs.config = { allowUnfree = true; };
 
