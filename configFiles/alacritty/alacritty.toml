@@ -20,7 +20,6 @@ family = "RobotoMono Nerd Font"
 
 [window]
 decorations = "None"
-opacity = 0.8
 
 [window.padding]
 x = 10

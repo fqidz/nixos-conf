@@ -32,6 +32,7 @@ in
       hyprcursor
       playerctl
       tofi
+      cliphist
       wget
       firefox
       alacritty
@@ -144,7 +145,7 @@ in
         padding-bottom = 20;
         padding-right = 110;
         padding-left = 110;
-        clip-to-padding = false;
+        clip-to-padding = true;
         hide-cursor = true;
         text-cursor = true;
         # matching-algorithm = "fuzzy"; # not working
