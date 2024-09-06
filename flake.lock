@@ -52,10 +52,27 @@
         "type": "github"
       }
     },
+    "nixpkgs-testing": {
+      "locked": {
+        "lastModified": 1725653934,
+        "narHash": "sha256-Nv2w5S6twIvLn1nraeMOJ/+6txa6Cg0+WVcMRWwdg9s=",
+        "owner": "fqidz",
+        "repo": "nixpkgs",
+        "rev": "ca69b67a20ede7bdfacf928ab337affd6ccdd71a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "fqidz",
+        "ref": "brother-dcp-t510w-driver",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-testing": "nixpkgs-testing",
         "spicetify-nix": "spicetify-nix"
       }
     },

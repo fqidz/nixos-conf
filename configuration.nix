@@ -94,7 +94,7 @@
     printing = {
       enable = true;
       # drivers = [
-      #   (pkgs.callPackage ./my-packages/dcpt510w-cupswrapper/package.nix {})
+      #   pkgs.testing.dcpt510w
       # ];
     };
 
@@ -148,7 +148,10 @@
     })
   ];
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix = {
+    settings.experimental-features = [ "nix-command" "flakes" ];
+    optimise.automatic = true;
+  };
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
