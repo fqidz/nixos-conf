@@ -36,6 +36,7 @@ in
       tree-sitter
       ripgrep
       fzf
+      tree
       wl-clipboard
       gcc
       libgcc
