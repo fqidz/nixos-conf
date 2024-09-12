@@ -38,11 +38,14 @@
     };
     kernelPackages = pkgs.linuxPackages_6_10;
 
-    # silent boot
-    consoleLogLevel = 0;
+    consoleLogLevel = 0; # silent boot
     kernelParams = [
+      # silent boot
       "quiet"
       "udev.log_priority=3"
+      # power saving options
+      "kernel.nmi_watchdog=0"
+      "vm.dirty_writeback_centisecs=6000"
     ];
     initrd.verbose = false;
   };
@@ -55,7 +58,7 @@
   networking.networkmanager.enable = true;
 
   # Set your time zone.
-  time.timeZone = "Asia/Riyadh";
+  time.timeZone = "Asia/Bahrain";
 
   # Select internationalisation properties.
   i18n = {
@@ -74,6 +77,10 @@
   };
 
   services = {
+    logind = {
+      powerKey = "suspend";
+      powerKeyLongPress = "poweroff";
+    };
     displayManager = {
       enable = true;
       sessionPackages = [ pkgs.hyprland ];
@@ -92,7 +99,17 @@
     };
 
     printing = {
-      enable = true;
+      enable = false;
+      browsing = false;
+      # browsedConf = ''
+      #   BrowseDNSSDSubTypes _cups,_print
+      #   BrowseLocalProtocols all
+      #   BrowseRemoteProtocols all
+      #   CreateIPPPrinterQueues All
+      # 
+      #   BrowseProtocols all
+      # '';
+
       # drivers = [
       #   pkgs.testing.dcpt510w
       # ];
@@ -128,6 +145,20 @@
   hardware = {
     pulseaudio.enable = false;
     graphics.enable = true;
+    # printers = {
+    #   ensurePrinters = [
+    #     {
+    #       name = "Brother_DCP_T510W";
+    #       location = "Home";
+    #       deviceUri = "implicitclass://Brother_DCP_T510W/";
+    #       model = "brother_dcpt510w_printer_en.ppd";
+    #       ppdOptions = {
+    #         PageSize = "A4";
+    #       };
+    #     }
+    #   ];
+    #   ensureDefaultPrinter = "Brother_DCP_T510W";
+    # };
   };
 
   security.rtkit.enable = true;
@@ -160,15 +191,31 @@
   services.openssh.enable = true;
 
   # Open ports in the firewall for syncthing
-  networking.firewall = {
-    enable = true;
-    allowedTCPPorts = [
-      22000
-    ];
-    allowedUDPPorts = [
-      22000
-      21027
-    ];
+  networking = {
+    # wireless = {
+    #   enable = true;
+    #   interfaces = [ "wlp1s0" ];
+    #     networks = {
+    #       "Student-1X" = {
+    #         authProtocols = "WPA-EAP";
+    #         auth = ''
+    #           eap=PEAP
+    #           identity="202400240"
+    #           password="test"
+    #         '';
+    #       };
+    #     };
+    # };
+    firewall = {
+      enable = true;
+      allowedTCPPorts = [
+        22000
+      ];
+      allowedUDPPorts = [
+        22000
+        21027
+      ];
+    };
   };
 
   system.stateVersion = "24.05";

@@ -41,6 +41,7 @@ in
       gcc
       libgcc
       lua-language-server
+      luarocks
       nil
       git
       brightnessctl
@@ -48,6 +49,8 @@ in
       hyprlock
       hyprpaper
       hyprcursor
+      hyprshot
+      libnotify
       playerctl
       tofi
       cliphist
@@ -75,6 +78,10 @@ in
       extraConfig = {
         init.defaultBranch = "main";
       };
+    };
+
+    fd = {
+      enable = true;
     };
 
     waybar = {
@@ -153,6 +160,8 @@ in
 
       initExtra = ''
         bindkey '^ ' autosuggest-accept
+        typeset -A ZSH_HIGHLIGHT_STYLES
+        ZSH_HIGHLIGHT_STYLES[arg0]='fg=magenta,bold'
       '';
     };
 
@@ -166,6 +175,10 @@ in
       settings = {
         add_newline = true;
         format = "$all$directory\n$character" ;
+        character = {
+          success_symbol = "[❯](purple bold)";
+          error_symbol = "[❯](red bold)";
+        };
         cmd_duration.disabled = true;
         directory = {
           truncation_length = 0;
@@ -280,6 +293,22 @@ in
 
     playerctld = {
       enable = true;
+    };
+
+    dunst = {
+      enable = true;
+      settings = {
+        global = {
+          monitor = 0;
+          width = "(200, 300)";
+          height = "(100, 200)";
+          origin = "top-right";
+          offset = "30x100";
+          icon_corner_radius = 10;
+          corner_radius = 15;
+          font = "Roboto Mono";
+        };
+      };
     };
   };
 
