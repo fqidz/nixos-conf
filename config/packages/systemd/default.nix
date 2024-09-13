@@ -12,7 +12,7 @@
           Description = "Stores clipboard history using cliphist";
         };
         Install = {
-          WantedBy = [ "default.target" ];
+          WantedBy = [ "graphical-session.target" ];
         };
         Service = {
           ExecStart = "${pkgs.writeShellScript "cliphist-history" ''

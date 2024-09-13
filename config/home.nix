@@ -78,8 +78,6 @@ in
     };
   };
 
-  systemd.user.enable = true;
-
   services = {
     syncthing = {
       enable = true;
