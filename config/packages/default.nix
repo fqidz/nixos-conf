@@ -1,4 +1,7 @@
 {
   imports = [
+    ./gtk
+    ./shell
+    ./hyprland
   ];
 }
