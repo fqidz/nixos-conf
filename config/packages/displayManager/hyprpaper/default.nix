@@ -1,4 +1,4 @@
-{ pkgs, rootPath, ... }:
+{ pkgs, ... }:
 {
   home.packages = [
     pkgs.hyprpaper
@@ -11,10 +11,10 @@
         ipc = true;
         splash = false;
         preload = [
-          "${rootPath}/configFiles/wallpapers/rose-pine-abstract.png"
+          "${./wallpapers/rose-pine-abstract.png}"
         ];
         wallpaper = [
-          ", ${rootPath}/configFiles/wallpapers/rose-pine-abstract.png"
+          ", ${./wallpapers/rose-pine-abstract.png}"
         ];
       };
     };

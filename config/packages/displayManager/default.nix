@@ -1,12 +1,12 @@
 { ... }:
 {
   imports = [
+    ./hyprland
     ./waybar
-    ./hyprland.nix
+    ./hyprpaper
     ./dunst.nix
     ./hypridle.nix
     ./hyprlock.nix
-    ./hyprpaper.nix
     ./tofi.nix
   ];
 }

@@ -2,9 +2,10 @@
   imports = [
     ./gtk
     ./shell
-    ./hyprland
+    ./displayManager
     ./fzf
     ./direnv
     ./alacritty
+    ./eza
   ];
 }

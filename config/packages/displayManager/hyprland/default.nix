@@ -1,4 +1,4 @@
-{ pkgs, rootPath, ... }:
+{ pkgs, ... }:
 {
   home.packages = [
     pkgs.hyprland
@@ -11,7 +11,7 @@
 
   home.file.".local/share/icons" = {
     enable = true;
-    source = "${rootPath}/configFiles/hyprcursors";
+    source = "${./hyprcursors}";
   };
 
   wayland.windowManager.hyprland = {
@@ -31,11 +31,13 @@
         "[workspace 1 silent] $terminal"
         "[workspace 2 silent] firefox"
         "wl-paste --watch cliphist store"
+        "hyprctl setcursor $HYPRCURSOR_THEME $HYPRCURSOR_SIZE"
       ];
 
       env = [
-        "XCURSOR_SIZE,24"
-        "HYPRCURSOR_SIZE,24"
+        "XCURSOR_SIZE,28"
+        "HYPRCURSOR_SIZE,28"
+        "HYPRCURSOR_THEME,rose-pine-hyprcursor"
         "HYPRSHOT_DIR,$HOME/Pictures/Screenshots"
       ];
 
