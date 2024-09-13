@@ -26,7 +26,6 @@ in
       python311
       tree-sitter
       ripgrep
-      fzf
       tree
       wl-clipboard
       gcc
@@ -68,10 +67,6 @@ in
       nix-direnv.enable = true;
     };
 
-    fd = {
-      enable = true;
-    };
-
     fastfetch = {
       enable = true;
     };
@@ -89,7 +84,6 @@ in
         adblock
       ];
     };
-
   };
 
   systemd.user.enable = true;
@@ -104,17 +98,12 @@ in
         "--data=${config.xdg.dataHome}/syncthing"
       ];
     };
-
   };
 
   home.file = {
     ".config/alacritty" = {
       enable = true;
       source = ../configFiles/alacritty;
-    };
-    ".config/wallpapers" = {
-      enable = true;
-      source = ../configFiles/wallpapers;
     };
     ".local/share/icons" = {
       enable = true;
@@ -128,16 +117,16 @@ in
       };
   };
 
-  xdg.desktopEntries = {
-    syncthing = {
-      name = "Syncthing";
-      type = "Application";
-      genericName = "Syncthing";
-      exec = "syncthing";
-      terminal = false;
-      categories = [ "Application" "Network" ];
-    };
-  };
+  # xdg.desktopEntries = {
+  #   syncthing = {
+  #     name = "Syncthing";
+  #     type = "Application";
+  #     genericName = "Syncthing";
+  #     exec = "syncthing";
+  #     terminal = false;
+  #     categories = [ "Application" "Network" ];
+  #   };
+  # };
 
   nixpkgs.config = { allowUnfree = true; };
 

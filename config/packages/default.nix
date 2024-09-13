@@ -3,5 +3,6 @@
     ./gtk
     ./shell
     ./hyprland
+    ./fzf
   ];
 }
