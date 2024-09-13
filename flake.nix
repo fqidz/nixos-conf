@@ -14,10 +14,12 @@
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    sops-nix.url = "github:Mic92/sops-nix";
   };
 
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-testing, home-manager, ... }: 
+  outputs = inputs@{ self, nixpkgs, nixpkgs-testing, home-manager, sops-nix, ... }:
   let
     system = "x86_64-linux";
   in
@@ -48,6 +50,7 @@
 
             users.faidz.imports = [
               inputs.spicetify-nix.homeManagerModules.default
+              inputs.sops-nix.homeManagerModules.sops
               ./config/home.nix
             ];
           };

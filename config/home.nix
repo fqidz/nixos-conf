@@ -7,7 +7,7 @@ in
   imports = [
     ./packages
   ];
-  
+
   gtk = {
     enable = true;
     gtk4.extraConfig = {
@@ -28,6 +28,12 @@ in
     homeDirectory = "/home/${username}";
     sessionVariables = {
       EDITOR = "nvim";
+      XDG_CACHE_HOME = "$HOME/.cache";
+      # XDG_CONFIG_DIRS = "/etc/xdg";
+      XDG_CONFIG_HOME = "$HOME/.config";
+      # XDG_DATA_DIRS = "/usr/local/share/:/usr/share/";
+      XDG_DATA_HOME = "$HOME/.local/share";
+      XDG_STATE_HOME = "$HOME/.local/state";
     };
     packages = with pkgs; [
       (nerdfonts.override { fonts = [ "RobotoMono" ]; })
@@ -43,6 +49,9 @@ in
       lua-language-server
       luarocks
       nil
+      sops
+      age
+      gnupg
       git
       brightnessctl
       hypridle
@@ -78,6 +87,12 @@ in
       extraConfig = {
         init.defaultBranch = "main";
       };
+    };
+
+    direnv = {
+      enable = true;
+      enableZshIntegration = true;
+      nix-direnv.enable = true;
     };
 
     fd = {
@@ -329,6 +344,12 @@ in
       enable = true;
       source = ../configFiles/hyprcursors;
     };
+    ".config/direnv/direnvrc" = {
+      enable = true;
+      # https://github.com/direnv/direnv/wiki/Customizing-cache-location#human-readable-directories
+      # make nix-direnv use ~/.cache/direnv/profiles/ to save the cache
+      source = ../configFiles/direnv/direnvrc;
+      };
   };
 
   xdg.desktopEntries = {
