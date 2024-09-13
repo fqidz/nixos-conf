@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, rootPath, ... }:
 {
   home.packages = [
     pkgs.hyprpaper
@@ -11,10 +11,10 @@
         ipc = true;
         splash = false;
         preload = [
-          "${config.xdg.configHome}/wallpapers/rose-pine-abstract.png"
+          "${rootPath}/configFiles/wallpapers/rose-pine-abstract.png"
         ];
         wallpaper = [
-          ", ${config.xdg.configHome}/wallpapers/rose-pine-abstract.png"
+          ", ${rootPath}/configFiles/wallpapers/rose-pine-abstract.png"
         ];
       };
     };

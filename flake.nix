@@ -46,7 +46,7 @@
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
-            extraSpecialArgs = { inherit inputs; };
+            extraSpecialArgs = { inherit inputs; rootPath = ./.; };
 
             users.faidz.imports = [
               inputs.spicetify-nix.homeManagerModules.default
