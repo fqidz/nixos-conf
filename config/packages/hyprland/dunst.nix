@@ -2,6 +2,7 @@
 {
   home.packages = [
     pkgs.dunst
+    pkgs.libnotify
   ];
 
   services = {
