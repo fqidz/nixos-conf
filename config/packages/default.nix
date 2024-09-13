@@ -7,5 +7,6 @@
     ./direnv
     ./alacritty
     ./eza
+    ./systemd
   ];
 }

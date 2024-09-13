@@ -27,7 +27,6 @@ in
       tree-sitter
       ripgrep
       tree
-      wl-clipboard
       gcc
       libgcc
       lua-language-server

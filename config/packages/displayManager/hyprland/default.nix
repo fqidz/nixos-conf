@@ -3,6 +3,7 @@
   home.packages = [
     pkgs.hyprland
     pkgs.brightnessctl
+    pkgs.wl-clipboard
     pkgs.hyprcursor
     pkgs.hyprshot
     pkgs.playerctl
@@ -30,7 +31,6 @@
       exec-once = [
         "[workspace 1 silent] $terminal"
         "[workspace 2 silent] firefox"
-        "wl-paste --watch cliphist store"
         "hyprctl setcursor $HYPRCURSOR_THEME $HYPRCURSOR_SIZE"
       ];
 
