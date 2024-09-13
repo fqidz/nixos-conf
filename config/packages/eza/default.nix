@@ -9,6 +9,10 @@
     enableZshIntegration = true;
     extraOptions = [
       "--icons"
+      "--classify"
+      "--oneline"
+      "--tree"
+      "--level=1"
     ];
   };
 }

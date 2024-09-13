@@ -30,6 +30,7 @@
           spotifyr = "spotify > /dev/null &!";
           nix-dev = "nix develop -c $SHELL";
           gitroot = "cd \"$(git rev-parse --show-toplevel)\"";
+          ls = "eza";
       };
 
       dirHashes = {
