@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, rootPath, ... }:
 {
   home.packages = [
     pkgs.hyprland
@@ -8,6 +8,11 @@
     pkgs.playerctl
     pkgs.cliphist
   ];
+
+  home.file.".local/share/icons" = {
+    enable = true;
+    source = "${rootPath}/configFiles/hyprcursors";
+  };
 
   wayland.windowManager.hyprland = {
     enable = true;
@@ -25,6 +30,7 @@
       exec-once = [
         "[workspace 1 silent] $terminal"
         "[workspace 2 silent] firefox"
+        "wl-paste --watch cliphist store"
       ];
 
       env = [

@@ -4,5 +4,7 @@
     ./shell
     ./hyprland
     ./fzf
+    ./direnv
+    ./alacritty
   ];
 }

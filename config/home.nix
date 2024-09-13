@@ -39,7 +39,6 @@ in
       git
       wget
       firefox
-      alacritty
       neovim
       fastfetch
       ntfs3g
@@ -59,12 +58,6 @@ in
       extraConfig = {
         init.defaultBranch = "main";
       };
-    };
-
-    direnv = {
-      enable = true;
-      enableZshIntegration = true;
-      nix-direnv.enable = true;
     };
 
     fastfetch = {
@@ -98,23 +91,6 @@ in
         "--data=${config.xdg.dataHome}/syncthing"
       ];
     };
-  };
-
-  home.file = {
-    ".config/alacritty" = {
-      enable = true;
-      source = ../configFiles/alacritty;
-    };
-    ".local/share/icons" = {
-      enable = true;
-      source = ../configFiles/hyprcursors;
-    };
-    ".config/direnv/direnvrc" = {
-      enable = true;
-      # https://github.com/direnv/direnv/wiki/Customizing-cache-location#human-readable-directories
-      # make nix-direnv use ~/.cache/direnv/profiles/ to save the cache
-      source = ../configFiles/direnv/direnvrc;
-      };
   };
 
   # xdg.desktopEntries = {

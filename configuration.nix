@@ -3,17 +3,34 @@
   imports = [
     ./hardware-configuration.nix
   ];
-    
-  # Enable Hyprland
+
   programs = {
     zsh.enable = true;
+    # Enable Hyprland
     hyprland = {
       enable = true;
       xwayland.enable = true;
     };
   };
 
-  environment.sessionVariables.NIXOS_OZONE_WL = "1"; # This variable fixes electron apps in wayland
+  environment = {
+    sessionVariables.NIXOS_OZONE_WL = "1"; # This variable fixes electron apps in wayland
+    systemPackages = [
+      pkgs.git
+      pkgs.vim
+      (pkgs.where-is-my-sddm-theme.override {
+        themeConfig.General = {
+          backgroundFill = "#191724";
+          basicTextColor = "#e0def4";
+          passwordInputWidth = "0.75";
+          passwordCursorColor = "#e0def4";
+          passwordInputCursorVisible = true;
+          cursorBlinkAnimation = true;
+          hideCursor = true;
+        };
+      })
+    ];
+  };
 
   users.users.faidz = {
     isNormalUser = true;
@@ -88,8 +105,8 @@
         enable = true;
         theme = "where_is_my_sddm_theme";
         package = pkgs.kdePackages.sddm;
-        extraPackages = with pkgs; [
-          qt6.qt5compat
+        extraPackages = [
+          pkgs.qt6.qt5compat
         ];
       };
     };
@@ -106,7 +123,7 @@
       #   BrowseLocalProtocols all
       #   BrowseRemoteProtocols all
       #   CreateIPPPrinterQueues All
-      # 
+      #
       #   BrowseProtocols all
       # '';
 
@@ -166,21 +183,6 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  environment.systemPackages = with pkgs; [
-    git
-    vim
-    (where-is-my-sddm-theme.override {
-      themeConfig.General = {
-        backgroundFill = "#191724";
-        basicTextColor = "#e0def4";
-        passwordInputWidth = "0.75";
-        passwordCursorColor = "#e0def4";
-        passwordInputCursorVisible = true;
-        cursorBlinkAnimation = true;
-        hideCursor = true;
-      };
-    })
-  ];
 
   nix = {
     settings.experimental-features = [ "nix-command" "flakes" ];
