@@ -30,13 +30,14 @@
       env = [
         "XCURSOR_SIZE,24"
         "HYPRCURSOR_SIZE,24"
+        "HYPRSHOT_DIR,$HOME/Pictures/Screenshots"
       ];
 
       general = {
         gaps_in = 5;
-        gaps_out = 10;
+        gaps_out = 15;
         border_size = 1;
-        "col.active_border" = "rgba(9ccfd8ff) rgba(c4a7e7ff) 45deg";
+        "col.active_border" = "rgba(c4a7e7ff) rgba(9ccfd8ff) 45deg";
         "col.inactive_border" = "rgba(21202eff)";
         resize_on_border = false;
         allow_tearing = false;
@@ -69,7 +70,7 @@
           "border, 1, 10, default"
           "fade, 1, 7, default"
           "workspaces, 1, 3, default"
-          "layers, 1, 2, default"
+          "layers, 1, 1, default"
         ];
       };
 
@@ -94,15 +95,17 @@
       workspace = [
         "special:spotify, on-created-empty:[float] spotify"
       ];
-      
+
       bind = [
         "$mod, Q, exec, $terminal"
         "$mod, C, killactive,"
         "$mod, M, exit,"
+        "$mod, R, exec, tofi-drun"
         "$mod, V, exec, cliphist list | tofi --width 80% | cliphist decode | wl-copy"
         "$mod, F, togglefloating,"
         "$mod, P, pseudo,"
         "$mod, J, togglesplit,"
+        ", Print, exec, hyprshot --freeze -m region"
 
         "$mod, S, togglespecialworkspace, spotify"
         "$mod SHIFT, S, movetoworkspace, special:spotify"
