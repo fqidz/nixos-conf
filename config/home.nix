@@ -44,6 +44,7 @@ in
       obsidian
       spicetify-cli
       feh
+      ueberzugpp
     ];
     stateVersion = "24.05";
   };

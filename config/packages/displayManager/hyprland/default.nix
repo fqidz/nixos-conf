@@ -149,6 +149,9 @@
         ", XF86AudioPrev, exec, playerctl previous"
       ];
 
+      windowrulev2 = [
+        "noanim, class:^(ueberzugpp_.*)$"
+      ];
       # windowrulev2 = suppressevent maximize, class:.* # You'll probably like this.
     };
   };
