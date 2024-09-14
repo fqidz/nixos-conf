@@ -132,7 +132,7 @@
               scroll-step = 1;
               format = "{icon} {volume}%";
               format-bluetooth = "󰂯 {volume}%";
-              format-muted = "";
+              format-muted = " ";
               format-icons = {
                   "default" = [ "" "" ];
                   "headphone" = "";

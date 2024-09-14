@@ -43,6 +43,7 @@ in
       ntfs3g
       obsidian
       spicetify-cli
+      feh
     ];
     stateVersion = "24.05";
   };

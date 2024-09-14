@@ -8,5 +8,6 @@
     ./alacritty
     ./eza
     ./systemd
+    ./yazi
   ];
 }
