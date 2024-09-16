@@ -62,9 +62,12 @@ in
     };
 
     feh = {
+      enable = true;
       keybindings = {
-        prev_img = "";
-        next_img = "";
+        prev_img = null;
+        next_img = null;
+      };
+      buttons = {
         zoom_in = 4;
         zoom_out = 5;
       };
