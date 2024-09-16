@@ -108,7 +108,7 @@
         "$mod, Q, exec, $terminal"
         "$mod, C, killactive,"
         "$mod, M, exit,"
-        "$mod, R, exec, tofi-drun"
+        "$mod, R, exec, tofi-drun --drun-launch=true"
         "$mod, V, exec, cliphist list | tofi --width 80% | cliphist decode | wl-copy"
         "$mod, F, togglefloating,"
         "$mod, P, pseudo,"

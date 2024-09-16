@@ -26,7 +26,7 @@ in
       python311
       tree-sitter
       ripgrep
-      tree
+      file
       gcc
       libgcc
       lua-language-server
@@ -58,6 +58,15 @@ in
       userEmail = "meowthful127@gmail.com";
       extraConfig = {
         init.defaultBranch = "main";
+      };
+    };
+
+    feh = {
+      keybindings = {
+        prev_img = "";
+        next_img = "";
+        zoom_in = 4;
+        zoom_out = 5;
       };
     };
 
