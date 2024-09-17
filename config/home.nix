@@ -1,4 +1,10 @@
-{ config, pkgs, lib, inputs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 let
   username = "faidz";
   spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
@@ -115,7 +121,9 @@ in
   #   };
   # };
 
-  nixpkgs.config = { allowUnfree = true; };
+  nixpkgs.config = {
+    allowUnfree = true;
+  };
 
   programs.home-manager.enable = true;
 }

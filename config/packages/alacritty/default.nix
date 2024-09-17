@@ -10,7 +10,7 @@ in
   programs.alacritty = {
     enable = true;
     settings = {
-      import = ["${./rose-pine.toml}"];
+      import = [ "${./rose-pine.toml}" ];
       font = {
         size = 13.0;
         normal = {

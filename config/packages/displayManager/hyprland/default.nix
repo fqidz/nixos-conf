@@ -104,31 +104,35 @@
         "special:spotify, on-created-empty:[float] spotify"
       ];
 
-      bind = [
-        "$mod, Q, exec, $terminal"
-        "$mod, C, killactive,"
-        "$mod, M, exit,"
-        "$mod, R, exec, tofi-drun --drun-launch=true"
-        "$mod, V, exec, cliphist list | tofi --width 80% | cliphist decode | wl-copy"
-        "$mod, F, togglefloating,"
-        "$mod, P, pseudo,"
-        "$mod, J, togglesplit,"
-        ", Print, exec, hyprshot --freeze -m region"
+      bind =
+        [
+          "$mod, Q, exec, $terminal"
+          "$mod, C, killactive,"
+          "$mod, M, exit,"
+          "$mod, R, exec, tofi-drun --drun-launch=true"
+          "$mod, V, exec, cliphist list | tofi --width 80% | cliphist decode | wl-copy"
+          "$mod, F, togglefloating,"
+          "$mod, P, pseudo,"
+          "$mod, J, togglesplit,"
+          ", Print, exec, hyprshot --freeze -m region"
 
-        "$mod, S, togglespecialworkspace, spotify"
-        "$mod SHIFT, S, movetoworkspace, special:spotify"
-      ]
-      # bind = $mainMod, 0, workspace, 1
-      # bind = $mainMod SHIFT, 1, movetoworkspace, 1
-      ++ (
-        builtins.concatLists (builtins.genList (i:
-          let ws = i + 1; in [
-            "$mod, code:1${toString i}, workspace, ${toString ws}"
-            "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
-          ]
-        )
-        9)
-      );
+          "$mod, S, togglespecialworkspace, spotify"
+          "$mod SHIFT, S, movetoworkspace, special:spotify"
+        ]
+        # bind = $mainMod, 0, workspace, 1
+        # bind = $mainMod SHIFT, 1, movetoworkspace, 1
+        ++ (builtins.concatLists (
+          builtins.genList (
+            i:
+            let
+              ws = i + 1;
+            in
+            [
+              "$mod, code:1${toString i}, workspace, ${toString ws}"
+              "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
+            ]
+          ) 9
+        ));
 
       bindm = [
         "$mod, mouse:272, movewindow"

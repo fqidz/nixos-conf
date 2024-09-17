@@ -1,4 +1,7 @@
 { pkgs, ... }:
+let
+  robotoMonoPath = (pkgs.nerdfonts.override { fonts = [ "RobotoMono" ]; }).outPath;
+in
 {
   home.packages = [
     pkgs.tofi
@@ -8,7 +11,7 @@
     tofi = {
       enable = true;
       settings = {
-        font = "${(pkgs.nerdfonts.override { fonts = [ "RobotoMono" ]; }).outPath}/share/fonts/truetype/NerdFonts/RobotoMonoNerdFont-Medium.ttf";
+        font = "${robotoMonoPath}/share/fonts/truetype/NerdFonts/RobotoMonoNerdFont-Medium.ttf";
         font-size = 20;
         width = 800;
         height = 540;

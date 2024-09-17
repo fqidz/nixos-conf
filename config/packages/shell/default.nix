@@ -26,11 +26,11 @@
       };
 
       shellAliases = {
-          nix-rebuild = "sudo nixos-rebuild switch --flake /etc/nixos#default";
-          spotifyr = "spotify > /dev/null &!";
-          nix-dev = "nix develop -c $SHELL";
-          gitroot = "cd \"$(git rev-parse --show-toplevel)\"";
-          ls = "eza";
+        nix-rebuild = "sudo nixos-rebuild switch --flake /etc/nixos#default";
+        spotifyr = "spotify > /dev/null &!";
+        nix-dev = "nix develop -c $SHELL";
+        gitroot = "cd \"$(git rev-parse --show-toplevel)\"";
+        ls = "eza";
       };
 
       dirHashes = {
@@ -49,7 +49,7 @@
       enableZshIntegration = true;
       settings = {
         add_newline = true;
-        format = "$all$directory\n$character" ;
+        format = "$all$directory\n$character";
         character = {
           success_symbol = "[❯](purple bold)";
           error_symbol = "[❯](red bold)";
