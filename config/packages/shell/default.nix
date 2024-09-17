@@ -30,7 +30,6 @@
         spotifyr = "spotify > /dev/null &!";
         nix-dev = "nix develop -c $SHELL";
         gitroot = "cd \"$(git rev-parse --show-toplevel)\"";
-        ls = "eza";
       };
 
       dirHashes = {
@@ -41,6 +40,10 @@
         bindkey '^ ' autosuggest-accept
         typeset -A ZSH_HIGHLIGHT_STYLES
         ZSH_HIGHLIGHT_STYLES[arg0]='fg=magenta,bold'
+
+        function fehv() {
+            feh "$@" > /dev/null &!
+        }
       '';
     };
 
