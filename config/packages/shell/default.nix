@@ -44,6 +44,25 @@
         function fehv() {
             feh "$@" > /dev/null &!
         }
+
+        function nix-templ {
+            if [[ -z "$1" ]]; then
+                echo "error: no first arg" > /dev/stderr
+                return 1
+            elif [[ -z "$2" ]]; then
+                echo "error: no second arg" > /dev/stderr
+                return 1
+            fi
+
+            if [[ "$1" == "init" ]]; then
+                nix flake init --template github:fqidz/nix-templates#$2
+            elif [[ "$1" == "new" ]]; then
+                nix flake new --template github:fqidz/nix-templates#$2 $3
+            else
+                echo "error: 1st arg either 'init' or 'new'" > /dev/stderr
+                return 1
+            fi
+        }
       '';
     };
 
