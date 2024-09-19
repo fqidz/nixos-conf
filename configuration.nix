@@ -205,7 +205,7 @@ in
             wifi-security = {
               auth-alg = "open";
               key-mgmt = "wpa-psk";
-              psk = "@senzid2@";
+              psk = "$senzid2";
             };
           };
 
@@ -226,7 +226,7 @@ in
             wifi-security = {
               auth-alg = "open";
               key-mgmt = "wpa-psk";
-              psk = "@uob-events@";
+              psk = "$uob_events";
             };
           };
 
@@ -248,13 +248,12 @@ in
             wifi-security = {
               auth-alg = "open";
               key-mgmt = "wpa-eap";
-              psk = "@student-1x@";
             };
             "802-1x" = {
               anonymous-identity = "f";
               eap = "peap";
-              identity = "@student-1x-identity@";
-              password = "@student-1x@";
+              identity = "$student_1x_identity";
+              password = "$student_1x";
               phase2-auth = "mschapv2";
             };
           };
@@ -262,21 +261,6 @@ in
         };
       };
     };
-    # wireless.enable = true;
-    # wireless = {
-    #   enable = true;
-    #   interfaces = [ "wlp1s0" ];
-    #     networks = {
-    #       "Student-1X" = {
-    #         authProtocols = "WPA-EAP";
-    #         auth = ''
-    #           eap=PEAP
-    #           identity="202400240"
-    #           password="test"
-    #         '';
-    #       };
-    #     };
-    # };
 
     # Open ports in the firewall for syncthing
     firewall = {

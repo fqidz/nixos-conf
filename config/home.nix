@@ -44,6 +44,7 @@ in
       git
       wget
       firefox
+      nix-tree
       wirelesstools
       wpa_supplicant_gui
       neovim
