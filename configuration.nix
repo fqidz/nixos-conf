@@ -74,12 +74,6 @@
     initrd.verbose = false;
   };
 
-  networking.hostName = "nixos";
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Enable networking
-  networking.networkmanager.enable = true;
-
   # Set your time zone.
   time.timeZone = "Asia/Bahrain";
 
@@ -200,8 +194,25 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
-  # Open ports in the firewall for syncthing
+
   networking = {
+    hostName = "nixos";
+    networkmanager = {
+      enable = true;
+      wifi = {
+        macAddress = "random";
+      };
+      # ensureProfiles.profiles = {
+      #   Student-1X = {
+      #     connection = {
+      #       id = "Student-1X";
+      #       type = "wifi";
+      #     };
+      #   };
+      #
+      # };
+    };
+    # wireless.enable = true;
     # wireless = {
     #   enable = true;
     #   interfaces = [ "wlp1s0" ];
@@ -216,6 +227,8 @@
     #       };
     #     };
     # };
+
+    # Open ports in the firewall for syncthing
     firewall = {
       enable = true;
       allowedTCPPorts = [

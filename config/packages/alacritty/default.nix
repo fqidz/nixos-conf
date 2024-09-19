@@ -39,6 +39,14 @@ in
         };
       };
 
+      keyboard.bindings = [
+        {
+          key = "N";
+          mods = "Command";
+          action = "CreateNewWindow";
+        }
+      ];
+
     };
   };
 }

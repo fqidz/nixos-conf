@@ -44,6 +44,8 @@ in
       git
       wget
       firefox
+      wirelesstools
+      wpa_supplicant_gui
       neovim
       fastfetch
       ntfs3g
