@@ -192,6 +192,7 @@ in
             connection = {
               id = "Senzid2";
               type = "wifi";
+              autoconnect = "true";
             };
             ipv4.method = "auto";
             ipv6 = {
@@ -213,6 +214,7 @@ in
             connection = {
               id = "UOB Events";
               type = "wifi";
+              autoconnect = "true";
             };
             ipv4.method = "auto";
             ipv6 = {
@@ -234,6 +236,7 @@ in
             connection = {
               id = "Student-1X";
               type = "wifi";
+              autoconnect = "true";
             };
             ipv4.method = "auto";
             ipv6 = {
@@ -251,7 +254,7 @@ in
             };
             "802-1x" = {
               anonymous-identity = "f";
-              eap = "peap";
+              eap = "peap;";
               identity = "$student_1x_identity";
               password = "$student_1x";
               phase2-auth = "mschapv2";
