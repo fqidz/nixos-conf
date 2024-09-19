@@ -4,9 +4,13 @@
   inputs,
   ...
 }:
+let
+  username = "faidz";
+in
 {
   imports = [
     ./hardware-configuration.nix
+    inputs.sops-nix.nixosModules.sops
   ];
 
   programs = {
@@ -37,9 +41,9 @@
     ];
   };
 
-  users.users.faidz = {
+  users.users.${username} = {
     isNormalUser = true;
-    description = "faidz";
+    description = "me";
     extraGroups = [
       "networkmanager"
       "wheel"
@@ -161,6 +165,16 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
+  sops = {
+    defaultSopsFile = ./secrets/secrets.yaml;
+    defaultSopsFormat = "yaml";
+    age.keyFile = "/home/${username}/.config/sops/age/keys.txt";
+  };
+
+  sops.secrets = {
+    "wifi.env" = { };
+    "wifi_identity.env" = { };
+  };
 
   networking = {
     hostName = "nixos";
