@@ -116,20 +116,8 @@
     };
 
     printing = {
-      enable = false;
-      browsing = false;
-      # browsedConf = ''
-      #   BrowseDNSSDSubTypes _cups,_print
-      #   BrowseLocalProtocols all
-      #   BrowseRemoteProtocols all
-      #   CreateIPPPrinterQueues All
-      #
-      #   BrowseProtocols all
-      # '';
-
-      # drivers = [
-      #   pkgs.testing.dcpt510w
-      # ];
+      enable = true;
+      browsing = true;
     };
 
     avahi = {
@@ -145,37 +133,16 @@
 
     pipewire = {
       enable = true;
-      # systemWide = true;
       audio.enable = true;
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
-      # If you want to use JACK applications, uncomment this
-      #jack.enable = true;
-
-      # use the example session manager (no others are packaged yet so this is enabled by default,
-      # no need to redefine it in your config for now)
-      #media-session.enable = true;
     };
   };
 
   hardware = {
     pulseaudio.enable = false;
     graphics.enable = true;
-    # printers = {
-    #   ensurePrinters = [
-    #     {
-    #       name = "Brother_DCP_T510W";
-    #       location = "Home";
-    #       deviceUri = "implicitclass://Brother_DCP_T510W/";
-    #       model = "brother_dcpt510w_printer_en.ppd";
-    #       ppdOptions = {
-    #         PageSize = "A4";
-    #       };
-    #     }
-    #   ];
-    #   ensureDefaultPrinter = "Brother_DCP_T510W";
-    # };
   };
 
   security.rtkit.enable = true;
@@ -199,18 +166,87 @@
     hostName = "nixos";
     networkmanager = {
       enable = true;
-      wifi = {
-        macAddress = "random";
+      wifi.macAddress = "random";
+      ensureProfiles = {
+        environmentFiles = [
+          config.sops.secrets."wifi.env".path
+          config.sops.secrets."wifi_identity.env".path
+        ];
+        profiles = {
+
+          Senzid2 = {
+            connection = {
+              id = "Senzid2";
+              type = "wifi";
+            };
+            ipv4.method = "auto";
+            ipv6 = {
+              method = "auto";
+              addr-gen-mode = "default";
+            };
+            wifi = {
+              mode = "infrastructure";
+              ssid = "Senzid2";
+            };
+            wifi-security = {
+              auth-alg = "open";
+              key-mgmt = "wpa-psk";
+              psk = "@senzid2@";
+            };
+          };
+
+          UOB-Events = {
+            connection = {
+              id = "UOB Events";
+              type = "wifi";
+            };
+            ipv4.method = "auto";
+            ipv6 = {
+              method = "auto";
+              addr-gen-mode = "default";
+            };
+            wifi = {
+              mode = "infrastructure";
+              ssid = "UOB Events";
+            };
+            wifi-security = {
+              auth-alg = "open";
+              key-mgmt = "wpa-psk";
+              psk = "@uob-events@";
+            };
+          };
+
+          Student-1X = {
+            connection = {
+              id = "Student-1X";
+              type = "wifi";
+            };
+            ipv4.method = "auto";
+            ipv6 = {
+              method = "auto";
+              addr-gen-mode = "default";
+            };
+            wifi = {
+              cloned-mac-address = "random";
+              mode = "infrastructure";
+              ssid = "Student-1X";
+            };
+            wifi-security = {
+              auth-alg = "open";
+              key-mgmt = "wpa-eap";
+              psk = "@student-1x@";
+            };
+            "802-1x" = {
+              anonymous-identity = "f";
+              eap = "peap";
+              identity = "@student-1x-identity@";
+              password = "@student-1x@";
+              phase2-auth = "mschapv2";
+            };
+          };
+
+        };
       };
-      # ensureProfiles.profiles = {
-      #   Student-1X = {
-      #     connection = {
-      #       id = "Student-1X";
-      #       type = "wifi";
-      #     };
-      #   };
-      #
-      # };
     };
     # wireless.enable = true;
     # wireless = {

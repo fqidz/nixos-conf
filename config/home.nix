@@ -59,6 +59,12 @@ in
 
   fonts.fontconfig.enable = true;
 
+  sops = {
+    defaultSopsFormat = "yaml";
+    defaultSopsFile = ./secrets/secrets.yaml;
+    age.keyFile = "${config.xdg.configHome}/sops/age/keys.txt";
+  };
+
   programs = {
     git = {
       enable = true;
