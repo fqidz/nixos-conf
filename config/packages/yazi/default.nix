@@ -2,9 +2,11 @@
 {
   home.packages = [
     pkgs.yazi
+    pkgs.ueberzugpp
   ];
   programs.yazi = {
     enable = true;
+    enableZshIntegration = true;
     settings = {
       manager = {
         sort_by = "natural";
@@ -26,5 +28,6 @@
       };
 
     };
+
   };
 }

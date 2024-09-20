@@ -29,6 +29,9 @@ in
     packages = with pkgs; [
       (nerdfonts.override { fonts = [ "RobotoMono" ]; })
       roboto-mono
+      sops
+      age
+      gnupg
       python311
       tree-sitter
       ripgrep
@@ -38,22 +41,16 @@ in
       lua-language-server
       luarocks
       nil
-      sops
-      age
-      gnupg
       git
       wget
       firefox
       nix-tree
-      wirelesstools
-      wpa_supplicant_gui
       neovim
       fastfetch
       ntfs3g
       obsidian
       spicetify-cli
       feh
-      ueberzugpp
     ];
     stateVersion = "24.05";
   };
@@ -112,17 +109,6 @@ in
       ];
     };
   };
-
-  # xdg.desktopEntries = {
-  #   syncthing = {
-  #     name = "Syncthing";
-  #     type = "Application";
-  #     genericName = "Syncthing";
-  #     exec = "syncthing";
-  #     terminal = false;
-  #     categories = [ "Application" "Network" ];
-  #   };
-  # };
 
   nixpkgs.config = {
     allowUnfree = true;

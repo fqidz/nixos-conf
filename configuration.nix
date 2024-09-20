@@ -27,6 +27,8 @@ in
     systemPackages = [
       pkgs.git
       pkgs.vim
+      pkgs.wirelesstools
+      pkgs.wpa_supplicant_gui
       (pkgs.where-is-my-sddm-theme.override {
         themeConfig.General = {
           backgroundFill = "#191724";
