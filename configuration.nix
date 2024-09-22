@@ -181,6 +181,7 @@ in
   networking = {
     hostName = "nixos";
     networkmanager = {
+      wifi.backend = "iwd";
       enable = true;
       wifi.macAddress = "random";
       ensureProfiles = {
@@ -214,7 +215,7 @@ in
 
           UOB-Events = {
             connection = {
-              id = "UOB Events";
+              id = "UOB-Events";
               type = "wifi";
               autoconnect = "true";
             };

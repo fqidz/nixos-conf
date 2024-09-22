@@ -42,6 +42,7 @@ in
       luarocks
       nil
       git
+      git-lfs
       wget
       firefox
       nix-tree
@@ -60,6 +61,7 @@ in
   programs = {
     git = {
       enable = true;
+      lfs.enable = true;
       userName = "fqidz";
       userEmail = "meowthful127@gmail.com";
       extraConfig = {
