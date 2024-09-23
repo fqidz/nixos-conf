@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  lib,
   inputs,
   ...
 }:
@@ -39,12 +38,13 @@ in
       gcc
       libgcc
       lua-language-server
+      lua
       luarocks
-      nil
       git
       git-lfs
       wget
       nix-tree
+      nil
       neovim
       fastfetch
       ntfs3g
