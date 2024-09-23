@@ -44,7 +44,6 @@ in
       git
       git-lfs
       wget
-      firefox
       nix-tree
       neovim
       fastfetch
