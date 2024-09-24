@@ -181,9 +181,18 @@ in
   networking = {
     hostName = "nixos";
     networkmanager = {
-      wifi.backend = "iwd";
       enable = true;
-      wifi.macAddress = "random";
+      wifi = {
+        backend = "iwd";
+        macAddress = "random";
+        powersave = false;
+      };
+      connectionConfig = {
+          "connection.auth-retries" = 10;
+          "conneciton.autoconnect-retries" = 10;
+      };
+      logLevel = "DEBUG";
+
       ensureProfiles = {
         environmentFiles = [
           config.sops.secrets."wifi.env".path
