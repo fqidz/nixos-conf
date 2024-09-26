@@ -43,6 +43,7 @@ in
       git
       git-lfs
       wget
+      marksman
       nix-tree
       nil
       neovim

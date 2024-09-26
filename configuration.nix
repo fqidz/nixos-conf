@@ -270,6 +270,7 @@ in
               identity = "$student_1x_identity";
               password = "$student_1x";
               phase2-auth = "mschapv2";
+              phase1-auth-flags = "all";
             };
           };
 

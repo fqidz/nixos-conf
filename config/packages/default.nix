@@ -9,6 +9,6 @@
     ./eza
     ./systemd
     ./yazi
-    # ./wezterm
+    ./wezterm
   ];
 }

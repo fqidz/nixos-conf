@@ -23,6 +23,11 @@
 
       sessionVariables = {
         EDITOR = "nvim";
+        IWD_RTNL_DEBUG = 1;
+        IWD_GENL_DEBUG = 1;
+        IWD_TLS_DEBUG = 1;
+        IWD_WSC_DEBUG_KEYS = 1;
+        IWD_DHCP_DEBUG = "debug";
       };
 
       shellAliases = {
