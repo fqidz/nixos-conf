@@ -18,12 +18,6 @@ in
     homeDirectory = "/home/${username}";
     sessionVariables = {
       EDITOR = "nvim";
-      XDG_CACHE_HOME = "$HOME/.cache";
-      # XDG_CONFIG_DIRS = "/etc/xdg";
-      XDG_CONFIG_HOME = "$HOME/.config";
-      # XDG_DATA_DIRS = "/usr/local/share/:/usr/share/";
-      XDG_DATA_HOME = "$HOME/.local/share";
-      XDG_STATE_HOME = "$HOME/.local/state";
     };
     packages = with pkgs; [
       (nerdfonts.override { fonts = [ "RobotoMono" ]; })
@@ -57,6 +51,50 @@ in
   };
 
   fonts.fontconfig.enable = true;
+
+  xdg = {
+    enable = true;
+    desktopEntries = {
+      syncthing = {
+        name = "Syncthing";
+        type = "Application";
+        genericName = "Syncthing";
+        exec = "xdg-open http://localhost:8384/";
+        terminal = false;
+        categories = [ "Application" "Network" ];
+      };
+      gvim = {
+        name = "GVim";
+        exec = "gvim";
+        noDisplay = true;
+      };
+      vim = {
+        name = "Vim";
+        exec = "vim %F";
+        noDisplay = true;
+      };
+      nvim = {
+        name = "Neovim wrapper";
+        exec = "nvim %F";
+        noDisplay = true;
+      };
+      nixos-manual = {
+        name = "NixOS Manual";
+        exec = "nixos-help";
+        noDisplay = true;
+      };
+      xterm = {
+        name = "XTerm";
+        exec = "xterm";
+        noDisplay = true;
+      };
+      wpa_gui = {
+        name = "wpa_gui";
+        exec = "wpa_gui";
+        noDisplay = true;
+      };
+    };
+  };
 
   programs = {
     git = {
