@@ -12,7 +12,7 @@
 
   home.file.".local/share/icons" = {
     enable = true;
-    source = "${./hyprcursors}";
+    source = ./hyprcursors;
   };
 
   wayland.windowManager.hyprland = {
