@@ -16,9 +16,6 @@ in
   home = {
     username = "${username}";
     homeDirectory = "/home/${username}";
-    sessionVariables = {
-      EDITOR = "nvim";
-    };
     packages = with pkgs; [
       (nerdfonts.override { fonts = [ "RobotoMono" ]; })
       roboto-mono
@@ -26,21 +23,13 @@ in
       age
       gnupg
       python311
-      tree-sitter
       ripgrep
       file
       gcc
       libgcc
-      lua-language-server
-      lua
-      luarocks
-      git
-      git-lfs
       wget
       marksman
       nix-tree
-      nil
-      neovim
       fastfetch
       ntfs3g
       obsidian
@@ -97,16 +86,6 @@ in
   };
 
   programs = {
-    git = {
-      enable = true;
-      lfs.enable = true;
-      userName = "fqidz";
-      userEmail = "meowthful127@gmail.com";
-      extraConfig = {
-        init.defaultBranch = "main";
-      };
-    };
-
     feh = {
       enable = true;
       keybindings = {

@@ -9,5 +9,7 @@
     ./eza
     ./systemd
     ./yazi
+    ./nvim
+    ./git
   ];
 }
