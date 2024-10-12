@@ -33,6 +33,7 @@
     }:
     let
       system = "x86_64-linux";
+      username = "faidz";
     in
     {
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
@@ -62,10 +63,11 @@
               useUserPackages = true;
               extraSpecialArgs = {
                 inherit inputs;
+                inherit username;
                 rootPath = ./.;
               };
 
-              users.faidz.imports = [
+              users.${username}.imports = [
                 inputs.spicetify-nix.homeManagerModules.default
                 inputs.sops-nix.homeManagerModules.sops
                 ./config/home.nix

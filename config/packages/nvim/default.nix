@@ -7,6 +7,7 @@
     pkgs.lua-language-server
     pkgs.lua
     pkgs.luarocks
+    pkgs.marksman
   ];
 
   programs.neovim = {

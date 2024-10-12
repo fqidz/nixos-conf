@@ -2,6 +2,7 @@
   config,
   pkgs,
   inputs,
+  options,
   ...
 }:
 let
@@ -100,6 +101,10 @@ in
   };
 
   services = {
+    fstrim.enable = true;
+    tlp.enable = true;
+    openssh.enable = true;
+    chrony.enable = true;
     logind = {
       powerKey = "suspend";
       powerKeyLongPress = "poweroff";
@@ -122,8 +127,8 @@ in
     };
 
     printing = {
-      enable = true;
-      browsing = true;
+      enable = false;
+      browsing = false;
     };
 
     avahi = {
@@ -164,8 +169,6 @@ in
     optimise.automatic = true;
   };
 
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
 
   sops = {
     defaultSopsFile = ./secrets/secrets.yaml;
@@ -179,6 +182,9 @@ in
   };
 
   networking = {
+    timeServers = options.networking.timeServers.default ++ [
+      "asia.pool.ntp.org"
+    ];
     hostName = "nixos";
     networkmanager = {
       enable = true;
@@ -214,11 +220,34 @@ in
             wifi = {
               mode = "infrastructure";
               ssid = "Senzid2";
+              cloned-mac-address = "preserve";
             };
             wifi-security = {
               auth-alg = "open";
               key-mgmt = "wpa-psk";
               psk = "$senzid2";
+            };
+          };
+
+          NSSA-NASA = {
+            connection = {
+              id = "NSSA-NASA";
+              type = "wifi";
+              autoconnect = "true";
+            };
+            ipv4.method = "auto";
+            ipv6 = {
+              method = "auto";
+              addr-gen-mode = "default";
+            };
+            wifi = {
+              mode = "infrastructure";
+              ssid = "NSSA-NASA";
+            };
+            wifi-security = {
+              auth-alg = "open";
+              key-mgmt = "wpa-psk";
+              psk = "$nssa_nasa";
             };
           };
 

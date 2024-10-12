@@ -25,16 +25,17 @@ in
       python311
       ripgrep
       file
+      btop
       gcc
       libgcc
       wget
-      marksman
       nix-tree
       fastfetch
       ntfs3g
       obsidian
       spicetify-cli
       feh
+      anki
     ];
     stateVersion = "24.05";
   };

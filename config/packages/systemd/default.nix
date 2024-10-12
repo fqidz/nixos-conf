@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, username, ... }:
 {
   home.packages = [
     pkgs.systemd
@@ -23,5 +23,8 @@
       };
 
     };
+    tmpfiles.rules = [
+      "d /home/${username}/.nvim-sessions 0755 ${username} -"
+    ];
   };
 }
