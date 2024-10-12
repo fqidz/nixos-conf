@@ -34,7 +34,6 @@
           ];
 
           modules-right = [
-            "battery#icon-background"
             "battery#icon"
             "battery#_text"
             "backlight"
@@ -166,15 +165,6 @@
               "████▊▏"
               "████▉▏"
               "█████▏"
-            ];
-          };
-
-          "battery#icon-background" = {
-            format = "{icon}";
-            format-charging = "{icon}";
-            interval = 600;
-            format-icons = [
-              "█████"
             ];
           };
 

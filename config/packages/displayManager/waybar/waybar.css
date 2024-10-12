@@ -64,14 +64,9 @@ window#waybar {
 }
 
 /* module-right */
-#battery.icon-background {
-  color: rgba(0, 0, 0, 0.0);
-}
-
 #battery.icon {
   color: #31748f;
   margin-right: 6px;
-  margin-left: -45px;
 }
 
 #battery._text {
