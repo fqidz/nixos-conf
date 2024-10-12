@@ -1,5 +1,5 @@
 * {
-  padding: 0;    
+  padding: 0;
   margin: 0;
   font-family: RobotoMono Nerd Font;
   font-weight: 500;
@@ -21,7 +21,6 @@ window#waybar {
 #temperature,
 #disk,
 #workspaces,
-#battery,
 #backlight,
 #pulseaudio,
 #network
@@ -65,15 +64,26 @@ window#waybar {
 }
 
 /* module-right */
-#battery {
-  color: #9ccfd8;
+#battery.icon-background {
+  color: rgba(0, 0, 0, 0.0);
 }
 
-#battery.discharging.warning {
+#battery.icon {
+  color: #31748f;
+  margin-right: 6px;
+  margin-left: -45px;
+}
+
+#battery._text {
+  color: #e0def4;
+  margin-left: -73px;
+}
+
+#battery.icon.discharging.warning {
   color: #f6c177;
 }
 
-#battery.discharging.critical {
+#battery.icon.discharging.critical {
   color: #eb6f92;
 }
 

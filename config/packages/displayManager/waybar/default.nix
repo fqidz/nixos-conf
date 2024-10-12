@@ -34,7 +34,9 @@
           ];
 
           modules-right = [
-            "battery"
+            "battery#icon-background"
+            "battery#icon"
+            "battery#_text"
             "backlight"
             "pulseaudio"
             "network"
@@ -106,30 +108,74 @@
           };
 
           # ---- modules-right ----
-          "battery" = {
+          "battery#_text" = {
             bat = "BAT1";
             interval = 20;
+            format = "{capacity}";
+            format-charging = "{capacity}";
+            tooltip-format = "{capacity}%\n{time}";
+          };
+
+          "battery#icon" = {
+            bat = "BAT1";
             states = {
               "warning" = 20;
               "critical" = 10;
             };
-            format = "{icon} {capacity}%";
-            format-alt = "{icon} {time}";
-            format-charging = "󰂄 {capacity}%";
-            format-charging-alt = "󱧦 {time}";
+            interval = 20;
+            format = "{icon}";
+            format-charging = "{icon}";
             format-icons = [
-              "󰁺"
-              "󰁻"
-              "󰁼"
-              "󰁽"
-              "󰁾"
-              "󰁿"
-              "󰂀"
-              "󰂁"
-              "󰂂"
-              "󰁹"
+              "▏    ▏"
+              "▎    ▏"
+              "▍    ▏"
+              "▌    ▏"
+              "▋    ▏"
+              "▊    ▏"
+              "▉    ▏"
+              "█    ▏"
+              "█▏   ▏"
+              "█▎   ▏"
+              "█▍   ▏"
+              "█▌   ▏"
+              "█▋   ▏"
+              "█▊   ▏"
+              "█▉   ▏"
+              "██   ▏"
+              "██▏  ▏"
+              "██▎  ▏"
+              "██▍  ▏"
+              "██▌  ▏"
+              "██▋  ▏"
+              "██▊  ▏"
+              "██▉  ▏"
+              "███  ▏"
+              "███▏ ▏"
+              "███▎ ▏"
+              "███▍ ▏"
+              "███▌ ▏"
+              "███▋ ▏"
+              "███▊ ▏"
+              "███▉ ▏"
+              "████ ▏"
+              "████▏▏"
+              "████▎▏"
+              "████▍▏"
+              "████▌▏"
+              "████▋▏"
+              "████▊▏"
+              "████▉▏"
+              "█████▏"
             ];
-            tooltip-format = "{capacity}%\n{time}";
+          };
+
+          "battery#icon-background" = {
+            format = "{icon}";
+            format-charging = "{icon}";
+            interval = 600;
+            format-icons = [
+              "█████"
+            ];
           };
 
           "backlight" = {
