@@ -13,15 +13,15 @@
           layer = "top";
           position = "top";
           height = 30;
-          margin-top = 5;
+          margin-top = 8;
           margin-left = 15;
-          margin-bottom = -10;
+          margin-bottom = -8;
           margin-right = 15;
           spacing = 0;
 
           modules-left = [
-            "custom/logo"
-            "custom/spacer"
+            "hyprland/workspaces"
+            "hyprland/window"
             "cpu"
             "memory"
             "temperature"
@@ -29,17 +29,14 @@
           ];
 
           modules-center = [
-            "hyprland/workspaces"
-            "hyprland/window"
+            "clock"
           ];
 
           modules-right = [
-            "battery#icon"
-            "battery#_text"
             "backlight"
             "pulseaudio"
             "network"
-            "clock"
+            "battery"
           ];
 
           "hyprland/window" = {
@@ -47,11 +44,28 @@
           };
 
           # ---- modules-left ----
-          "custom/logo" = {
-            format = "";
-            tooltip = false;
+          "hyprland/workspaces" = {
+            all-outputs = true;
+            active-only = false;
+            on-click = "activate";
+            format = "{icon}";
+            on-scroll-up = "hyprctl dispatch workspace e+1";
+            on-scroll-down = "hyprctl dispatch workspace e-1";
+            format-icons = {
+              "1" = " ";
+              "2" = " ";
+              "3" = " ";
+              "4" = " ";
+              "5" = " ";
+              "6" = " ";
+              "7" = " ";
+              "8" = " ";
+              "9" = " ";
+              "urgent" = " ";
+              "active" = " ";
+              "default" = " ";
+            };
           };
-
           "cpu" = {
             interval = 10;
             max-length = 10;
@@ -83,142 +97,80 @@
           };
 
           # ---- modules-center ----
-          "hyprland/workspaces" = {
-            all-outputs = true;
-            active-only = false;
-            on-click = "activate";
-            format = "{icon}";
-            on-scroll-up = "hyprctl dispatch workspace e+1";
-            on-scroll-down = "hyprctl dispatch workspace e-1";
-            format-icons = {
-              "1" = "";
-              "2" = "";
-              "3" = "";
-              "4" = "";
-              "5" = "";
-              "6" = "";
-              "7" = "";
-              "8" = "";
-              "9" = "";
-              "urgent" = "";
-              "active" = "";
-              "default" = "";
-            };
+          "clock" = {
+            interval = 60;
+            format = "{:%a %b %d  %R}";
           };
 
           # ---- modules-right ----
-          "battery#_text" = {
+          "battery" = {
             bat = "BAT1";
             interval = 20;
-            format = "{capacity}";
-            format-charging = "{capacity}";
+            format = "{icon} {capacity}%";
+            format-charging = "󰂄 {capacity}%";
             tooltip-format = "{capacity}%\n{time}";
-          };
-
-          "battery#icon" = {
-            bat = "BAT1";
-            states = {
-              "warning" = 20;
-              "critical" = 10;
-            };
-            interval = 20;
-            format = "{icon}";
-            format-charging = "{icon}";
             format-icons = [
-              # "▏    ▏"
-              "▎    ▏"
-              # "▍    ▏"
-              "▌    ▏"
-              # "▋    ▏"
-              "▊    ▏"
-              # "▉    ▏"
-              "█    ▏"
-              # "█▏   ▏"
-              "█▎   ▏"
-              # "█▍   ▏"
-              "█▌   ▏"
-              # "█▋   ▏"
-              "█▊   ▏"
-              # "█▉   ▏"
-              "██   ▏"
-              # "██▏  ▏"
-              "██▎  ▏"
-              # "██▍  ▏"
-              "██▌  ▏"
-              # "██▋  ▏"
-              "██▊  ▏"
-              # "██▉  ▏"
-              "███  ▏"
-              # "███▏ ▏"
-              "███▎ ▏"
-              # "███▍ ▏"
-              "███▌ ▏"
-              # "███▋ ▏"
-              "███▊ ▏"
-              # "███▉ ▏"
-              "████ ▏"
-              # "████▏▏"
-              "████▎▏"
-              # "████▍▏"
-              "████▌▏"
-              # "████▋▏"
-              "████▊▏"
-              # "████▉▏"
-              "█████▏"
+              "󰁺"
+              "󰁻"
+              "󰁼"
+              "󰁽"
+              "󰁾"
+              "󰁿"
+              "󰂀"
+              "󰂁"
+              "󰂂"
+              "󰁹"
             ];
           };
 
           "backlight" = {
             device = "amdgpu_bl1";
-            format = "{icon} {percent}%";
+            format = "{icon}";
             format-icons = [
-              ""
-              ""
-              ""
-              ""
-              ""
-              ""
-              ""
-              ""
-              ""
+              " "
+              " "
+              " "
+              " "
+              " "
+              " "
+              " "
+              " "
+              " "
             ];
-            tooltip = false;
+            tooltip-format = "Brightness: {percent}%";
           };
 
           "pulseaudio" = {
             scroll-step = 1;
-            format = "{icon} {volume}%";
-            format-bluetooth = "󰂯 {volume}%";
+            format = "{icon}";
+            # format-bluetooth = "󰂯 {volume}%";
             format-muted = " ";
             format-icons = {
               "default" = [
-                ""
-                ""
+                " "
+                " "
+                # "⣀"
+                # "⣄"
+                # "⣤"
+                # "⣦"
+                # "⣶"
+                # "⣷"
+                # "⣿"
               ];
-              "headphone" = "";
+              # "headphone" = "󰋋";
             };
-            tooltip = false;
+            tooltip-format = "Volume: {volume}%";
           };
 
           "network" = {
-            format-wifi = "󰖩 {essid}";
-            format-alt = "󰖩 {bandwidthTotalBits}";
-            format-ethernet = "󰈀 wired";
+            format-wifi = "󰖩 ";
+            format-ethernet = "󰈀 ";
             format-disconnected = "󱛅 ";
-            tooltip-format-wifi = "{ifname} {signalStrength}%";
+            tooltip-format-wifi = "{essid}\n{ifname}\n{signalStrength}%";
             tooltip-format-ethernet = "{ifname}";
             tooltip-format-disconnected = "Disconnected";
           };
 
-          "clock" = {
-            interval = 60;
-            format = "{:%I:%M %p}";
-          };
-
-          # ---- misc -----
-          "custom/spacer" = {
-            format = " ";
-          };
         };
       };
 

@@ -2,7 +2,7 @@
   padding: 0;
   margin: 0;
   font-family: RobotoMono Nerd Font;
-  font-weight: 500;
+  font-weight: 400;
   font-size: 15px;
 }
 
@@ -10,12 +10,6 @@ window#waybar {
   background-color: rgba(0, 0, 0, 0);
 }
 
-#custom-spacer {
-  padding-right: 3px;
-  padding-left: 2px;
-}
-
-#custom-logo,
 #cpu,
 #memory,
 #temperature,
@@ -23,39 +17,17 @@ window#waybar {
 #workspaces,
 #backlight,
 #pulseaudio,
-#network
+#network,
 #clock {
-  padding-right: 10px;
-}
-
-#custom-logo {
-  font-size: 20px;
-  color: #5277C3;
-  padding-right: 15px;
+  padding-right: 5px;
+  padding-left: 5px;
 }
 
 /* module-left */
-#cpu {
-  color: #3e8fb0;
-}
-
-#memory {
-  color: #f6c177;
-}
-
-#temperature {
-  color: #eb6f92;
-}
-
-#disk {
-  color: #c4a7e7;
-}
-
-/* module-center */
 #workspaces button {
-  margin-top: 8px;
-  margin-bottom: 8px;
-  padding: 3px 7px 2px 2px;
+  /* margin-top: 8px; */
+  /* margin-bottom: 8px; */
+  /* padding: 3px 7px 2px 2px; */
   color: #393552;
 }
 
@@ -63,39 +35,40 @@ window#waybar {
   color: #e0def4;
 }
 
-/* module-right */
-#battery.icon {
-  color: #31748f;
-  margin-right: 6px;
-}
-
-#battery._text {
+#cpu {
   color: #e0def4;
-  margin-left: -73px;
 }
 
-#battery.icon.discharging.warning {
-  color: #f6c177;
+#memory {
+  color: #e0def4;
 }
 
-#battery.icon.discharging.critical {
-  color: #eb6f92;
+#temperature {
+  color: #e0def4;
+}
+
+#disk {
+  color: #e0def4;
+}
+
+/* module-center */
+#clock {
+  color: #e0def4;
+}
+
+/* module-right */
+#battery. {
+  color: #e0def4;
 }
 
 #backlight {
-  color: #ebbcba;
+  color: #e0def4;
 }
 
 #pulseaudio {
-  color: #c4a7e7;
+  color: #e0def4;
 }
 
 #network {
-  color: #9ccfd8;
-}
-
-#clock {
   color: #e0def4;
-  margin-left: 10px;
-  margin-right: 10px;
 }
