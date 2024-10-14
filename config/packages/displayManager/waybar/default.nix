@@ -107,30 +107,30 @@ in
           # ---- modules-center ----
           "clock" = {
             interval = 60;
-            format = "{:%a %b %d  %R}";
+            format = "{:%a %b %d <span color='#393552'>｜</span> %R}";
             on-click = "";
           };
 
           # ---- modules-right ----
           "custom/media" = {
-            format = "{icon} {}";
+            format = "<span text_transform='lowercase'>{}</span>";
             return-type = "json";
             max-length = 40;
-            format-icons = {
-              "spotify" = " ";
-              "firefox" = " ";
-              "default" = " ";
-            };
+            # format-icons = {
+            #   "spotify" = " ";
+            #   "firefox" = " ";
+            #   "default" = " ";
+            # };
             escape = true;
             on-click = "playerctl play-pause";
-            exec = "${waybarPackage}/bin/waybar-mediaplayer.py 2> /dev/null | ${builtins.readFile ./media-patch.txt}";
+            exec = "${waybarPackage}/bin/waybar-mediaplayer.py 2> /dev/null";
             tooltip = false;
           };
 
           "battery" = {
             bat = "BAT1";
             interval = 20;
-            format = "{icon} {capacity}%";
+            format = "<span letter_spacing='-10000'>{icon}</span> {capacity}%";
             format-charging = "󰂄 {capacity}%";
             tooltip-format = "{capacity}%\n{time}";
             format-icons = [
@@ -172,12 +172,12 @@ in
             format-muted = "<span color='#ebbcba'>  </span>";
             format-icons = {
               "default" = [
-                "<span color='#f7d099'> </span>"
-                "<span color='#f7d099'> </span>"
+                " "
+                " "
               ];
               "headphone" = [
-                "<span color='#9ccfd8'> </span>"
-                "<span color='#9ccfd8'> </span>"
+                " "
+                " "
               ];
             };
             tooltip-format = "{desc}\nVolume: {volume}%";
@@ -191,6 +191,11 @@ in
             tooltip-format-wifi = "{essid}\n{ifname}\n{signalStrength}%";
             tooltip-format-ethernet = "{ifname}";
             tooltip-format-disconnected = "Disconnected";
+          };
+
+          # ------ misc ------
+          "custom/spacer" = {
+            format = "｜";
           };
 
         };

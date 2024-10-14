@@ -25,8 +25,10 @@ window#waybar {
 }
 
 #custom-spacer {
+    color: #393552;
     padding-left: 4px;
     padding-right: 4px;
+    padding-bottom: 2px;
 }
 
 /* module-left */
@@ -67,6 +69,7 @@ window#waybar {
 /* module-right */
 #custom-media {
   color: #e0def4;
+  padding-bottom: 3px;
 }
 
 #battery. {
@@ -82,5 +85,6 @@ window#waybar {
 }
 
 #network {
-  color: #c4a7e7;
+  color: #e0def4;
+  padding-right: 7px;
 }

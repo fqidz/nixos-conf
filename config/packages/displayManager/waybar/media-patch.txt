@@ -1,1 +1,0 @@
-awk '{sub(/\\uf144 /,""); sub(/\\uf28b /,""); print tolower($0)}'
