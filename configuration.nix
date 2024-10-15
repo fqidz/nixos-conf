@@ -197,7 +197,7 @@ in
           "connection.auth-retries" = 10;
           "conneciton.autoconnect-retries" = 10;
       };
-      logLevel = "DEBUG";
+      # logLevel = "DEBUG";
 
       ensureProfiles = {
         environmentFiles = [
@@ -226,28 +226,6 @@ in
               auth-alg = "open";
               key-mgmt = "wpa-psk";
               psk = "$senzid2";
-            };
-          };
-
-          NSSA-NASA = {
-            connection = {
-              id = "NSSA-NASA";
-              type = "wifi";
-              autoconnect = "true";
-            };
-            ipv4.method = "auto";
-            ipv6 = {
-              method = "auto";
-              addr-gen-mode = "default";
-            };
-            wifi = {
-              mode = "infrastructure";
-              ssid = "NSSA-NASA";
-            };
-            wifi-security = {
-              auth-alg = "open";
-              key-mgmt = "wpa-psk";
-              psk = "$nssa_nasa";
             };
           };
 
