@@ -1,0 +1,12 @@
+(defwindow bar
+  :monitor 0
+  :exclusive true
+  :geometry (geometry
+    :height "1080px"
+    :x "-4px" :y "0px"
+    :width "52px"
+    :anchor "left center"
+  )
+  :stacking "fg"
+  :windowtype "dock"
+(bar))
