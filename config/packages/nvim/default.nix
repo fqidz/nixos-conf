@@ -1,10 +1,10 @@
 { pkgs, ... }:
 {
   home.packages = [
-    # pkgs.neovim
     pkgs.nil
     pkgs.tree-sitter
     pkgs.lua-language-server
+    pkgs.vscode-langservers-extracted
     pkgs.lua
     pkgs.luarocks
     pkgs.marksman
