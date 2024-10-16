@@ -1,3 +1,20 @@
+;; variables
+(defpoll date
+  :interval "60s"
+  `date +'{"week_day":"%a","month":"%b","day":"%d"}'`
+)
+
+(defpoll time
+  :interval "60s"
+  `date +'{"hour":"%H","minute":"%M"}'`
+)
+
+(defpoll media_info
+  :interval "800ms"
+  "sh ~/.config/eww-modules/media/media_info.sh"
+)
+
+;; window
 (defwindow bar
   :class "bar"
   :monitor 0
@@ -16,21 +33,47 @@
   )
   :windowtype "dock"
   :wm-ignore false
-  (bar-widgets)
+  (center-box)
 )
 
-(defwidget bar-widgets []
-  (box
+;; layout
+(defwidget center-box []
+  (centerbox
+    :class "center_box"
     :orientation "h"
-    :class "bar-widgets"
-    :space-evenly true
-    (datetime)
-    (media
-      :visible {"${media_metadata}" != "" ? true : false}
-    )
+    (left)
+    (center)
+    (right)
   )
 )
 
+(defwidget left []
+  (box
+    :orientation "h"
+    :class "left"
+    :space-evenly false
+  )
+)
+
+(defwidget center []
+  (box
+    :orientation "h"
+    :class "center"
+    :space-evenly false
+    (datetime)
+  )
+)
+
+(defwidget right []
+  (box
+    :orientation "h"
+    :class "right"
+    :space-evenly false
+    (media)
+  )
+)
+
+;; widgets
 (defwidget datetime []
   (box
     :orientation "h"
@@ -46,51 +89,31 @@
     (label
       :text "${time.hour}:${time.minute}"
     )
-
   )
 )
 
-(defpoll date
-  :interval "60s"
-  `date +'{"week_day":"%a","month":"%b","day":"%d"}'`
-)
-
-(defpoll time
-  :interval "60s"
-  `date +'{"hour":"%H","minute":"%M"}'`
-)
-
-(defwidget media [?visible]
+(defwidget media []
   (box
-    :visible {visible}
+    :visible {media_info.status == "" ? false : true}
     :orientation "h"
     :class "media"
     :halign "right"
     :space-evenly false
     (button
-      :onclick "playerctl play-pause"
+      :onclick "playerctl play-pause; eww update media_info=$(sh ~/.config/eww-modules/media/media_info.sh)"
       (box
+        :space-evenly false
         (label
-          :text "${media_track_time.position}/${media_track_time.length}"
+          :text "${media_info.position}/${media_info.length}"
         )
         (label
-          :text {"${media_track_time.status}" == "Playing" ? "󰐌" : "󰏥"}
+          :text {"${media_info.status}" == "playing" ? "󰏥" : "󰐌"}
         )
         (label
-          :text "${media_metadata.artist} - ${media_metadata.title}"
+          :text "${media_info.artist} - ${media_info.title}"
         )
       )
     )
   )
-)
-
-(defpoll media_metadata
-  :interval "1s"
-  "~/.config/eww-modules/media/media_metadata.sh"
-)
-
-(defpoll media_track_time
-  :interval "1s"
-  "~/.config/eww-modules/media/media_track_time.sh"
 )
 
