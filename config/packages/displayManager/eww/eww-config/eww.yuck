@@ -16,7 +16,19 @@
   )
   :windowtype "dock"
   :wm-ignore false
-  (datetime)
+  (bar-widgets)
+)
+
+(defwidget bar-widgets []
+  (box
+    :orientation "h"
+    :class "bar-widgets"
+    :space-evenly true
+    (datetime)
+    (media
+      :visible {"${media_metadata}" != "" ? true : false}
+    )
+  )
 )
 
 (defwidget datetime []
@@ -47,3 +59,38 @@
   :interval "60s"
   `date +'{"hour":"%H","minute":"%M"}'`
 )
+
+(defwidget media [?visible]
+  (box
+    :visible {visible}
+    :orientation "h"
+    :class "media"
+    :halign "right"
+    :space-evenly false
+    (button
+      :onclick "playerctl play-pause"
+      (box
+        (label
+          :text "${media_track_time.position}/${media_track_time.length}"
+        )
+        (label
+          :text {"${media_track_time.status}" == "Playing" ? "󰐌" : "󰏥"}
+        )
+        (label
+          :text "${media_metadata.artist} - ${media_metadata.title}"
+        )
+      )
+    )
+  )
+)
+
+(defpoll media_metadata
+  :interval "1s"
+  "~/.config/eww-modules/media/media_metadata.sh"
+)
+
+(defpoll media_track_time
+  :interval "1s"
+  "~/.config/eww-modules/media/media_track_time.sh"
+)
+
