@@ -19,7 +19,7 @@ in
           height = 30;
           margin-top = 8;
           margin-left = 15;
-          margin-bottom = -8;
+          margin-bottom = 8;
           margin-right = 15;
           spacing = 0;
 

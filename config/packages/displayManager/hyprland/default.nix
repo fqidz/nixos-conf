@@ -43,7 +43,8 @@
 
       general = {
         gaps_in = 5;
-        gaps_out = 15;
+        # (top, right, bottom, left)
+        gaps_out = "0, 15, 15, 15";
         border_size = 1;
         "col.active_border" = "rgba(c4a7e7ff) rgba(9ccfd8ff) 45deg";
         "col.inactive_border" = "rgba(21202eff)";
