@@ -1,17 +1,44 @@
 ;; variables
 (defpoll date
   :interval "60s"
+  :initial '{"week_day":"","month":"","day":""}'
   `date +'{"week_day":"%a","month":"%b","day":"%d"}'`
 )
 
 (defpoll time
   :interval "30s"
+  :initial '{"hour":"","minute":""}'
   `date +'{"hour":"%H","minute":"%M"}'`
 )
 
-(defpoll media_info
-  :interval "800ms"
-  "sh ~/.config/eww-modules/media/media_info.sh"
+(deflisten media_status
+  :initial ""
+  `playerctl -F status 2> /dev/null`
+)
+
+(deflisten media_artist
+  :initial ""
+  `playerctl -F metadata --format '{{ lc(artist) }}' 2> /dev/null`
+)
+
+(deflisten media_title
+  :initial ""
+  `playerctl -F metadata --format '{{ trunc(lc(title), 20) }}' 2> /dev/null`
+)
+
+(deflisten media_position
+  :initial ""
+  `playerctl -F metadata --format '{{ duration(position) }}' 2> /dev/null`
+)
+
+(deflisten media_length
+  :initial ""
+  `playerctl -F metadata --format '{{ duration(mpris:length) }}' 2> /dev/null`
+)
+
+(deflisten workspaces_json
+  :initial `[]`
+  `sh ~/.config/eww-scripts/workspaces.sh`
 )
 
 ;; window
@@ -53,6 +80,7 @@
     :class "left"
     :space-evenly false
     :halign "start"
+    (workspaces)
   )
 )
 
@@ -77,6 +105,32 @@
 )
 
 ;; widgets
+(defwidget workspaces []
+  (box
+    :orientation "h"
+    :class "workspaces"
+    :space-evenly false
+    :spacing 8
+    (for workspace in workspaces_json
+      (box
+        :class `${workspace.active == "true" ? "active-workspace" : "inactive-workspace"}`
+        (label
+          :text `${
+            workspace.id == "1" ? "Ⅰ" :
+            workspace.id == "2" ? "Ⅱ" :
+            workspace.id == "3" ? "Ⅲ" :
+            workspace.id == "4" ? "Ⅳ" :
+            workspace.id == "5" ? "Ⅴ" :
+            workspace.id == "6" ? "Ⅵ" :
+            workspace.id == "7" ? "Ⅶ" :
+            workspace.id == "8" ? "Ⅷ" :
+            workspace.id == "9" ? "Ⅸ" :
+          }`
+        )
+      )
+    )
+  )
+)
 (defwidget datetime []
   (box
     :orientation "h"
@@ -84,12 +138,15 @@
     :space-evenly false
     :spacing 10
     (label
+      :class "date"
       :text "${date.week_day} ${date.month} ${date.day}"
     )
     (label
+      :class "text-spacer"
       :text "|"
     )
     (label
+      :class "time"
       :text "${time.hour}:${time.minute}"
     )
   )
@@ -97,23 +154,28 @@
 
 (defwidget media []
   (box
-    ;; :visible {"${media_info.status}" != "" ? true : false}
+    :visible {"${media_status}" != ""}
     :orientation "h"
     :class "media"
     :space-evenly false
-    (button
+    :valign "center"
+    (eventbox
       :onclick "playerctl play-pause"
+      :onrightclick "playerctl next"
+      :onmiddleclick "playerctl previous"
+      :cursor "pointer"
       (box
         :space-evenly false
         :spacing 10
         (label
-          :text "${media_info.position}/${media_info.length}"
+          :text "${media_position}/${media_length}"
         )
         (label
-          :text {"${media_info.status}" == "playing" ? "󰏥" : "󰐌"}
+          :class "media-icon"
+          :text {"${media_status}" == "Playing" ? "󰏥" : "󰐌"}
         )
         (label
-          :text "${media_info.artist} - ${media_info.title}"
+          :text "${media_artist} - ${media_title}"
         )
       )
     )

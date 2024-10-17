@@ -9,8 +9,8 @@
     configDir = ./eww-config;
   };
 
-  home.file.".config/eww-modules" = {
-    source = ./eww-modules;
+  home.file.".config/eww-scripts" = {
+    source = ./eww-scripts;
     recursive = true;
   };
 }

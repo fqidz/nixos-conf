@@ -36,6 +36,8 @@ in
       spicetify-cli
       feh
       anki
+      jq
+      socat
     ];
     stateVersion = "24.05";
   };

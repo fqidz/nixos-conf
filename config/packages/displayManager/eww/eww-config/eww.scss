@@ -1,5 +1,6 @@
 * {
   all: unset;
+  border: 1 #ffffff;
 }
 
 window {
@@ -13,6 +14,14 @@ window {
   border-radius: 5px;
 }
 
-/* .datetime { */
-/*   background-color: rgba(0, 0, 0, 0.0); */
-/* } */
+.text-spacer, .inactive-workspace {
+  color: #393552;
+}
+
+.date, .time {
+  font-weight: 500;
+}
+
+.media-icon {
+  font-size: 17px;
+}
