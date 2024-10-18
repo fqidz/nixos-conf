@@ -51,6 +51,39 @@
   `sh ~/.config/eww-scripts/audio.sh`
 )
 
+(deflisten backlight_level
+  :intial `0`
+  `sh ~/.config/eww-scripts/backlight.sh`
+)
+
+(defvar reveal_backlight false)
+
+;; reusable widgets
+(defwidget revealer-on-hover [do_reveal reveal_var_name]
+  (eventbox
+    :onhover "${EWW_CMD} update ${reveal_var_name}=true"
+    :onhoverlost "${EWW_CMD} update ${reveal_var_name}=false"
+    (box
+      :space-evenly false
+      (overlay
+        (revealer
+          :reveal {!do_reveal}
+          :transition "crossfade"
+          :duration "250ms"
+          (children :nth 0)
+        )
+        (revealer
+          :halign "center"
+          :reveal do_reveal
+          :transition "crossfade"
+          :duration "250ms"
+          (children :nth 1)
+        )
+      )
+    )
+  )
+)
+
 ;; window
 (defwindow bar
   :class "bar"
@@ -109,9 +142,14 @@
     :orientation "h"
     :class "right"
     :space-evenly false
-    :spacing 10
+    :spacing 8
     :halign "end"
     (media)
+    (label
+      :class "text-spacer"
+      :text "|"
+    )
+    (backlight)
     (audio)
     (network)
     (battery)
@@ -125,12 +163,12 @@
     :class "workspaces"
     :space-evenly false
     :valign "center"
-    :spacing 5
+    :spacing 2
     (for workspace in workspaces_json
       (eventbox
         :onclick `${!workspace.active ? "hyprctl dispatch workspace ${workspace.id}" : ""}`
         :cursor `${!workspace.active ? "pointer" : "default"}`
-        :width 15
+        :width 18
         (box
           :class `${workspace.active ? "active-workspace" : "inactive-workspace"}`
           (label
@@ -164,7 +202,6 @@
     )
     (label
       :class "text-spacer"
-      ;; :text "｜"
       :text "|"
     )
     (label
@@ -204,21 +241,53 @@
   )
 )
 
+(defwidget backlight []
+  (box
+    :orientation "h"
+    :class "backlight"
+    :space-evenly false
+    :width 16
+    (revealer-on-hover
+      :do_reveal reveal_backlight
+      :reveal_var_name "reveal_backlight"
+      (label
+        :text `${
+          backlight_level <= 10  ? " " :
+          backlight_level <= 20  ? " " :
+          backlight_level <= 30  ? " " :
+          backlight_level <= 40  ? " " :
+          backlight_level <= 50  ? " " :
+          backlight_level <= 60  ? " " :
+          backlight_level <= 70  ? " " :
+          backlight_level <= 80  ? " " :
+          backlight_level <= 90  ? " " : " "
+        }`
+      )
+      (label
+        :text "${backlight_level}"
+      )
+    )
+  )
+)
+
 (defwidget audio []
   (box
     :orientation "h"
     :class "audio"
     :space-evenly false
-    :valign "center"
-    (eventbox
-      (box
-        (label
-          :text `${
-            audio_json.muted ? " " :
-            audio_json.device == "Headphones" ? " " :
-            audio_json.device == "Speaker" ? " " : ""
-          }`
-        )
+    :width 16
+    (revealer-on-hover
+      :do_reveal reveal_audio
+      :reveal_var_name "reveal_audio"
+      (label
+        :text `${
+          audio_json.muted ? "" :
+          audio_json.device == "Headphones" ? "" :
+          audio_json.device == "Speaker" ? "" : ""
+        }`
+      )
+      (label
+        :text "${audio_json.volume}"
       )
     )
   )
@@ -229,16 +298,19 @@
     :orientation "h"
     :class "network"
     :space-evenly false
-    :valign "center"
-    (eventbox
-      (box
-        (label
-          :text `${
-            network_json.status == "connected"    ? "󰖩 " :
-            network_json.status == "disconnected" ? "󰖪 " :
-            network_json.status == "unavailable"  ? "󱚼 " : ""
-          }`
-        )
+    :width 16
+    (revealer-on-hover
+      :do_reveal reveal_audio
+      :reveal_var_name "reveal_audio"
+      (label
+        :text `${
+          network_json.status == "connected"    ? "󰖩" :
+          network_json.status == "disconnected" ? "󰖪" :
+          network_json.status == "unavailable"  ? "󱚼" : ""
+        }`
+      )
+      (label
+        :text "${network_json.ssid}"
       )
     )
   )
@@ -249,20 +321,21 @@
     :orientation "h"
     :class "battery"
     :space-evenly false
-    :valign "center"
     (eventbox
       (box
         (label
           :text `${
-            EWW_BATTERY.BAT1.capacity >= 90 ? "󰁹" :
-            EWW_BATTERY.BAT1.capacity >= 80 ? "󰂂" :
-            EWW_BATTERY.BAT1.capacity >= 70 ? "󰂁" :
-            EWW_BATTERY.BAT1.capacity >= 60 ? "󰂀" :
-            EWW_BATTERY.BAT1.capacity >= 50 ? "󰂀" :
-            EWW_BATTERY.BAT1.capacity >= 40 ? "󰁿" :
-            EWW_BATTERY.BAT1.capacity >= 30 ? "󰁽" :
-            EWW_BATTERY.BAT1.capacity >= 20 ? "󰁼" :
-            EWW_BATTERY.BAT1.capacity >= 10 ? "󰁻" : "󰁺"
+            EWW_BATTERY.BAT1.status == "Charging" ? "󰂄" :
+            EWW_BATTERY.BAT1.capacity >= 95 ? "󰁹" :
+            EWW_BATTERY.BAT1.capacity >= 85 ? "󰂂" :
+            EWW_BATTERY.BAT1.capacity >= 75 ? "󰂁" :
+            EWW_BATTERY.BAT1.capacity >= 65 ? "󰂀" :
+            EWW_BATTERY.BAT1.capacity >= 55 ? "󰁿" :
+            EWW_BATTERY.BAT1.capacity >= 45 ? "󰁾" :
+            EWW_BATTERY.BAT1.capacity >= 35 ? "󰁽" :
+            EWW_BATTERY.BAT1.capacity >= 25 ? "󰁼" :
+            EWW_BATTERY.BAT1.capacity >= 15 ? "󰁻" :
+            EWW_BATTERY.BAT1.capacity >=  5 ? "󰁺" : "󰂎"
           }`
         )
         (label
@@ -272,3 +345,4 @@
     )
   )
 )
+
