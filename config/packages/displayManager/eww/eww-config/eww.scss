@@ -10,7 +10,7 @@ window {
 }
 
 .bar {
-  background-color: rgba(255, 255, 255, 0.01);
+  background-color: rgba(255, 255, 255, 0.0);
   border-radius: 5px;
 }
 
@@ -18,10 +18,14 @@ window {
   color: #393552;
 }
 
-.date, .time {
-  font-weight: 500;
-}
+/* .date, .time { */
+/*   font-weight: 500; */
+/* } */
 
 .media-icon {
   font-size: 17px;
+}
+
+.workspaces {
+  font-size: 18px;
 }

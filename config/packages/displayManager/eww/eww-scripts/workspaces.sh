@@ -6,8 +6,8 @@ get_workspace() {
     hyprctl workspaces -j \
         | jq -rc \
         --arg ACTIVE_ID $active_workspace \
-        'map( { id: .id | select( . > 0 ) | tostring}) |
-        map(. + {"active": (if .id != $ACTIVE_ID then "false" else "true" end)}) | sort_by ( .id )'
+        'map( { id: .id | select( . > 0 ) | tostring } ) |
+        map( . + { "active": (if .id != $ACTIVE_ID then false else true end) } ) | sort_by ( .id )'
     )
     echo "${workspaces_json}"
 }

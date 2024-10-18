@@ -47,7 +47,7 @@
         ZSH_HIGHLIGHT_STYLES[arg0]='fg=magenta,bold'
 
         function fehv() {
-            feh "$@" > /dev/null &!
+          feh "$@" > /dev/null &!
         }
 
         function nix-templ {

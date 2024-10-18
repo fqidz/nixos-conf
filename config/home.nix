@@ -38,6 +38,7 @@ in
       anki
       jq
       socat
+      pulseaudio
     ];
     stateVersion = "24.05";
   };

@@ -99,8 +99,11 @@
     :orientation "h"
     :class "right"
     :space-evenly false
+    :spacing 10
     :halign "end"
     (media)
+    (network)
+    (battery)
   )
 )
 
@@ -110,27 +113,34 @@
     :orientation "h"
     :class "workspaces"
     :space-evenly false
-    :spacing 8
+    :valign "center"
+    :spacing 5
     (for workspace in workspaces_json
-      (box
-        :class `${workspace.active == "true" ? "active-workspace" : "inactive-workspace"}`
-        (label
-          :text `${
-            workspace.id == "1" ? "Ⅰ" :
-            workspace.id == "2" ? "Ⅱ" :
-            workspace.id == "3" ? "Ⅲ" :
-            workspace.id == "4" ? "Ⅳ" :
-            workspace.id == "5" ? "Ⅴ" :
-            workspace.id == "6" ? "Ⅵ" :
-            workspace.id == "7" ? "Ⅶ" :
-            workspace.id == "8" ? "Ⅷ" :
-            workspace.id == "9" ? "Ⅸ" :
-          }`
+      (eventbox
+        :onclick `${!workspace.active ? "hyprctl dispatch workspace ${workspace.id}" : ""}`
+        :cursor `${!workspace.active ? "pointer" : "default"}`
+        :width 15
+        (box
+          :class `${workspace.active ? "active-workspace" : "inactive-workspace"}`
+          (label
+            :text `${
+              workspace.id == "1" ? "Ⅰ" :
+              workspace.id == "2" ? "Ⅱ" :
+              workspace.id == "3" ? "Ⅲ" :
+              workspace.id == "4" ? "Ⅳ" :
+              workspace.id == "5" ? "Ⅴ" :
+              workspace.id == "6" ? "Ⅵ" :
+              workspace.id == "7" ? "Ⅶ" :
+              workspace.id == "8" ? "Ⅷ" :
+              workspace.id == "9" ? "Ⅸ" : ""
+            }`
+          )
         )
       )
     )
   )
 )
+
 (defwidget datetime []
   (box
     :orientation "h"
@@ -143,6 +153,7 @@
     )
     (label
       :class "text-spacer"
+      ;; :text "｜"
       :text "|"
     )
     (label
@@ -176,6 +187,63 @@
         )
         (label
           :text "${media_artist} - ${media_title}"
+        )
+      )
+    )
+  )
+)
+
+(defwidget audio []
+  (box
+    :orientation "h"
+    :class "audio"
+    :space-evenly false
+    :valign "center"
+    (eventbox
+      (box
+        "${EWW_NET}"
+      )
+    )
+  )
+)
+
+(defwidget network []
+  (box
+    :orientation "h"
+    :class "network"
+    :space-evenly false
+    :valign "center"
+    (eventbox
+      (box
+        "${EWW_NET}"
+      )
+    )
+  )
+)
+
+(defwidget battery []
+  (box
+    :orientation "h"
+    :class "battery"
+    :space-evenly false
+    :valign "center"
+    (eventbox
+      (box
+        (label
+          :text `${
+            EWW_BATTERY.BAT1.capacity >= 90 ? "󰁹" :
+            EWW_BATTERY.BAT1.capacity >= 80 ? "󰂂" :
+            EWW_BATTERY.BAT1.capacity >= 70 ? "󰂁" :
+            EWW_BATTERY.BAT1.capacity >= 60 ? "󰂀" :
+            EWW_BATTERY.BAT1.capacity >= 50 ? "󰂀" :
+            EWW_BATTERY.BAT1.capacity >= 40 ? "󰁿" :
+            EWW_BATTERY.BAT1.capacity >= 30 ? "󰁽" :
+            EWW_BATTERY.BAT1.capacity >= 20 ? "󰁼" :
+            EWW_BATTERY.BAT1.capacity >= 10 ? "󰁻" : "󰁺"
+          }`
+        )
+        (label
+          :text "${EWW_BATTERY.BAT1.capacity}"
         )
       )
     )
