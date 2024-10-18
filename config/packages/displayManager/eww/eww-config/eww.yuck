@@ -41,6 +41,11 @@
   `sh ~/.config/eww-scripts/workspaces.sh`
 )
 
+(deflisten network_json
+  :initial `{"status":"unavailable","ssid":""}`
+  `sh ~/.config/eww-scripts/network.sh`
+)
+
 ;; window
 (defwindow bar
   :class "bar"
@@ -183,7 +188,7 @@
         )
         (label
           :class "media-icon"
-          :text {"${media_status}" == "Playing" ? "󰏥" : "󰐌"}
+          :text `${media_status == "Playing" ? "󰏥" : "󰐌"}`
         )
         (label
           :text "${media_artist} - ${media_title}"
@@ -201,7 +206,7 @@
     :valign "center"
     (eventbox
       (box
-        "${EWW_NET}"
+        ;; "${EWW_NET}"
       )
     )
   )
@@ -215,7 +220,13 @@
     :valign "center"
     (eventbox
       (box
-        "${EWW_NET}"
+        (label
+          :text `${
+            network_json.status == "connected"    ? "󰖩" :
+            network_json.status == "disconnected" ? "󰖪" :
+            network_json.status == "unavailable"  ? "󱚼" : ""
+          }`
+        )
       )
     )
   )
