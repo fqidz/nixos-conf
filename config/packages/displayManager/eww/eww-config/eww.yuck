@@ -46,6 +46,11 @@
   `sh ~/.config/eww-scripts/network.sh`
 )
 
+(deflisten audio_json
+  :intial `{"device":"None","volume_percent":0,"muted":true}`
+  `sh ~/.config/eww-scripts/audio.sh`
+)
+
 ;; window
 (defwindow bar
   :class "bar"
@@ -107,6 +112,7 @@
     :spacing 10
     :halign "end"
     (media)
+    (audio)
     (network)
     (battery)
   )
@@ -206,7 +212,13 @@
     :valign "center"
     (eventbox
       (box
-        ;; "${EWW_NET}"
+        (label
+          :text `${
+            audio_json.muted ? " " :
+            audio_json.device == "Headphones" ? " " :
+            audio_json.device == "Speaker" ? " " : ""
+          }`
+        )
       )
     )
   )
@@ -222,9 +234,9 @@
       (box
         (label
           :text `${
-            network_json.status == "connected"    ? "󰖩" :
-            network_json.status == "disconnected" ? "󰖪" :
-            network_json.status == "unavailable"  ? "󱚼" : ""
+            network_json.status == "connected"    ? "󰖩 " :
+            network_json.status == "disconnected" ? "󰖪 " :
+            network_json.status == "unavailable"  ? "󱚼 " : ""
           }`
         )
       )
