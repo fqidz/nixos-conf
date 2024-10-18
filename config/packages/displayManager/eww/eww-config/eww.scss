@@ -1,17 +1,23 @@
 * {
   all: unset;
-  border: 1 #ffffff;
+  border: 1px dashed rgba(255, 255, 255, 0.2);
 }
 
 window {
   font-family: RobotoMono Nerd Font;
   font-weight: 400;
   font-size: 15px;
+  color: #e0def4;
 }
+
+/* .backlight-icon, */
+/* .audio-icon, */
+/* .network-icon { */
+/*   text-align: center; */
+/* } */
 
 .bar {
   background-color: rgba(255, 255, 255, 0.0);
-  border-radius: 5px;
 }
 
 .text-spacer, .inactive-workspace {

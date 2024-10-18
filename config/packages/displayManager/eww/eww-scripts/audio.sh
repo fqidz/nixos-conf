@@ -5,7 +5,7 @@ echo_info() {
             .[] |
             {
                 "device": .properties."device.profile.description",
-                "volume_percent": (
+                "volume": (
                     [
                         (
                             # get left & right volume and put them into an array

@@ -42,12 +42,12 @@
 )
 
 (deflisten network_json
-  :initial `{"status":"unavailable","ssid":""}`
+  :initial `{"status":"unavailable","ssid":"","signal":"0"}`
   `sh ~/.config/eww-scripts/network.sh`
 )
 
 (deflisten audio_json
-  :intial `{"device":"None","volume_percent":0,"muted":true}`
+  :intial `{"device":"None","volume":0,"muted":true}`
   `sh ~/.config/eww-scripts/audio.sh`
 )
 
@@ -57,6 +57,8 @@
 )
 
 (defvar reveal_backlight false)
+(defvar reveal_audio false)
+(defvar reveal_network false)
 
 ;; reusable widgets
 (defwidget revealer-on-hover [do_reveal reveal_var_name]
@@ -73,7 +75,6 @@
           (children :nth 0)
         )
         (revealer
-          :halign "center"
           :reveal do_reveal
           :transition "crossfade"
           :duration "250ms"
@@ -142,13 +143,10 @@
     :orientation "h"
     :class "right"
     :space-evenly false
-    :spacing 8
+    :spacing 5
     :halign "end"
     (media)
-    (label
-      :class "text-spacer"
-      :text "|"
-    )
+    (spacer)
     (backlight)
     (audio)
     (network)
@@ -157,6 +155,16 @@
 )
 
 ;; widgets
+(defwidget spacer []
+  (label
+    :width 25
+    :height 48
+    :valign "top"
+    :class "text-spacer"
+    :text "|"
+  )
+)
+
 (defwidget workspaces []
   (box
     :orientation "h"
@@ -195,15 +203,12 @@
     :orientation "h"
     :class "datetime"
     :space-evenly false
-    :spacing 10
+    :spacing 5
     (label
       :class "date"
       :text "${date.week_day} ${date.month} ${date.day}"
     )
-    (label
-      :class "text-spacer"
-      :text "|"
-    )
+    (spacer)
     (label
       :class "time"
       :text "${time.hour}:${time.minute}"
@@ -246,21 +251,22 @@
     :orientation "h"
     :class "backlight"
     :space-evenly false
-    :width 16
     (revealer-on-hover
       :do_reveal reveal_backlight
       :reveal_var_name "reveal_backlight"
       (label
+        :class "backlight-icon"
+        :width 22
         :text `${
-          backlight_level <= 10  ? " " :
-          backlight_level <= 20  ? " " :
-          backlight_level <= 30  ? " " :
-          backlight_level <= 40  ? " " :
-          backlight_level <= 50  ? " " :
-          backlight_level <= 60  ? " " :
-          backlight_level <= 70  ? " " :
-          backlight_level <= 80  ? " " :
-          backlight_level <= 90  ? " " : " "
+          backlight_level <= 10  ? "" :
+          backlight_level <= 20  ? "" :
+          backlight_level <= 30  ? "" :
+          backlight_level <= 40  ? "" :
+          backlight_level <= 50  ? "" :
+          backlight_level <= 60  ? "" :
+          backlight_level <= 70  ? "" :
+          backlight_level <= 80  ? "" :
+          backlight_level <= 90  ? "" : " "
         }`
       )
       (label
@@ -275,11 +281,12 @@
     :orientation "h"
     :class "audio"
     :space-evenly false
-    :width 16
     (revealer-on-hover
       :do_reveal reveal_audio
       :reveal_var_name "reveal_audio"
       (label
+        :class "audio-icon"
+        :width 22
         :text `${
           audio_json.muted ? "" :
           audio_json.device == "Headphones" ? "" :
@@ -298,11 +305,12 @@
     :orientation "h"
     :class "network"
     :space-evenly false
-    :width 16
     (revealer-on-hover
-      :do_reveal reveal_audio
-      :reveal_var_name "reveal_audio"
+      :do_reveal reveal_network
+      :reveal_var_name "reveal_network"
       (label
+        :class "network-icon"
+        :width 22
         :text `${
           network_json.status == "connected"    ? "󰖩" :
           network_json.status == "disconnected" ? "󰖪" :
@@ -310,7 +318,7 @@
         }`
       )
       (label
-        :text "${network_json.ssid}"
+        :text "${network_json.signal}"
       )
     )
   )
