@@ -3,11 +3,9 @@
   home.packages = [
     pkgs.hyprland
     pkgs.brightnessctl
-    pkgs.wl-clipboard
     pkgs.hyprcursor
     pkgs.hyprshot
     pkgs.playerctl
-    pkgs.cliphist
   ];
 
   home.file.".local/share/icons" = {

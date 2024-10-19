@@ -9,5 +9,6 @@
     ./hypridle.nix
     ./hyprlock.nix
     ./tofi.nix
+    ./cliphist.nix
   ];
 }
