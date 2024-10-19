@@ -2,7 +2,7 @@
 
 (deflisten backlight_level
   :intial `0`
-  `sh ~/.config/eww-scripts/backlight.sh`
+  `/usr/bin/env sh ~/.config/eww-scripts/backlight.sh`
 )
 
 (defvar reveal_backlight false)

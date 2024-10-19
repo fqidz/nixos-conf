@@ -1,6 +1,6 @@
 (deflisten network_json
   :initial `{"status":"unavailable","ssid":"","signal":"0"}`
-  `sh ~/.config/eww-scripts/network.sh`
+  `/usr/bin/env sh ~/.config/eww-scripts/network.sh`
 )
 
 (defwidget network []

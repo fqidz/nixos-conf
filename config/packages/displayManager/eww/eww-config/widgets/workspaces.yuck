@@ -1,6 +1,6 @@
 (deflisten workspaces_json
   :initial `[]`
-  `sh ~/.config/eww-scripts/workspaces.sh`
+  `/usr/bin/env sh ~/.config/eww-scripts/workspaces.sh`
 )
 
 (defwidget workspaces []

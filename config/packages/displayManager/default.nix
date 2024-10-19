@@ -2,7 +2,6 @@
 {
   imports = [
     ./hyprland
-    ./waybar
     ./eww
     ./hyprpaper
     ./dunst.nix

@@ -4,9 +4,14 @@
     pkgs.eww
   ];
 
-  programs.eww = {
-    enable = true;
-    configDir = ./eww-config;
+  # programs.eww = {
+  #   enable = true;
+  #   configDir = ./eww-config;
+  # };
+
+  home.file.".config/eww" = {
+    source = ./eww-config;
+    recursive = true;
   };
 
   home.file.".config/eww-scripts" = {
@@ -25,21 +30,38 @@
         ExecSearchPath = [
           "${pkgs.eww}/bin"
           # eww tries to invoke things via sh
+          # bash
           "${pkgs.bash}/bin"
-          # scripts and tools used in event handlers
+          # playerctl
           "${pkgs.playerctl}/bin"
-          # "${pkgs.hyprland}/bin"
+          # hyprctl
+          "${pkgs.hyprland}/bin"
+          # brightnessctl
+          "${pkgs.brightnessctl}/bin"
+          # socat
           "${pkgs.socat}/bin"
+          # pactl
           "${pkgs.pulseaudio}/bin"
+          # jq
           "${pkgs.jq}/bin"
+          # sed
           "${pkgs.gnused}/bin"
+          # grep
+          "${pkgs.gnugrep}/bin"
+          # cut, tr
           "${pkgs.coreutils}/bin"
-          # "${pkgs.systemd}/bin"
+          # awk
+          "${pkgs.gawk}/bin"
+          # acpi
+          "${pkgs.acpi}/bin"
+          # nmcli
+          "${pkgs.networkmanager}/bin"
+          # udevadm
+          "${pkgs.systemd}/bin"
         ];
         ExecStart = "${pkgs.writeShellScript "eww-daemon-start" ''
           #!${pkgs.bash}/bin/sh
-          ${pkgs.eww}/bin/eww kill
-          ${pkgs.eww}/bin/eww daemon
+          ${pkgs.eww}/bin/eww daemon --no-daemonize
         ''}";
         ExecReload = "${pkgs.writeShellScript "eww-daemon-reload" ''
           #!${pkgs.bash}/bin/sh

@@ -2,7 +2,7 @@
 
 (deflisten audio_json
   :intial `{"device":"None","volume":0,"muted":true}`
-  `sh ~/.config/eww-scripts/audio.sh`
+  `/usr/bin/env sh ~/.config/eww-scripts/audio.sh`
 )
 
 (defvar reveal_audio false)
