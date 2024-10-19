@@ -1,6 +1,6 @@
 * {
   all: unset;
-  border: 1px dashed rgba(255, 255, 255, 0.2);
+  /* border: 1px dashed rgba(255, 255, 255, 0.2); */
 }
 
 window {
@@ -10,12 +10,6 @@ window {
   color: #e0def4;
 }
 
-/* .backlight-icon, */
-/* .audio-icon, */
-/* .network-icon { */
-/*   text-align: center; */
-/* } */
-
 .bar {
   background-color: rgba(255, 255, 255, 0.0);
 }
@@ -23,10 +17,6 @@ window {
 .text-spacer, .inactive-workspace {
   color: #393552;
 }
-
-/* .date, .time { */
-/*   font-weight: 500; */
-/* } */
 
 .media-icon {
   font-size: 17px;

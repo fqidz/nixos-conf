@@ -58,7 +58,7 @@
 
 (defvar reveal_backlight false)
 (defvar reveal_audio false)
-(defvar reveal_network false)
+(defvar slide_network 0)
 
 ;; reusable widgets
 (defwidget revealer-on-hover [do_reveal reveal_var_name]
@@ -66,7 +66,7 @@
     :onhover "${EWW_CMD} update ${reveal_var_name}=true"
     :onhoverlost "${EWW_CMD} update ${reveal_var_name}=false"
     (box
-      :space-evenly false
+      ;; :space-evenly false
       (overlay
         (revealer
           :reveal {!do_reveal}
@@ -80,6 +80,22 @@
           :duration "250ms"
           (children :nth 1)
         )
+      )
+    )
+  )
+)
+
+(defwidget slide-on-hover [slide_var slide_var_name]
+  (eventbox
+    :onhover "${EWW_CMD} update ${slide_var_name}=1"
+    :onhoverlost "${EWW_CMD} update ${slide_var_name}=0"
+    (box
+      (stack
+        :selected slide_var
+        :transition "slideleft"
+        :same-size false
+        (box (children :nth 0))
+        (box (children :nth 1))
       )
     )
   )
@@ -146,7 +162,9 @@
     :spacing 5
     :halign "end"
     (media)
-    (spacer)
+    (spacer
+      :visible {"${media_status}" != ""}
+    )
     (backlight)
     (audio)
     (network)
@@ -155,11 +173,10 @@
 )
 
 ;; widgets
-(defwidget spacer []
+(defwidget spacer [?visible]
   (label
     :width 25
-    :height 48
-    :valign "top"
+    :visible visible
     :class "text-spacer"
     :text "|"
   )
@@ -288,9 +305,9 @@
         :class "audio-icon"
         :width 22
         :text `${
-          audio_json.muted ? "" :
-          audio_json.device == "Headphones" ? "" :
-          audio_json.device == "Speaker" ? "" : ""
+          audio_json.muted ? " " :
+          audio_json.device == "Headphones" ? " " :
+          audio_json.device == "Speaker" ? " " : ""
         }`
       )
       (label
@@ -299,26 +316,30 @@
     )
   )
 )
-
 (defwidget network []
   (box
     :orientation "h"
     :class "network"
     :space-evenly false
-    (revealer-on-hover
-      :do_reveal reveal_network
-      :reveal_var_name "reveal_network"
+    (slide-on-hover
+      :slide_var slide_network
+      :slide_var_name "slide_network"
       (label
         :class "network-icon"
         :width 22
         :text `${
-          network_json.status == "connected"    ? "󰖩" :
-          network_json.status == "disconnected" ? "󰖪" :
-          network_json.status == "unavailable"  ? "󱚼" : ""
+          network_json.status == "connected" ? (
+            network_json.signal >= 80 ? "󰤨 " :
+            network_json.signal >= 60 ? "󰤥 " :
+            network_json.signal >= 40 ? "󰤢 " :
+            network_json.signal >= 20 ? "󰤟 " : "󰤯 "
+          ) :
+          network_json.status == "disconnected" ? "󰤮 " :
+          network_json.status == "unavailable"  ? "󰤫 " : ""
         }`
       )
       (label
-        :text "${network_json.signal}"
+        :text "${network_json.ssid}"
       )
     )
   )
