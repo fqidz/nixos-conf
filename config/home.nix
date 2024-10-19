@@ -39,6 +39,7 @@ in
       jq
       socat
       pulseaudio
+      acpi
     ];
     stateVersion = "24.05";
   };

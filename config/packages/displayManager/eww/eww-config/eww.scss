@@ -1,13 +1,22 @@
 * {
   all: unset;
-  /* border: 1px dashed rgba(255, 255, 255, 0.2); */
+  border: 1px dashed rgba(255, 255, 255, 0.2);
 }
 
-window {
+window, tooltip.background {
   font-family: RobotoMono Nerd Font;
   font-weight: 400;
   font-size: 15px;
   color: #e0def4;
+}
+
+tooltip.background {
+  background-color: rgba($color: #1f1d2e, $alpha: 1.0);
+  border-radius: 8px;
+}
+
+tooltip label {
+  margin: 0px 2px 0px 2px;
 }
 
 .bar {
@@ -18,7 +27,11 @@ window {
   color: #393552;
 }
 
-.media-icon {
+.battery-low {
+  color: #f6c177;
+}
+
+.media-icon, .resource-icon {
   font-size: 17px;
 }
 
