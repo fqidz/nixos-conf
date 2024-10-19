@@ -1,0 +1,9 @@
+(defwidget spacer [?visible]
+  (label
+    :width 25
+    :visible visible
+    :class "text-spacer"
+    :text "|"
+  )
+)
+

@@ -1,0 +1,31 @@
+(include "widgets/misc/spacer.yuck")
+(defpoll date
+  :interval "60s"
+  :initial '{"week_day":"","month":"","day":""}'
+  `date +'{"week_day":"%a","month":"%b","day":"%d"}'`
+)
+
+(defpoll time
+  :interval "30s"
+  :initial '{"hour":"","minute":""}'
+  `date +'{"hour":"%H","minute":"%M"}'`
+)
+
+(defwidget datetime []
+  (box
+    :orientation "h"
+    :class "datetime"
+    :space-evenly false
+    :spacing 5
+    (label
+      :class "date"
+      :text "${date.week_day} ${date.month} ${date.day}"
+    )
+    (spacer)
+    (label
+      :class "time"
+      :text "${time.hour}:${time.minute}"
+    )
+  )
+)
+

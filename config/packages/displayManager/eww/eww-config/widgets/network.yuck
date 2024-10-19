@@ -1,0 +1,33 @@
+(deflisten network_json
+  :initial `{"status":"unavailable","ssid":"","signal":"0"}`
+  `sh ~/.config/eww-scripts/network.sh`
+)
+
+(defwidget network []
+  (box
+    :orientation "h"
+    :class "network"
+    :space-evenly false
+    (eventbox
+      :tooltip `${
+        network_json.status == "connected" ? "${network_json.ssid} ${network_json.signal}%" :
+        network_json.status == "disconnected" ? "Disconnected" :
+        network_json.status == "unavailable" ? "Unavailable" : ""
+      }`
+      (label
+        :class "network-icon"
+        :width 22
+        :text `${
+          network_json.status == "connected" ? (
+            network_json.signal >= 80 ? "󰤨 " :
+            network_json.signal >= 60 ? "󰤥 " :
+            network_json.signal >= 40 ? "󰤢 " :
+            network_json.signal >= 20 ? "󰤟 " : "󰤯 "
+          ) :
+          network_json.status == "disconnected" ? "󰤮 " :
+          network_json.status == "unavailable"  ? "󰤫 " : ""
+        }`
+      )
+    )
+  )
+)

@@ -1,0 +1,23 @@
+(defwidget fade-on-hover [do_reveal reveal_var_name]
+  (eventbox
+    :onhover "${EWW_CMD} update ${reveal_var_name}=true"
+    :onhoverlost "${EWW_CMD} update ${reveal_var_name}=false"
+    (box
+      ;; :space-evenly false
+      (overlay
+        (revealer
+          :reveal {!do_reveal}
+          :transition "crossfade"
+          :duration "250ms"
+          (children :nth 0)
+        )
+        (revealer
+          :reveal do_reveal
+          :transition "crossfade"
+          :duration "250ms"
+          (children :nth 1)
+        )
+      )
+    )
+  )
+)

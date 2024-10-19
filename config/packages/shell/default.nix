@@ -45,6 +45,7 @@
         bindkey '^ ' autosuggest-accept
         typeset -A ZSH_HIGHLIGHT_STYLES
         ZSH_HIGHLIGHT_STYLES[arg0]='fg=magenta,bold'
+        TIMEFMT=$'\nCPU\t%P\nuser\t%*U\nsystem\t%*S\ntotal\t%*E'
 
         function fehv() {
           feh "$@" > /dev/null &!

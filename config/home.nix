@@ -31,7 +31,6 @@ in
       wget
       nix-tree
       fastfetch
-      ntfs3g
       obsidian
       spicetify-cli
       feh

@@ -1,0 +1,47 @@
+(defpoll battery_json
+  :interval "10s"
+  :initial '{"status":"Charging","capacity":0,"h":0,"m":0,"s":0}'
+  `sh ~/.config/eww-scripts/battery.sh`
+)
+
+(defwidget battery []
+  (box
+    :orientation "h"
+    :class "battery${battery_json.capacity <= 30 ? '-low' : ''}"
+    :space-evenly false
+    (eventbox
+      :tooltip `${
+        battery_json.status == "Discharging" ? (
+          battery_json.h > 0 ?
+            "${battery_json.h}h ${battery_json.m}m to empty" :
+            "${battery_json.m}m to empty"
+        ) :
+        battery_json.status == "Charging" ? (
+          battery_json.h > 0 ?
+            "${battery_json.h}h ${battery_json.m}m to full" :
+            "${battery_json.m}m to full"
+        ) : "" ; battery full
+      }`
+      (box
+        (label
+          :text `${
+            battery_json.status == "Charging" ? "󰂄" :
+            battery_json.capacity >= 95 ? "󰁹" :
+            battery_json.capacity >= 85 ? "󰂂" :
+            battery_json.capacity >= 75 ? "󰂁" :
+            battery_json.capacity >= 65 ? "󰂀" :
+            battery_json.capacity >= 55 ? "󰁿" :
+            battery_json.capacity >= 45 ? "󰁾" :
+            battery_json.capacity >= 35 ? "󰁽" :
+            battery_json.capacity >= 25 ? "󰁼" :
+            battery_json.capacity >= 15 ? "󰁻" :
+            battery_json.capacity >=  5 ? "󰁺" : "󰂎"
+          }`
+        )
+        (label
+          :text "${battery_json.capacity}"
+        )
+      )
+    )
+  )
+)

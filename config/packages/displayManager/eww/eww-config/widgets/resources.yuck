@@ -1,0 +1,57 @@
+(defvar reveal_resources false)
+(defvar reveal_resources_stay false)
+
+(defwidget resources []
+  (box
+    :orientation "h"
+    :class "resources"
+    :space-evenly false
+    :spacing 5
+    (eventbox
+      :onhover { "${EWW_CMD} update reveal_resources=true" }
+      (revealer
+        :reveal { !reveal_resources && !reveal_resources_stay }
+        :transition "slideright"
+        :duration "500ms"
+        (box
+          :class "resource-icon"
+          :space-evenly false
+          :width 15
+          (label
+            :text "󱕎"
+          )
+        )
+      )
+    )
+    (eventbox
+      :onrightclick {
+        reveal_resources_stay ?
+          "${EWW_CMD} update reveal_resources_stay=false" :
+          "${EWW_CMD} update reveal_resources_stay=true"
+      }
+      :onhoverlost { "${EWW_CMD} update reveal_resources=false" }
+      (revealer
+        :reveal { reveal_resources || reveal_resources_stay }
+        :transition "slideright"
+        :duration "500ms"
+        (box
+          :space-evenly false
+          :spacing 10
+          (label
+            :text " "
+          )
+          (label
+            :text " "
+          )
+          (label
+            :text " "
+          )
+          (label
+            :text " "
+          )
+        )
+      )
+    )
+  )
+)
+

@@ -1,0 +1,38 @@
+(include "widgets/misc/fade-on-hover.yuck")
+
+(deflisten backlight_level
+  :intial `0`
+  `sh ~/.config/eww-scripts/backlight.sh`
+)
+
+(defvar reveal_backlight false)
+
+(defwidget backlight []
+  (box
+    :orientation "h"
+    :class "backlight"
+    :space-evenly false
+    (fade-on-hover
+      :do_reveal reveal_backlight
+      :reveal_var_name "reveal_backlight"
+      (label
+        :class "backlight-icon"
+        :width 22
+        :text `${
+          backlight_level <= 10  ? "" :
+          backlight_level <= 20  ? "" :
+          backlight_level <= 30  ? "" :
+          backlight_level <= 40  ? "" :
+          backlight_level <= 50  ? "" :
+          backlight_level <= 60  ? "" :
+          backlight_level <= 70  ? "" :
+          backlight_level <= 80  ? "" :
+          backlight_level <= 90  ? "" : " "
+        }`
+      )
+      (label
+        :text "${backlight_level}"
+      )
+    )
+  )
+)

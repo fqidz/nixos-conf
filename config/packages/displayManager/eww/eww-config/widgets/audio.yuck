@@ -1,0 +1,32 @@
+(include "widgets/misc/fade-on-hover.yuck")
+
+(deflisten audio_json
+  :intial `{"device":"None","volume":0,"muted":true}`
+  `sh ~/.config/eww-scripts/audio.sh`
+)
+
+(defvar reveal_audio false)
+
+(defwidget audio []
+  (box
+    :orientation "h"
+    :class "audio"
+    :space-evenly false
+    (fade-on-hover
+      :do_reveal reveal_audio
+      :reveal_var_name "reveal_audio"
+      (label
+        :class "audio-icon"
+        :width 22
+        :text `${
+          audio_json.muted ? " " :
+          audio_json.device == "Headphones" ? " " :
+          audio_json.device == "Speaker" ? " " : ""
+        }`
+      )
+      (label
+        :text "${audio_json.volume}"
+      )
+    )
+  )
+)

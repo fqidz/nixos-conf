@@ -1,0 +1,37 @@
+(deflisten workspaces_json
+  :initial `[]`
+  `sh ~/.config/eww-scripts/workspaces.sh`
+)
+
+(defwidget workspaces []
+  (box
+    :orientation "h"
+    :class "workspaces"
+    :space-evenly false
+    :valign "center"
+    :spacing 2
+    (for workspace in workspaces_json
+      (eventbox
+        :onclick `${!workspace.active ? "hyprctl dispatch workspace ${workspace.id}" : ""}`
+        :cursor `${!workspace.active ? "pointer" : "default"}`
+        :width 18
+        (box
+          :class `${workspace.active ? "active-workspace" : "inactive-workspace"}`
+          (label
+            :text `${
+              workspace.id == "1" ? "Ⅰ" :
+              workspace.id == "2" ? "Ⅱ" :
+              workspace.id == "3" ? "Ⅲ" :
+              workspace.id == "4" ? "Ⅳ" :
+              workspace.id == "5" ? "Ⅴ" :
+              workspace.id == "6" ? "Ⅵ" :
+              workspace.id == "7" ? "Ⅶ" :
+              workspace.id == "8" ? "Ⅷ" :
+              workspace.id == "9" ? "Ⅸ" : ""
+            }`
+          )
+        )
+      )
+    )
+  )
+)

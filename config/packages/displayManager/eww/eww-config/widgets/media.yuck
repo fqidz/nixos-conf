@@ -1,0 +1,54 @@
+(deflisten media_status
+  :initial ""
+  `playerctl -F status 2> /dev/null`
+)
+
+(deflisten media_artist
+  :initial ""
+  `playerctl -F metadata --format '{{ lc(artist) }}' 2> /dev/null`
+)
+
+(deflisten media_title
+  :initial ""
+  `playerctl -F metadata --format '{{ trunc(lc(title), 20) }}' 2> /dev/null`
+)
+
+(deflisten media_position
+  :initial ""
+  `playerctl -F metadata --format '{{ duration(position) }}' 2> /dev/null`
+)
+
+(deflisten media_length
+  :initial ""
+  `playerctl -F metadata --format '{{ duration(mpris:length) }}' 2> /dev/null`
+)
+
+(defwidget media []
+  (box
+    :visible {"${media_status}" != ""}
+    :orientation "h"
+    :class "media"
+    :space-evenly false
+    :valign "center"
+    (eventbox
+      :onclick "playerctl play-pause"
+      :onrightclick "playerctl next"
+      :onmiddleclick "playerctl previous"
+      :cursor "pointer"
+      (box
+        :space-evenly false
+        :spacing 10
+        (label
+          :text "${media_position}/${media_length}"
+        )
+        (label
+          :class "media-icon"
+          :text `${media_status == "Playing" ? "󰏥" : "󰐌"}`
+        )
+        (label
+          :text "${media_artist} - ${media_title}"
+        )
+      )
+    )
+  )
+)
