@@ -12,7 +12,7 @@
       :tooltip `${
         network_json.status == "connected" ? "${network_json.ssid} ${network_json.signal}%" :
         network_json.status == "disconnected" ? "Disconnected" :
-        network_json.status == "unavailable" ? "Unavailable" : ""
+        network_json.status == "unavailable" ? "Unavailable" : "${network_json.status}"
       }`
       (label
         :class "network-icon"
@@ -24,8 +24,8 @@
             network_json.signal >= 40 ? "󰤢 " :
             network_json.signal >= 20 ? "󰤟 " : "󰤯 "
           ) :
-          network_json.status == "disconnected" ? "󰤮 " :
-          network_json.status == "unavailable"  ? "󰤫 " : ""
+          network_json.status == "disconnected" ? "󰤮 " : "󰤫 "
+          ;; network_json.status == "unavailable"  ? "󰤫 " : ""
         }`
       )
     )
