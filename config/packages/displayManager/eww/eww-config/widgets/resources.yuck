@@ -24,11 +24,13 @@
       )
     )
     (eventbox
-      :onrightclick {
+     :cursor "pointer"
+     :onclick {
         reveal_resources_stay ?
           "${EWW_CMD} update reveal_resources_stay=false" :
           "${EWW_CMD} update reveal_resources_stay=true"
       }
+      :onhover { "${EWW_CMD} update reveal_resources=true" }
       :onhoverlost { "${EWW_CMD} update reveal_resources=false" }
       (revealer
         :reveal { reveal_resources || reveal_resources_stay }
@@ -38,16 +40,16 @@
           :space-evenly false
           :spacing 10
           (label
-            :text " "
+            :text " ${round(EWW_CPU.avg, 0)}%"
           )
           (label
-            :text " "
+            :text " ${round(EWW_RAM.used_mem / 1000000000.0, 1)}G"
           )
           (label
-            :text " "
+            :text " ${round(EWW_TEMPS.K10TEMP_TCTL, 0)}°C"
           )
           (label
-            :text " "
+            :text " ${round(EWW_DISK['/'].used_perc, 0)}%"
           )
         )
       )

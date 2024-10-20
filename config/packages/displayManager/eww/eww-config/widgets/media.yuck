@@ -10,7 +10,7 @@
 
 (deflisten media_title
   :initial ""
-  `playerctl -F metadata --format '{{ trunc(lc(title), 20) }}' 2> /dev/null`
+  `playerctl -F metadata --format '{{ lc(title) }}' 2> /dev/null`
 )
 
 (deflisten media_position
@@ -39,14 +39,25 @@
         :space-evenly false
         :spacing 10
         (label
-          :text "${media_position}/${media_length}"
+          :text `${
+            media_length != "" ?
+              "${media_position}/${media_length}" :
+              "${media_position}"
+          }`
         )
         (label
           :class "media-icon"
           :text `${media_status == "Playing" ? "󰏥" : "󰐌"}`
         )
         (label
-          :text "${media_artist} - ${media_title}"
+          :truncate true
+          :show-truncated true
+          :limit-width 30
+          :text `${
+            media_artist != "" ?
+              "${media_artist} - ${media_title}" :
+              "${media_title}"
+          }`
         )
       )
     )
