@@ -39,6 +39,7 @@ in
       socat
       pulseaudio
       acpi
+      trash-cli
     ];
     stateVersion = "24.05";
   };

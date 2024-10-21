@@ -35,6 +35,7 @@
         spotifyr = "spotify > /dev/null &!";
         nix-dev = "nix develop -c $SHELL";
         gitroot = "cd \"$(git rev-parse --show-toplevel)\"";
+        rm = "printf \"Use the \\`trash\\` command instead. Do \\`%srm\\` if you really need to rm.\\n\" \"\\\\\"; false";
       };
 
       dirHashes = {
