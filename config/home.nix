@@ -34,7 +34,6 @@ in
       obsidian
       spicetify-cli
       feh
-      anki
       jq
       socat
       pulseaudio

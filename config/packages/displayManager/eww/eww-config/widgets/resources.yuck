@@ -49,6 +49,7 @@
             :text " ${round(EWW_TEMPS.K10TEMP_TCTL, 0)}°C"
           )
           (label
+            :tooltip "${round(EWW_DISK['/'].used / 1000000000.0, 2)}G / ${round(EWW_DISK['/'].total / 1000000000.0, 2)}G"
             :text " ${round(EWW_DISK['/'].used_perc, 0)}%"
           )
         )
