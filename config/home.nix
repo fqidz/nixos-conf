@@ -54,7 +54,10 @@ in
         genericName = "Syncthing";
         exec = "xdg-open http://localhost:8384/";
         terminal = false;
-        categories = [ "Application" "Network" ];
+        categories = [
+          "Application"
+          "Network"
+        ];
       };
       gvim = {
         name = "GVim";

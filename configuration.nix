@@ -177,7 +177,6 @@ in
     };
   };
 
-
   sops = {
     defaultSopsFile = ./secrets/secrets.yaml;
     defaultSopsFormat = "yaml";
@@ -202,8 +201,8 @@ in
         powersave = false;
       };
       connectionConfig = {
-          "connection.auth-retries" = 10;
-          "conneciton.autoconnect-retries" = 10;
+        "connection.auth-retries" = 10;
+        "conneciton.autoconnect-retries" = 10;
       };
       # logLevel = "DEBUG";
 

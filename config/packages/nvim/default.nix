@@ -20,7 +20,6 @@
     ];
   };
 
-
   # This symlinks the plugin into a directory that lazy.nvim can access
   # and then just tell lazy.nvim to load the plugin from this directory
   # instead of pulling it from github:
