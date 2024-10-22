@@ -3,11 +3,9 @@
   pkgs,
   inputs,
   options,
+  username,
   ...
 }:
-let
-  username = "faidz";
-in
 {
   imports = [
     ./hardware-configuration.nix

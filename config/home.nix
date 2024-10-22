@@ -2,10 +2,10 @@
   config,
   pkgs,
   inputs,
+  username,
   ...
 }:
 let
-  username = "faidz";
   spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
 in
 {
@@ -119,7 +119,8 @@ in
       colorScheme = "rosepine";
 
       enabledExtensions = with spicePkgs.extensions; [
-        adblock
+        adblockify
+        beautifulLyrics
       ];
     };
   };

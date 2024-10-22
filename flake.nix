@@ -16,10 +16,6 @@
     };
 
     sops-nix.url = "github:Mic92/sops-nix";
-    # nil = {
-    #   url = "github:oxalica/nil";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
   };
 
   outputs =
@@ -41,6 +37,7 @@
         inherit system;
         specialArgs = {
           inherit inputs;
+          inherit username;
         };
         modules = [
           {
