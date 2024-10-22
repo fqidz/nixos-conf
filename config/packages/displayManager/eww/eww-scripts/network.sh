@@ -3,11 +3,11 @@
 network_device='wlan0'
 
 echo_initial() {
-    status_string=$(nmcli -t device status | grep $network_device | cut -d ':' -f3,4)
-    status=$(printf '%s\n' "$status_string" | cut -d ":" -f1)
+    status=$(nmcli -t device status | grep "$network_device" | cut -d ':' -f3)
+    network_string=$(nmcli -t device wifi list ifname "$network_device" | grep '^*' | sed -E 's/\\:/ /g')
     if [[ $status == "connected" ]]; then
-        ssid=$(printf '%s\n' "$status_string" | cut -d ":" -f2-)
-        signal=$(nmcli -t device wifi list ifname wlan0 | awk '{gsub(/\\:/, "")}; /'"$ssid"'/ {print}' | cut -d ":" -f7)
+        ssid=$(printf '%s\n' "$network_string" | cut -d ":" -f3)
+        signal=$(printf '%s\n' "$network_string" | cut -d ":" -f7)
         printf '{"status":"%s","ssid":"%s","signal":"%s"}\n' "$status" "$ssid" "$signal"
     else
         printf '{"status":"%s","ssid":"","signal":"0"}\n' $status

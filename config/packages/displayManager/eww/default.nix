@@ -7,6 +7,7 @@
   # programs.eww = {
   #   enable = true;
   #   configDir = ./eww-config;
+  #   enableZshIntegration = true;
   # };
 
   home.file.".config/eww" = {
