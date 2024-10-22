@@ -1,23 +1,20 @@
 { pkgs, ... }:
 {
-  home.packages = [
-    pkgs.eww
-  ];
+  home = {
+    packages = [
+      pkgs.eww
+    ];
 
-  # programs.eww = {
-  #   enable = true;
-  #   configDir = ./eww-config;
-  #   enableZshIntegration = true;
-  # };
-
-  home.file.".config/eww" = {
-    source = ./eww-config;
-    recursive = true;
-  };
-
-  home.file.".config/eww-scripts" = {
-    source = ./eww-scripts;
-    recursive = true;
+    file = {
+      ".config/eww" = {
+        source = ./eww-config;
+        recursive = true;
+      };
+      ".config/eww-scripts" = {
+        source = ./eww-scripts;
+        recursive = true;
+      };
+    };
   };
 
   systemd.user.services = {
