@@ -76,8 +76,17 @@
           "windows, 1, 7, default"
           "border, 1, 10, default"
           "fade, 1, 7, default"
-          "workspaces, 1, 3, default"
+          "workspaces, 1, 2, default"
           "layers, 1, 1, default"
+        ];
+        bezier = [
+          "out-expo, 0.12, 0.77, 0, 1"
+          "ease-in-out-sine, 0.37, 0, 0.63, 1"
+          "ease-in-out-circ, 0.85, 0, 0.15, 1"
+          "ease-out-circ, 0, 0.55, 0.45, 1"
+          "ease-out-quint, 0.22, 1, 0.36, 1"
+          "ease-in-out-back, 0.68, -0.6, 0.32, 1.6"
+          "ease-back, 0.75, -0.25, 0.35, 1.25"
         ];
       };
 
@@ -111,6 +120,8 @@
           "$mod, R, exec, tofi-drun --drun-launch=true"
           "$mod, V, exec, cliphist list | tofi --width 80% | cliphist decode | wl-copy"
           "$mod, F, togglefloating,"
+          "$mod, F, resizeactive, exact 60% 60%"
+          "$mod, F, centerwindow,"
           "$mod, P, pseudo,"
           "$mod, J, togglesplit,"
           ", Print, exec, hyprshot --freeze -m region"

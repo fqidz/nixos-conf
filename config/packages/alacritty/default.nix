@@ -12,7 +12,10 @@ in
     settings = {
       import = [ "${./rose-pine.toml}" ];
       font = {
-        size = 13.0;
+        offset = {
+          y = -1;
+        };
+        size = 12;
         normal = {
           family = font;
         };
