@@ -73,7 +73,7 @@
       animations = {
         enabled = true;
         animation = [
-          "windows, 1, 7, default"
+          "windows, 1, 3, ease-back, popin"
           "border, 1, 10, default"
           "fade, 1, 7, default"
           "workspaces, 1, 2, default"
@@ -120,8 +120,7 @@
           "$mod, R, exec, tofi-drun --drun-launch=true"
           "$mod, V, exec, cliphist list | tofi --width 80% | cliphist decode | wl-copy"
           "$mod, F, togglefloating,"
-          "$mod, F, resizeactive, exact 60% 60%"
-          "$mod, F, centerwindow,"
+          # "$mod, F, resizeactive, exact 60% 60%"
           "$mod, P, pseudo,"
           "$mod, J, togglesplit,"
           ", Print, exec, hyprshot --freeze -m region"
