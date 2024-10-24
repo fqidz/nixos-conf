@@ -82,6 +82,12 @@
     initrd.verbose = false;
   };
 
+  powerManagement = {
+    enable = true;
+    powertop.enable = true;
+    cpuFreqGovernor = "conservative";
+  };
+
   # Set your time zone.
   time.timeZone = "Asia/Bahrain";
 

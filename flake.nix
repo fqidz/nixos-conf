@@ -61,7 +61,7 @@
               extraSpecialArgs = {
                 inherit inputs;
                 inherit username;
-                rootPath = ./.;
+                inherit self;
               };
 
               users.${username}.imports = [
