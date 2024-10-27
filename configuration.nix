@@ -85,7 +85,7 @@
   powerManagement = {
     enable = true;
     powertop.enable = true;
-    cpuFreqGovernor = "conservative";
+    cpuFreqGovernor = "ondemand";
   };
 
   # Set your time zone.
@@ -177,7 +177,7 @@
     gc = {
       automatic = true;
       dates = "weekly";
-      options = "--delete-older-than 1d";
+      options = "--delete-older-than 7d";
     };
   };
 

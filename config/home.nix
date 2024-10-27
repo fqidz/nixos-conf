@@ -37,6 +37,7 @@ in
       jq
       socat
       pulseaudio
+      powertop
       acpi
       trash-cli
     ];
