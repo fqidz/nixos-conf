@@ -19,6 +19,7 @@ in
     packages = with pkgs; [
       (nerdfonts.override { fonts = [ "RobotoMono" ]; })
       roboto-mono
+      roboto
       sops
       age
       gnupg
@@ -40,7 +41,7 @@ in
       powertop
       acpi
       trash-cli
-      calibre
+      fork.calibre
     ];
     stateVersion = "24.05";
   };

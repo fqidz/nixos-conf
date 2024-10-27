@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-testing.url = "github:fqidz/nixpkgs/brother-dcp-t510w-driver";
+    nixpkgs-fork.url = "github:fqidz/nixpkgs/calibre-downgrade";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -22,7 +22,7 @@
     inputs@{
       self,
       nixpkgs,
-      nixpkgs-testing,
+      nixpkgs-fork,
       home-manager,
       sops-nix,
       ...
@@ -43,7 +43,7 @@
           {
             nixpkgs.overlays = [
               (final: prev: {
-                testing = import nixpkgs-testing {
+                fork = import nixpkgs-fork {
                   inherit system;
                   config.allowUnfree = true;
                 };

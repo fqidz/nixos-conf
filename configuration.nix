@@ -68,7 +68,7 @@
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
-    kernelPackages = pkgs.linuxPackages_6_10;
+    kernelPackages = pkgs.linuxPackages_latest;
 
     consoleLogLevel = 0; # silent boot
     kernelParams = [
