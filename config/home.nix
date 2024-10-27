@@ -40,6 +40,7 @@ in
       powertop
       acpi
       trash-cli
+      calibre
     ];
     stateVersion = "24.05";
   };
