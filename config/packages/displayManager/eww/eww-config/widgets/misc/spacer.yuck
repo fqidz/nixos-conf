@@ -3,7 +3,7 @@
     :width 25
     :visible {is_visible}
     :class "text-spacer"
-    :text "|"
+    :markup "<span rise='10pt'>|</span>"
   )
 )
 

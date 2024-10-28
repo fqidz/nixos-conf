@@ -44,6 +44,9 @@
 
       initExtra = ''
         bindkey '^ ' autosuggest-accept
+        bindkey '^k' up-line-or-history
+        bindkey '^j' down-line-or-history
+
         typeset -A ZSH_HIGHLIGHT_STYLES
         ZSH_HIGHLIGHT_STYLES[arg0]='fg=magenta,bold'
         TIMEFMT=$'\nCPU\t%P\nuser\t%*U\nsystem\t%*S\ntotal\t%*E'

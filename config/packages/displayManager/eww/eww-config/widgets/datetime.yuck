@@ -24,7 +24,7 @@
     (spacer)
     (label
       :class "time"
-      :text "${time.hour}:${time.minute}"
+      :markup "<span rise='4pt'>${time.hour}:${time.minute}</span>"
     )
   )
 )
