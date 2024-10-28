@@ -11,5 +11,6 @@
     # ./yazi
     ./nvim
     ./git
+    ./calibre
   ];
 }

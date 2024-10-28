@@ -41,7 +41,6 @@ in
       powertop
       acpi
       trash-cli
-      fork.calibre
     ];
     stateVersion = "24.05";
   };
@@ -50,6 +49,7 @@ in
 
   xdg = {
     enable = true;
+    # /etc/profiles/per-user/faidz/share/applications/
     desktopEntries = {
       syncthing = {
         name = "Syncthing";
@@ -92,11 +92,15 @@ in
         exec = "wpa_gui";
         noDisplay = true;
       };
+      btop = {
+        name = "btop++";
+        exec = "btop";
+        noDisplay = true;
+      };
     };
     mimeApps = {
       enable = true;
       defaultApplications = {
-        "application/lrf" = "calibre-lrfviewer.desktop";
         "application/pdf" = "firefox.desktop";
         "application/xhtml+xml" = "firefox.desktop";
         "text/html" = "firefox.desktop";
