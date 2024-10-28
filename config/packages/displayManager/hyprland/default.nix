@@ -124,6 +124,7 @@
           "$mod, R, exec, tofi-drun --drun-launch=true"
           "$mod, V, exec, cliphist list | tofi --width 80% | cliphist decode | wl-copy"
           "$mod, F, togglefloating,"
+          "$mod, F12, fullscreen,"
           # "$mod, F, resizeactive, exact 60% 60%"
           "$mod, P, pseudo,"
           "$mod, J, togglesplit,"

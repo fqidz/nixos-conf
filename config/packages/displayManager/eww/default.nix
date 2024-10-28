@@ -58,11 +58,9 @@
           "${pkgs.systemd}/bin"
         ];
         ExecStart = "${pkgs.writeShellScript "eww-daemon-start" ''
-          #!${pkgs.bash}/bin/sh
           ${pkgs.eww}/bin/eww daemon --no-daemonize -c ~/.config/eww
         ''}";
         ExecReload = "${pkgs.writeShellScript "eww-daemon-reload" ''
-          #!${pkgs.bash}/bin/sh
           ${pkgs.eww}/bin/eww reload
         ''}";
         Restart = "on-failure";

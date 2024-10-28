@@ -93,6 +93,15 @@ in
         noDisplay = true;
       };
     };
+    mimeApps = {
+      enable = true;
+      defaultApplications = {
+        "application/lrf" = "calibre-lrfviewer.desktop";
+        "application/pdf" = "firefox.desktop";
+        "application/xhtml+xml" = "firefox.desktop";
+        "text/html" = "firefox.desktop";
+      };
+    };
   };
 
   programs = {
