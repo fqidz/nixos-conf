@@ -41,6 +41,7 @@ in
       powertop
       acpi
       trash-cli
+      sqlite
     ];
     stateVersion = "24.05";
   };

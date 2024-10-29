@@ -1,4 +1,25 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
+# let
+#   initExtraScript = pkgs.stdenv.mkDerivation {
+#     name = "init_extra";
+#     phases = "buildPhase";
+#     src = (builtins.readFile ./init_extra.sh).outPath;
+#
+#     nativeBuildInputs = [
+#       pkgs.makeWrapper
+#     ];
+#
+#     buildPhase = ''
+#       mkdir $out
+#       cp $src $out
+#       FILENAME=$(basename $src)
+#       substituteInPlace "$out/$FILENAME" \
+#         --replace-fail "jq" "${pkgs.jq}/bin/jq" \
+#         --replace-fail "sqlite3" "${pkgs.sqlite}/bin/sqlite3" \
+#         --replace-fail "fzf" "${pkgs.fzf}/bin/fzf"
+#     '';
+#   };
+# in
 {
   home.packages = [
     pkgs.zsh
@@ -42,38 +63,8 @@
         nixconf = "/etc/nixos";
       };
 
-      initExtra = ''
-        bindkey '^ ' autosuggest-accept
-        bindkey '^k' up-line-or-history
-        bindkey '^j' down-line-or-history
-
-        typeset -A ZSH_HIGHLIGHT_STYLES
-        ZSH_HIGHLIGHT_STYLES[arg0]='fg=magenta,bold'
-        TIMEFMT=$'\nCPU\t%P\nuser\t%*U\nsystem\t%*S\ntotal\t%*E'
-
-        function fehv() {
-          feh "$@" > /dev/null &!
-        }
-
-        function nix-templ {
-            if [[ -z "$1" ]]; then
-                echo "error: no first arg" > /dev/stderr
-                return 1
-            elif [[ -z "$2" ]]; then
-                echo "error: no second arg" > /dev/stderr
-                return 1
-            fi
-
-            if [[ "$1" == "init" ]]; then
-                nix flake init --template github:fqidz/nix-templates#$2
-            elif [[ "$1" == "new" ]]; then
-                nix flake new --template github:fqidz/nix-templates#$2 $3
-            else
-                echo "error: 1st arg either 'init' or 'new'" > /dev/stderr
-                return 1
-            fi
-        }
-      '';
+      # TODO: replace the commands with their ${pkgs.}/bin form
+      initExtra = builtins.readFile ./init_extra.sh;
     };
 
     starship = {
