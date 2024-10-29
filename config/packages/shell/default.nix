@@ -1,25 +1,24 @@
-{ pkgs, lib, ... }:
-# let
-#   initExtraScript = pkgs.stdenv.mkDerivation {
-#     name = "init_extra";
-#     phases = "buildPhase";
-#     src = (builtins.readFile ./init_extra.sh).outPath;
-#
-#     nativeBuildInputs = [
-#       pkgs.makeWrapper
-#     ];
-#
-#     buildPhase = ''
-#       mkdir $out
-#       cp $src $out
-#       FILENAME=$(basename $src)
-#       substituteInPlace "$out/$FILENAME" \
-#         --replace-fail "jq" "${pkgs.jq}/bin/jq" \
-#         --replace-fail "sqlite3" "${pkgs.sqlite}/bin/sqlite3" \
-#         --replace-fail "fzf" "${pkgs.fzf}/bin/fzf"
-#     '';
-#   };
-# in
+{ pkgs, ... }:
+let
+  initExtraScript = pkgs.stdenv.mkDerivation {
+    name = "init_extra";
+    phases = "buildPhase";
+    src = ./init_extra.sh;
+
+    nativeBuildInputs = [
+      pkgs.makeWrapper
+    ];
+
+    buildPhase = ''
+      mkdir $out
+      cp $src $out/init_extra.sh
+      substituteInPlace "$out/init_extra.sh" \
+        --replace-fail "jq" "${pkgs.jq}/bin/jq" \
+        --replace-fail "sqlite3" "${pkgs.sqlite}/bin/sqlite3" \
+        --replace-fail "fzf" "${pkgs.fzf}/bin/fzf"
+    '';
+  };
+in
 {
   home.packages = [
     pkgs.zsh
@@ -63,8 +62,7 @@
         nixconf = "/etc/nixos";
       };
 
-      # TODO: replace the commands with their ${pkgs.}/bin form
-      initExtra = builtins.readFile ./init_extra.sh;
+      initExtra = builtins.readFile "${initExtraScript}/init_extra.sh";
     };
 
     starship = {
