@@ -38,20 +38,28 @@ function books {
             "SELECT json_object('title', books.title, 'path', books.path) FROM books"
     )
 
-    lines=""
-
-    search_path=$(while IFS='\n' read -r line; do
+    processed_data=$(while IFS='\n' read -r line; do
         title=$(printf "%s\n" "$line" | jq -rcs '.[].title')
         path=$(printf "%s\n" "$line" | jq -rcs '.[].path')
         printf "%s\t%s%s\n" "$title" "$BOOKS_PATH" "$path"
-    done <<< "$data" | fzf -d '\t' --with-nth 1 | cut -f2)
+    done <<< "$data")
+
+    search_path=$(
+        printf "%s\n" "$processed_data" | \
+            fzf \
+            -d '\t' \
+            --with-nth 1 \
+            --preview='echo {} | cut -f2' \
+            --preview-window=up,1 | \
+            cut -f2
+    )
+
+    BLUE=$(tput setaf 4)
+    UNDERLINE=$(tput smul)
+    MAGENTA=$(tput setaf 5)
+    NORMAL=$(tput sgr0)
 
     if [[ "$search_path" != "" ]]; then
-        BLUE=$(tput setaf 4)
-        UNDERLINE=$(tput smul)
-        MAGENTA=$(tput setaf 5)
-        NORMAL=$(tput sgr0)
-
         file_path=$(fd . "$search_path" -E'*.jpg' -E'*.opf')
         xdg_file_type=$(xdg-mime query filetype "$file_path")
 

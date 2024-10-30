@@ -19,6 +19,7 @@ in
     packages = with pkgs; [
       (nerdfonts.override { fonts = [ "RobotoMono" ]; })
       roboto-mono
+      charis-sil
       roboto
       sops
       age
@@ -31,7 +32,6 @@ in
       libgcc
       wget
       nix-tree
-      fastfetch
       obsidian
       spicetify-cli
       feh
@@ -119,47 +119,6 @@ in
       buttons = {
         zoom_in = 4;
         zoom_out = 5;
-      };
-    };
-
-    fastfetch = {
-      enable = true;
-      settings = {
-        logo = {
-          source = "nix";
-          padding = {
-            left = 1;
-          };
-        };
-        modules = [
-          "os"
-          "host"
-          "kernel"
-          "uptime"
-          "packages"
-          "shell"
-          "display"
-          "de"
-          "wm"
-          # "wmtheme"
-          # "theme"
-          # "icons"
-          # "font"
-          # "cursor"
-          "terminal"
-          "terminalfont"
-          "cpu"
-          # "gpu"
-          "memory"
-          "swap"
-          "disk"
-          # "localip"
-          "battery"
-          "poweradapter"
-          # "locale"
-          "break"
-          "colors"
-        ];
       };
     };
 

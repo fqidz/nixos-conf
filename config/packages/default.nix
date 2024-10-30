@@ -9,6 +9,7 @@
     ./eza
     ./systemd
     # ./yazi
+    ./fastfetch
     ./nvim
     ./git
     ./calibre

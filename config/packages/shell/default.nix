@@ -5,10 +5,6 @@ let
     phases = "buildPhase";
     src = ./init_extra.sh;
 
-    nativeBuildInputs = [
-      pkgs.makeWrapper
-    ];
-
     buildPhase = ''
       mkdir $out
       cp $src $out/init_extra.sh

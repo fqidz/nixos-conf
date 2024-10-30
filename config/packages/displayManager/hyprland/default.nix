@@ -127,13 +127,18 @@
           "$mod, F12, fullscreen,"
           # "$mod, F, resizeactive, exact 60% 60%"
           "$mod, P, pseudo,"
-          "$mod, J, togglesplit,"
+          "$mod, U, togglesplit,"
           ", Print, exec, hyprshot --freeze -m region"
+
+          "$mod, H, movefocus, r"
+          "$mod, J, movefocus, d"
+          "$mod, K, movefocus, u"
+          "$mod, L, movefocus, l"
 
           "$mod, S, togglespecialworkspace, spotify"
           "$mod SHIFT, S, movetoworkspace, special:spotify"
         ]
-        # bind = $mainMod, 0, workspace, 1
+        # bind = $mainMod, 1, workspace, 1
         # bind = $mainMod SHIFT, 1, movetoworkspace, 1
         ++ (builtins.concatLists (
           builtins.genList (
@@ -167,10 +172,13 @@
         ", XF86AudioPrev, exec, playerctl previous"
       ];
 
+      cursor = {
+        inactive_timeout = 10;
+      };
+
       windowrulev2 = [
         "noanim, class:^(ueberzugpp_.*)$"
       ];
-      # windowrulev2 = suppressevent maximize, class:.* # You'll probably like this.
     };
   };
 }
