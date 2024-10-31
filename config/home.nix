@@ -18,6 +18,7 @@ in
     homeDirectory = "/home/${username}";
     packages = with pkgs; [
       (nerdfonts.override { fonts = [ "RobotoMono" ]; })
+      nh
       roboto-mono
       charis-sil
       roboto
@@ -110,6 +111,9 @@ in
   };
 
   programs = {
+    nh = {
+      enable = true;
+    };
     feh = {
       enable = true;
       keybindings = {

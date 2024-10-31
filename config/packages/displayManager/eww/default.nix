@@ -10,10 +10,6 @@
         source = ./eww-config;
         recursive = true;
       };
-      ".config/eww-scripts" = {
-        source = ./eww-scripts;
-        recursive = true;
-      };
     };
   };
 

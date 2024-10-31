@@ -1,7 +1,7 @@
 (defpoll battery_json
   :interval "10s"
   :initial '{"status":"Charging","capacity":0,"h":0,"m":0,"s":0}'
-  `/usr/bin/env sh ~/.config/eww-scripts/battery.sh`
+  `/usr/bin/env sh ~/.config/eww/scripts/battery.sh`
 )
 
 (defwidget battery []

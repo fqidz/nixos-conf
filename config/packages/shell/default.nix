@@ -48,6 +48,7 @@ in
 
       shellAliases = {
         nix-rebuild = "sudo nixos-rebuild switch --flake /etc/nixos#default";
+        nh-rebuild = "nh os switch -H default /etc/nixos";
         spotifyr = "spotify > /dev/null &!";
         nix-dev = "nix develop -c $SHELL";
         gitroot = "cd \"$(git rev-parse --show-toplevel)\"";
