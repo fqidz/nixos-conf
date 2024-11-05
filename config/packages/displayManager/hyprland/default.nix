@@ -6,6 +6,7 @@
     pkgs.hyprcursor
     pkgs.hyprshot
     pkgs.playerctl
+    pkgs.hyprpicker
   ];
 
   home.file.".local/share/icons" = {
@@ -129,6 +130,7 @@
           "$mod, P, pseudo,"
           "$mod, U, togglesplit,"
           ", Print, exec, hyprshot --freeze -m region"
+          "ALT, Print, exec, hyprpicker -na"
 
           "$mod, H, movefocus, r"
           "$mod, J, movefocus, d"

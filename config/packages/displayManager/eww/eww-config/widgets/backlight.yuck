@@ -1,7 +1,7 @@
 (include "widgets/misc/fade-on-hover.yuck")
 
 (deflisten backlight_level
-  :intial `0`
+  :initial `0`
   `/usr/bin/env sh ~/.config/eww/scripts/backlight.sh`
 )
 
