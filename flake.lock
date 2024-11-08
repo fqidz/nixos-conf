@@ -16,6 +16,21 @@
         "type": "github"
       }
     },
+    "flatpaks": {
+      "locked": {
+        "lastModified": 1730108712,
+        "narHash": "sha256-vIvmXmjAQIY39hACGFe/cdBK2r3ZprpHLwX2HIy7Mj8=",
+        "owner": "gmodena",
+        "repo": "nix-flatpak",
+        "rev": "1cba177bb0a948c919af7596e40bef307543d40a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "gmodena",
+        "repo": "nix-flatpak",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -102,6 +117,7 @@
     },
     "root": {
       "inputs": {
+        "flatpaks": "flatpaks",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "nixpkgs-fork": "nixpkgs-fork",

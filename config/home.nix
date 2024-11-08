@@ -41,6 +41,7 @@ in
       pulseaudio
       powertop
       acpi
+      wireshark
       trash-cli
       sqlite
     ];

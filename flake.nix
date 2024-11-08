@@ -16,6 +16,7 @@
     };
 
     sops-nix.url = "github:Mic92/sops-nix";
+    flatpaks.url = "github:gmodena/nix-flatpak";
   };
 
   outputs =
@@ -23,6 +24,7 @@
       self,
       nixpkgs,
       nixpkgs-fork,
+      flatpaks,
       home-manager,
       sops-nix,
       ...
@@ -67,6 +69,7 @@
               users.${username}.imports = [
                 inputs.spicetify-nix.homeManagerModules.default
                 inputs.sops-nix.homeManagerModules.sops
+                inputs.flatpaks.homeManagerModules.nix-flatpak
                 ./config/home.nix
               ];
             };

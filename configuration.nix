@@ -19,6 +19,7 @@
       enable = true;
       xwayland.enable = true;
     };
+    wireshark.enable = true;
   };
 
   environment = {
@@ -48,6 +49,7 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "wireshark"
     ];
     shell = pkgs.zsh;
   };
@@ -108,6 +110,9 @@
   };
 
   services = {
+    # udev.extraRules = ''
+    #   SUBSYSTEM=="usbmon", GROUP="wireshark", MODE="0640"
+    # '';
     fstrim.enable = true;
     tlp.enable = true;
     openssh.enable = true;
@@ -128,6 +133,8 @@
         ];
       };
     };
+
+    flatpak.enable = true;
 
     xserver = {
       enable = true;
@@ -193,6 +200,7 @@
   };
 
   networking = {
+    # interfaces.wlan0.mtu = 1200;
     timeServers = options.networking.timeServers.default ++ [
       "asia.pool.ntp.org"
     ];
