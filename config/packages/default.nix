@@ -13,6 +13,5 @@
     ./nvim
     ./git
     ./calibre
-    ./flatpak
   ];
 }
