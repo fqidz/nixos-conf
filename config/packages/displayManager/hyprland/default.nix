@@ -153,6 +153,7 @@
             [
               "$mod, code:1${toString i}, workspace, ${toString ws}"
               "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
+              "$mod ALT, code:1${toString i}, exec, sh ${./swapworkspace.sh} ${toString ws}"
             ]
           ) 9
         ));

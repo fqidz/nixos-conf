@@ -211,9 +211,14 @@
       };
       connectionConfig = {
         "connection.auth-retries" = 10;
-        "conneciton.autoconnect-retries" = 10;
+        "connection.autoconnect-retries" = 10;
       };
-      # logLevel = "DEBUG";
+      settings = {
+        device = {
+          "wifi.iwd.autoconnect" = false;
+        };
+      };
+      logLevel = "DEBUG";
 
       ensureProfiles = {
         environmentFiles = [
