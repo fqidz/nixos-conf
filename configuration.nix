@@ -110,9 +110,6 @@
   };
 
   services = {
-    # udev.extraRules = ''
-    #   SUBSYSTEM=="usbmon", GROUP="wireshark", MODE="0640"
-    # '';
     fstrim.enable = true;
     tlp.enable = true;
     openssh.enable = true;
