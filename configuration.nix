@@ -212,6 +212,7 @@
       connectionConfig = {
         "connection.auth-retries" = 10;
         "connection.autoconnect-retries" = 10;
+        "802-1x.auth-timeout" = 0;
       };
       settings = {
         device = {
@@ -287,16 +288,18 @@
               cloned-mac-address = "random";
               mode = "infrastructure";
               ssid = "Student-1X";
+              security = "802-11-wireless-security";
             };
             wifi-security = {
               auth-alg = "open";
               key-mgmt = "wpa-eap";
             };
             "802-1x" = {
-              anonymous-identity = "f";
               eap = "peap;";
+              anonymous-identity = "f";
               identity = "$student_1x_identity";
               password = "$student_1x";
+              phase1-peapver = "1";
               phase2-auth = "mschapv2";
               phase1-auth-flags = "all";
             };

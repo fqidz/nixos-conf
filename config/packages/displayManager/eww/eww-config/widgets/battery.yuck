@@ -6,7 +6,10 @@
 (defwidget battery []
   (box
     :orientation "h"
-    :class "battery${battery_json.capacity <= 30 ? '-low' : ''}"
+    :class `battery${
+      battery_json.status == "Charging" ? "-charging" :
+      battery_json.capacity <= 30 ? "-low" : ""
+    }`
     :space-evenly false
     (eventbox
       :tooltip `${
