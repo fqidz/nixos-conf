@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
-  home.packages = with pkgs; [
-    hyprlock
+  home.packages = [
+    pkgs.hyprlock
   ];
 
   programs = {

@@ -8,7 +8,7 @@
     ./alacritty
     ./eza
     ./systemd
-    # ./yazi
+    ./yazi
     ./fastfetch
     ./nvim
     ./git

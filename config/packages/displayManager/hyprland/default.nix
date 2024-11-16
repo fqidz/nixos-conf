@@ -25,12 +25,24 @@
       monitor = [ "eDP-1, 1920x1080@60, 0x0, 1" ];
 
       "$mod" = "SUPER";
-      "$terminal" = "alacritty";
+      "$terminal" = "${pkgs.alacritty}/bin/alacritty";
+      "$browser" = "${pkgs.firefox}/bin/firefox";
+      "$sh" = "${pkgs.bash}/bin/sh";
+      "$tofi" = "${pkgs.tofi}/bin/tofi";
+      "$tofi-drun" = "${pkgs.tofi}/bin/tofi-drun";
+      "$cliphist" = "${pkgs.cliphist}/bin/cliphist";
+      "$wl-copy" = "${pkgs.wl-clipboard}/bin/wl-copy";
+      "$hyprshot" = "${pkgs.hyprshot}/bin/hyprshot";
+      "$hyprpicker" = "${pkgs.hyprpicker}/bin/hyprpicker";
+      "$wpctl" = "${pkgs.wireplumber}/bin/wpctl";
+      "$playerctl" = "${pkgs.playerctl}/bin/playerctl";
+      "$brightnessctl" = "${pkgs.brightnessctl}/bin/brightnessctl";
+
 
       exec-once = [
         "[workspace 1 silent] $terminal"
-        "[workspace 2 silent] firefox"
-        "hyprctl setcursor $HYPRCURSOR_THEME $HYPRCURSOR_SIZE"
+        "[workspace 2 silent] $browser"
+        "/usr/bin/env hyprctl setcursor $HYPRCURSOR_THEME $HYPRCURSOR_SIZE"
       ];
 
       env = [
@@ -65,10 +77,8 @@
         rounding = 5;
         active_opacity = 1.0;
         inactive_opacity = 1.0;
-        drop_shadow = false;
-        blur = {
-          enabled = false;
-        };
+        shadow.enabled = false;
+        blur.enabled = false;
       };
 
       animations = {
@@ -124,15 +134,15 @@
           "$mod, Q, exec, $terminal"
           "$mod, C, killactive,"
           "$mod, M, exit,"
-          "$mod, R, exec, tofi-drun --drun-launch=true"
-          "$mod, V, exec, cliphist list | tofi --width 80% | cliphist decode | wl-copy"
+          "$mod, R, exec, $tofi-drun --drun-launch=true"
+          "$mod, V, exec, $cliphist list | $tofi --width 80% | $cliphist decode | $wl-copy"
           "$mod, F, togglefloating,"
           "$mod, F12, fullscreen,"
           # "$mod, F, resizeactive, exact 60% 60%"
           "$mod, P, pseudo,"
           "$mod, U, togglesplit,"
-          ", Print, exec, hyprshot --freeze -m region"
-          "ALT, Print, exec, hyprpicker -na"
+          ", Print, exec, $hyprshot --freeze -m region"
+          "ALT, Print, exec, $hyprpicker -na"
 
           "$mod, H, movefocus, r"
           "$mod, J, movefocus, d"
@@ -164,17 +174,17 @@
       ];
 
       bindle = [
-        ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+"
-        ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-"
-        ", XF86MonBrightnessUp, exec, brightnessctl -q set +2%"
-        ", XF86MonBrightnessDown, exec, brightnessctl -q set 2%-"
+        ", XF86AudioRaiseVolume, exec, $wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+"
+        ", XF86AudioLowerVolume, exec, $wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-"
+        ", XF86MonBrightnessUp, exec, $brightnessctl -q set +2%"
+        ", XF86MonBrightnessDown, exec, $brightnessctl -q set 2%-"
       ];
 
       bindl = [
-        ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-        ", XF86AudioPlay, exec, playerctl play-pause"
-        ", XF86AudioNext, exec, playerctl next"
-        ", XF86AudioPrev, exec, playerctl previous"
+        ", XF86AudioMute, exec, $wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+        ", XF86AudioPlay, exec, $playerctl play-pause"
+        ", XF86AudioNext, exec, $playerctl next"
+        ", XF86AudioPrev, exec, $playerctl previous"
       ];
 
       cursor = {
