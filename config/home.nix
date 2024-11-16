@@ -35,7 +35,6 @@ in
       nix-tree
       obsidian
       spicetify-cli
-      feh
       jq
       socat
       pulseaudio
@@ -44,6 +43,7 @@ in
       wireshark
       trash-cli
       sqlite
+      oculante
     ];
     stateVersion = "24.05";
   };
@@ -114,17 +114,6 @@ in
   programs = {
     nh = {
       enable = true;
-    };
-    feh = {
-      enable = true;
-      keybindings = {
-        prev_img = null;
-        next_img = null;
-      };
-      buttons = {
-        zoom_in = 4;
-        zoom_out = 5;
-      };
     };
 
     firefox = {
