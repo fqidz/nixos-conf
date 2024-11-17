@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   home.packages = [
-    pkgs.calibre
+    pkgs.master.calibre
   ];
 
   xdg = {

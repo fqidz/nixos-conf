@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-fork.url = "github:fqidz/nixpkgs/calibre-downgrade";
+    nixpkgs-master.url = "github:nixos/nixpkgs/master";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -22,7 +22,7 @@
     inputs@{
       self,
       nixpkgs,
-      nixpkgs-fork,
+      nixpkgs-master,
       home-manager,
       sops-nix,
       ...
@@ -43,7 +43,7 @@
           {
             nixpkgs.overlays = [
               (final: prev: {
-                fork = import nixpkgs-fork {
+                master = import nixpkgs-master {
                   inherit system;
                   config.allowUnfree = true;
                 };
