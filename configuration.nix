@@ -14,13 +14,26 @@
 
   programs = {
     zsh.enable = true;
+
     # Enable Hyprland
     hyprland = {
       enable = true;
+      withUWSM = true;
       xwayland.enable = true;
     };
+
+    # uwsm = {
+    #   enable = true;
+    #   waylandCompositors.hyprland = {
+    #     binPath = "/run/current-system/sw/bin/Hyprland";
+    #     comment = "Hyprland session managed by uwsm";
+    #     prettyName = "Hyprland";
+    #   };
+    # };
+
     wireshark.enable = true;
   };
+
 
   environment = {
     sessionVariables.NIXOS_OZONE_WL = "1"; # This variable fixes electron apps in wayland

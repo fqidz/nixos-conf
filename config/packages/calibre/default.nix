@@ -11,17 +11,11 @@
         type = "Application";
         genericName = "E-book library management";
         comment = "E-book library management: Convert, view, share, catalogue all your e-books";
-        # tryExec = "calibre";
         exec = "calibre --detach %U";
         icon = "calibre-gui";
         categories = [
           "Office"
         ];
-        # keywords = [
-        #   "epub"
-        #   "ebook"
-        #   "manager"
-        # ];
         mimeType = [
           "application/xhtml+xml"
           "text/html"
@@ -54,18 +48,12 @@
         type = "Application";
         genericName = "Viewer of E-books";
         comment = "Viewer for E-books in all the major formats";
-        # tryExec = "ebook-viewer";
         exec = "ebook-viewer --detach %f";
         icon = "calibre-viewer";
         categories = [
           "Office"
           "Viewer"
         ];
-        # keywords = [
-        #   "epub"
-        #   "ebook"
-        #   "viewer"
-        # ];
         mimeType = [
           "application/xhtml+xml"
           "text/html"

@@ -16,10 +16,7 @@
 
   wayland.windowManager.hyprland = {
     enable = true;
-    systemd = {
-      enable = true;
-      variables = [ "--all" ];
-    };
+    systemd.enable = false;
     xwayland.enable = true;
     settings = {
       monitor = [ "eDP-1, 1920x1080@60, 0x0, 1" ];
@@ -31,6 +28,8 @@
         "[workspace 1 silent] $terminal"
         "[workspace 2 silent] firefox"
         "hyprctl setcursor $HYPRCURSOR_THEME $HYPRCURSOR_SIZE"
+        "systemctl --user enable --now hyprpaper.service"
+        "systemctl --user enable --now cliphist-history.service"
       ];
 
       env = [
@@ -65,10 +64,8 @@
         rounding = 5;
         active_opacity = 1.0;
         inactive_opacity = 1.0;
-        drop_shadow = false;
-        blur = {
-          enabled = false;
-        };
+        shadow.enabled = false;
+        blur.enabled = false;
       };
 
       animations = {
