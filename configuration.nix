@@ -18,18 +18,10 @@
     # Enable Hyprland
     hyprland = {
       enable = true;
+      # use UWSM as recommended, instead of using systemd session directly.
       withUWSM = true;
       xwayland.enable = true;
     };
-
-    # uwsm = {
-    #   enable = true;
-    #   waylandCompositors.hyprland = {
-    #     binPath = "/run/current-system/sw/bin/Hyprland";
-    #     comment = "Hyprland session managed by uwsm";
-    #     prettyName = "Hyprland";
-    #   };
-    # };
 
     wireshark.enable = true;
   };
@@ -42,6 +34,8 @@
       pkgs.vim
       pkgs.wirelesstools
       pkgs.wpa_supplicant_gui
+      config.boot.kernelPackages.perf
+      config.boot.kernelPackages.systemtap
       (pkgs.where-is-my-sddm-theme.override {
         themeConfig.General = {
           backgroundFill = "#191724";

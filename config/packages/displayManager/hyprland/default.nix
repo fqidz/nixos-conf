@@ -30,6 +30,7 @@
         "hyprctl setcursor $HYPRCURSOR_THEME $HYPRCURSOR_SIZE"
         "systemctl --user enable --now hyprpaper.service"
         "systemctl --user enable --now cliphist-history.service"
+        "systemctl --user enable --now hypridle.service"
       ];
 
       env = [
@@ -49,6 +50,7 @@
         resize_on_border = false;
         allow_tearing = false;
         layout = "dwindle";
+        no_focus_fallback = true;
       };
 
       dwindle = {
@@ -125,16 +127,15 @@
           "$mod, V, exec, cliphist list | tofi --width 80% | cliphist decode | wl-copy"
           "$mod, F, togglefloating,"
           "$mod, F12, fullscreen,"
-          # "$mod, F, resizeactive, exact 60% 60%"
           "$mod, P, pseudo,"
           "$mod, U, togglesplit,"
           ", Print, exec, hyprshot --freeze -m region"
           "ALT, Print, exec, hyprpicker -na"
 
-          "$mod, H, movefocus, r"
+          "$mod, H, movefocus, l"
           "$mod, J, movefocus, d"
           "$mod, K, movefocus, u"
-          "$mod, L, movefocus, l"
+          "$mod, L, movefocus, r"
 
           "$mod, S, togglespecialworkspace, spotify"
           "$mod SHIFT, S, movetoworkspace, special:spotify"
