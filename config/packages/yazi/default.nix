@@ -4,6 +4,7 @@
     pkgs.yazi
     pkgs.ueberzugpp
   ];
+
   programs.yazi = {
     enable = true;
     enableZshIntegration = true;
