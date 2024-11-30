@@ -17,11 +17,11 @@ in
     username = "${username}";
     homeDirectory = "/home/${username}";
     packages = with pkgs; [
-      (nerdfonts.override { fonts = [ "RobotoMono" ]; })
       nh
-      roboto-mono
-      charis-sil
       roboto
+      roboto-mono
+      nerd-fonts.roboto-mono
+      charis-sil
       sops
       age
       gnupg
