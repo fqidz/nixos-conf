@@ -135,6 +135,15 @@
         extraPackages = [
           pkgs.qt6.qt5compat
         ];
+
+        settings = {
+         # General.DefaultSession = "hyprland-uwsm";
+         Users = {
+           RememberLastSession = true;
+           RememberLastUser = true;
+         };
+        };
+
       };
     };
 

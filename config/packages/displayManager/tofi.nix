@@ -8,7 +8,7 @@
     tofi = {
       enable = true;
       settings = {
-        font = "${pkgs.nerd-fonts.roboto-mono.outPath}/share/fonts/truetype/NerdFonts/RobotoMonoNerdFont-Medium.ttf";
+        font = "${pkgs.nerd-fonts.roboto-mono.outPath}/share/fonts/truetype/NerdFonts/RobotoMono/RobotoMonoNerdFont-Medium.ttf";
         font-size = 20;
         width = 800;
         height = 540;
