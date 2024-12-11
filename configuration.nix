@@ -267,6 +267,29 @@
             };
           };
 
+          Pocket-Wifi = {
+            connection = {
+              id = "Pocket-Wifi";
+              type = "wifi";
+              autoconnect = "true";
+            };
+            ipv4.method = "auto";
+            ipv6 = {
+              method = "auto";
+              addr-gen-mode = "default";
+            };
+            wifi = {
+              mode = "infrastructure";
+              ssid = "senzid 15gb only";
+              cloned-mac-address = "random";
+            };
+            wifi-security = {
+              auth-alg = "open";
+              key-mgmt = "wpa-psk";
+              psk = "$pocketwifi";
+            };
+          };
+
           UOB-Events = {
             connection = {
               id = "UOB-Events";
