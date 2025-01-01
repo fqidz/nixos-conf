@@ -127,7 +127,7 @@
     };
     displayManager = {
       enable = true;
-      sessionPackages = [ pkgs.hyprland ];
+      # sessionPackages = [ pkgs.hyprland ];
       sddm = {
         enable = true;
         theme = "where_is_my_sddm_theme";

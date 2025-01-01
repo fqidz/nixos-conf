@@ -2,6 +2,7 @@
 {
   home.packages = [
     pkgs.hyprland
+    pkgs.hyprland-qtutils
     pkgs.brightnessctl
     pkgs.hyprcursor
     pkgs.hyprshot
