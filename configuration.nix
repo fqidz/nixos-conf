@@ -118,6 +118,7 @@
   };
 
   services = {
+    pulseaudio.enable = false;
     fstrim.enable = true;
     tlp.enable = true;
     openssh.enable = true;
@@ -180,7 +181,6 @@
   };
 
   hardware = {
-    pulseaudio.enable = false;
     graphics.enable = true;
   };
 
