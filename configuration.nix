@@ -268,6 +268,29 @@
             };
           };
 
+          Senzid = {
+            connection = {
+              id = "Senzid";
+              type = "wifi";
+              autoconnect = "true";
+            };
+            ipv4.method = "auto";
+            ipv6 = {
+              method = "auto";
+              addr-gen-mode = "default";
+            };
+            wifi = {
+              mode = "infrastructure";
+              ssid = "Senzid";
+              cloned-mac-address = "preserve";
+            };
+            wifi-security = {
+              auth-alg = "open";
+              key-mgmt = "wpa-psk";
+              psk = "$senzid";
+            };
+          };
+
           Pocket-Wifi = {
             connection = {
               id = "Pocket-Wifi";
