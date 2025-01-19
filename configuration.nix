@@ -251,6 +251,7 @@
               id = "Senzid2";
               type = "wifi";
               autoconnect = "true";
+              autoconnect-priority = 10;
             };
             ipv4.method = "auto";
             ipv6 = {
@@ -274,6 +275,7 @@
               id = "Senzid";
               type = "wifi";
               autoconnect = "true";
+              autoconnect-priority = 9;
             };
             ipv4.method = "auto";
             ipv6 = {
@@ -297,6 +299,7 @@
               id = "Pocket-Wifi";
               type = "wifi";
               autoconnect = "true";
+              autoconnect-priority = 11;
             };
             ipv4.method = "auto";
             ipv6 = {
@@ -349,7 +352,7 @@
               addr-gen-mode = "default";
             };
             wifi = {
-              cloned-mac-address = "random";
+              # cloned-mac-address = "random";
               mode = "infrastructure";
               ssid = "Student-1X";
               security = "802-11-wireless-security";

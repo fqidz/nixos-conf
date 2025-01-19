@@ -29,9 +29,6 @@
         "[workspace 1 silent] $terminal"
         "[workspace 2 silent] firefox"
         "hyprctl setcursor $HYPRCURSOR_THEME $HYPRCURSOR_SIZE"
-        "systemctl --user enable --now hyprpaper.service"
-        "systemctl --user enable --now cliphist-history.service"
-        "systemctl --user enable --now hypridle.service"
       ];
 
       env = [
