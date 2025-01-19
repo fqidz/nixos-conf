@@ -79,6 +79,7 @@
       efi.canTouchEfiVariables = true;
     };
     kernelPackages = pkgs.linuxPackages_latest;
+    # kernelPackages = pkgs.linuxPackages_6_12;
 
     consoleLogLevel = 0; # silent boot
     kernelParams = [
