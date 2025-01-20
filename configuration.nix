@@ -215,7 +215,6 @@
   };
 
   networking = {
-    # interfaces.wlan0.mtu = 1200;
     timeServers = options.networking.timeServers.default ++ [
       "asia.pool.ntp.org"
     ];
@@ -237,7 +236,7 @@
           "wifi.iwd.autoconnect" = false;
         };
       };
-      logLevel = "DEBUG";
+      # logLevel = "DEBUG";
 
       ensureProfiles = {
         environmentFiles = [
