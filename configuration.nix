@@ -58,6 +58,7 @@
       "networkmanager"
       "wheel"
       "wireshark"
+      "input"
     ];
     shell = pkgs.zsh;
   };
@@ -124,6 +125,9 @@
     tlp.enable = true;
     openssh.enable = true;
     chrony.enable = true;
+    udev.extraRules = ''
+      KERNEL=="uinput", GROUP="input"
+    '';
     logind = {
       powerKey = "suspend";
       powerKeyLongPress = "poweroff";
@@ -212,7 +216,22 @@
   sops.secrets = {
     "wifi.env" = { };
     "wifi_identity.env" = { };
+    "student_1x_identity" = { };
+    "student_1x" = { };
   };
+
+  sops.templates."Student-1X".path = "/var/lib/iwd/Student-1X.8021x";
+  sops.templates."Student-1X".content = ''
+    [Security]
+    EAP-Method=PEAP
+    EAP-Identity=f
+    EAP-PEAP-Phase2-Method=MSCHAPV2
+    EAP-PEAP-Phase2-Identity=${config.sops.placeholder.student_1x_identity}
+    EAP-PEAP-Phase2-Password=${config.sops.placeholder.student_1x}
+
+    [Settings]
+    AutoConnect=true
+  '';
 
   networking = {
     timeServers = options.networking.timeServers.default ++ [
@@ -351,7 +370,7 @@
               addr-gen-mode = "default";
             };
             wifi = {
-              # cloned-mac-address = "random";
+              cloned-mac-address = "preserve";
               mode = "infrastructure";
               ssid = "Student-1X";
               security = "802-11-wireless-security";
@@ -365,9 +384,9 @@
               anonymous-identity = "f";
               identity = "$student_1x_identity";
               password = "$student_1x";
-              phase1-peapver = "1";
+              # phase1-peapver = "1";
               phase2-auth = "mschapv2";
-              phase1-auth-flags = "all";
+              # phase1-auth-flags = "all";
             };
           };
 
