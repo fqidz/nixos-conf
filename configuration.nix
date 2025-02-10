@@ -216,22 +216,22 @@
   sops.secrets = {
     "wifi.env" = { };
     "wifi_identity.env" = { };
-    "student_1x_identity" = { };
-    "student_1x" = { };
+    # "student_1x_identity" = { };
+    # "student_1x" = { };
   };
 
-  sops.templates."Student-1X".path = "/var/lib/iwd/Student-1X.8021x";
-  sops.templates."Student-1X".content = ''
-    [Security]
-    EAP-Method=PEAP
-    EAP-Identity=f
-    EAP-PEAP-Phase2-Method=MSCHAPV2
-    EAP-PEAP-Phase2-Identity=${config.sops.placeholder.student_1x_identity}
-    EAP-PEAP-Phase2-Password=${config.sops.placeholder.student_1x}
-
-    [Settings]
-    AutoConnect=true
-  '';
+  # sops.templates."Student-1X".path = "/var/lib/iwd/Student-1X.8021x";
+  # sops.templates."Student-1X".content = ''
+  #   [Security]
+  #   EAP-Method=PEAP
+  #   EAP-Identity=f
+  #   EAP-PEAP-Phase2-Method=MSCHAPV2
+  #   EAP-PEAP-Phase2-Identity=${config.sops.placeholder.student_1x_identity}
+  #   EAP-PEAP-Phase2-Password=${config.sops.placeholder.student_1x}
+  #
+  #   [Settings]
+  #   AutoConnect=true
+  # '';
 
   networking = {
     timeServers = options.networking.timeServers.default ++ [
@@ -358,37 +358,37 @@
             };
           };
 
-          Student-1X = {
-            connection = {
-              id = "Student-1X";
-              type = "wifi";
-              autoconnect = "true";
-            };
-            ipv4.method = "auto";
-            ipv6 = {
-              method = "auto";
-              addr-gen-mode = "default";
-            };
-            wifi = {
-              cloned-mac-address = "preserve";
-              mode = "infrastructure";
-              ssid = "Student-1X";
-              security = "802-11-wireless-security";
-            };
-            wifi-security = {
-              auth-alg = "open";
-              key-mgmt = "wpa-eap";
-            };
-            "802-1x" = {
-              eap = "peap;";
-              anonymous-identity = "f";
-              identity = "$student_1x_identity";
-              password = "$student_1x";
-              # phase1-peapver = "1";
-              phase2-auth = "mschapv2";
-              # phase1-auth-flags = "all";
-            };
-          };
+          # Student-1X = {
+          #   connection = {
+          #     id = "Student-1X";
+          #     type = "wifi";
+          #     autoconnect = "true";
+          #   };
+          #   ipv4.method = "auto";
+          #   ipv6 = {
+          #     method = "auto";
+          #     addr-gen-mode = "default";
+          #   };
+          #   wifi = {
+          #     cloned-mac-address = "preserve";
+          #     mode = "infrastructure";
+          #     ssid = "Student-1X";
+          #     security = "802-11-wireless-security";
+          #   };
+          #   wifi-security = {
+          #     auth-alg = "open";
+          #     key-mgmt = "wpa-eap";
+          #   };
+          #   "802-1x" = {
+          #     eap = "peap;";
+          #     anonymous-identity = "f";
+          #     identity = "$student_1x_identity";
+          #     password = "$student_1x";
+          #     # phase1-peapver = "1";
+          #     phase2-auth = "mschapv2";
+          #     # phase1-auth-flags = "all";
+          #   };
+          # };
 
         };
       };
