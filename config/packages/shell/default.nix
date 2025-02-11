@@ -39,11 +39,11 @@ in
 
       sessionVariables = {
         EDITOR = "nvim";
-        # IWD_RTNL_DEBUG = "debug";
-        # IWD_GENL_DEBUG = "debug";
-        # IWD_DHCP_DEBUG = "debug";
-        # IWD_TLS_DEBUG = "debug";
-        # IWD_WSC_DEBUG_KEYS = "debug";
+        IWD_RTNL_DEBUG = "1";
+        IWD_GENL_DEBUG = "1";
+        IWD_DHCP_DEBUG = "debug";
+        IWD_TLS_DEBUG = "1";
+        IWD_WSC_DEBUG_KEYS = "1";
       };
 
       shellAliases = {
