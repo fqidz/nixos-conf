@@ -120,6 +120,9 @@
   };
 
   services = {
+    # Needed for MSCHAPV2 ??
+    pppd.enable = true;
+
     pulseaudio.enable = false;
     fstrim.enable = true;
     tlp.enable = true;
@@ -224,7 +227,6 @@
   sops.templates."Student-1X".content = ''
     [Security]
     EAP-Method=PEAP
-    EAP-Identity=f
     EAP-PEAP-Phase2-Method=MSCHAPV2
     EAP-PEAP-Phase2-Identity=${config.sops.placeholder.student_1x_identity}
     EAP-PEAP-Phase2-Password=${config.sops.placeholder.student_1x}
@@ -368,15 +370,14 @@
             ipv6.method = "auto";
             "802-1x" = {
               eap = "peap;";
-              # anonymous-identity = "f";
               identity = "$student_1x_identity";
               password = "$student_1x";
               password-flags = "0";
               phase2-auth = "mschapv2";
-              phase1-peaplabel = "1";
+              phase1-peaplabel = "0";
             };
             "802-11-wireless" = {
-              # cloned-mac-address = "preserve";
+              cloned-mac-address = "random";
               mode = "infrastructure";
               ssid = "Student-1X";
               security = "802-11-wireless-security";
