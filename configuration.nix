@@ -367,7 +367,7 @@
               autoconnect = "true";
             };
             ipv4.method = "auto";
-            ipv6.method = "auto";
+            ipv6.method = "disabled";
             "802-1x" = {
               eap = "peap;";
               identity = "$student_1x_identity";
