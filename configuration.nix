@@ -223,21 +223,15 @@
   sops.templates."Student-1X".path = "/var/lib/iwd/Student-1X.8021x";
   sops.templates."Student-1X".content = ''
     [Security]
-    EAP-Method=PWD
-    EAP-Identity=${config.sops.placeholder.student_1x_identity}
-    EAP-Password=${config.sops.placeholder.student_1x}
+    EAP-Method=PEAP
+    EAP-Identity=f
+    EAP-PEAP-Phase2-Method=MSCHAPV2
+    EAP-PEAP-Phase2-Identity=${config.sops.placeholder.student_1x_identity}
+    EAP-PEAP-Phase2-Password=${config.sops.placeholder.student_1x}
+
+    [Settings]
+    AutoConnect=true
   '';
-  # sops.templates."Student-1X".content = ''
-  #   [Security]
-  #   EAP-Method=PEAP
-  #   EAP-Identity=f
-  #   EAP-PEAP-Phase2-Method=MSCHAPV2
-  #   EAP-PEAP-Phase2-Identity=${config.sops.placeholder.student_1x_identity}
-  #   EAP-PEAP-Phase2-Password=${config.sops.placeholder.student_1x}
-  #
-  #   [Settings]
-  #   AutoConnect=true
-  # '';
 
   networking = {
     timeServers = options.networking.timeServers.default ++ [
@@ -259,6 +253,7 @@
         device = {
           "wifi.iwd.autoconnect" = false;
         };
+        # ifupdown.managed = "true";
       };
       logLevel = "DEBUG";
 
@@ -272,7 +267,7 @@
           Senzid2 = {
             connection = {
               id = "Senzid2";
-              type = "wifi";
+              type = "802-11-wireless";
               autoconnect = "true";
               autoconnect-priority = 10;
             };
@@ -281,12 +276,12 @@
               method = "auto";
               addr-gen-mode = "default";
             };
-            wifi = {
+            "802-11-wireless" = {
               mode = "infrastructure";
               ssid = "Senzid2";
               cloned-mac-address = "preserve";
             };
-            wifi-security = {
+            "802-11-wireless-security" = {
               auth-alg = "open";
               key-mgmt = "wpa-psk";
               psk = "$senzid2";
@@ -296,7 +291,7 @@
           Senzid = {
             connection = {
               id = "Senzid";
-              type = "wifi";
+              type = "802-11-wireless";
               autoconnect = "true";
               autoconnect-priority = 9;
             };
@@ -305,12 +300,12 @@
               method = "auto";
               addr-gen-mode = "default";
             };
-            wifi = {
+            "802-11-wireless"  = {
               mode = "infrastructure";
               ssid = "Senzid";
               cloned-mac-address = "preserve";
             };
-            wifi-security = {
+            "802-11-wireless-security" = {
               auth-alg = "open";
               key-mgmt = "wpa-psk";
               psk = "$senzid";
@@ -320,7 +315,7 @@
           Pocket-Wifi = {
             connection = {
               id = "Pocket-Wifi";
-              type = "wifi";
+              type = "802-11-wireless";
               autoconnect = "true";
               autoconnect-priority = 11;
             };
@@ -329,12 +324,12 @@
               method = "auto";
               addr-gen-mode = "default";
             };
-            wifi = {
+            "802-11-wireless" = {
               mode = "infrastructure";
               ssid = "senzid 15gb only";
               cloned-mac-address = "random";
             };
-            wifi-security = {
+            "802-11-wireless-security" = {
               auth-alg = "open";
               key-mgmt = "wpa-psk";
               psk = "$pocketwifi";
@@ -344,7 +339,7 @@
           UOB-Events = {
             connection = {
               id = "UOB-Events";
-              type = "wifi";
+              type = "802-11-wireless";
               autoconnect = "true";
             };
             ipv4.method = "auto";
@@ -352,11 +347,11 @@
               method = "auto";
               addr-gen-mode = "default";
             };
-            wifi = {
+            "802-11-wireless" = {
               mode = "infrastructure";
               ssid = "UOB Events";
             };
-            wifi-security = {
+            "802-11-wireless-security" = {
               auth-alg = "open";
               key-mgmt = "wpa-psk";
               psk = "$uob_events";
@@ -366,30 +361,29 @@
           Student-1X = {
             connection = {
               id = "Student-1X";
-              type = "wifi";
+              type = "802-11-wireless";
               autoconnect = "true";
             };
-            # ipv4.method = "auto";
-            ipv6 = {
-              method = "disabled";
-              # addr-gen-mode = "default";
-            };
-            wifi = {
-              # cloned-mac-address = "preserve";
-              # mode = "infrastructure";
-              ssid = "Student-1X";
-              security = "802-11-wireless-security";
-            };
-            # wifi-security = {
-            #   auth-alg = "open";
-            #   key-mgmt = "wpa-eap";
-            # };
+            ipv4.method = "auto";
+            ipv6.method = "auto";
             "802-1x" = {
-              eap = "pwd;";
+              eap = "peap;";
               # anonymous-identity = "f";
               identity = "$student_1x_identity";
               password = "$student_1x";
+              password-flags = "0";
               phase2-auth = "mschapv2";
+              phase1-peaplabel = "1";
+            };
+            "802-11-wireless" = {
+              # cloned-mac-address = "preserve";
+              mode = "infrastructure";
+              ssid = "Student-1X";
+              security = "802-11-wireless-security";
+            };
+            "802-11-wireless-security" = {
+              auth-alg = "open";
+              key-mgmt = "wpa-eap";
             };
           };
 
