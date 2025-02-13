@@ -3,7 +3,7 @@
 network_device='wlan0'
 
 echo_initial() {
-    status=$(nmcli -t device status | grep "$network_device" | cut -d ':' -f3)
+    status=$(nmcli -t device status | grep "$network_device" -m1 | cut -d ':' -f3)
     network_string=$(nmcli -t device wifi list ifname "$network_device" | grep '^*' | sed -E 's/\\:/ /g')
     if [[ $status == "connected" ]]; then
         ssid=$(printf '%s\n' "$network_string" | cut -d ":" -f3)
