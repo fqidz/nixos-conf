@@ -11,7 +11,8 @@ let
       substituteInPlace "$out/init_extra.sh" \
         --replace-fail "jq" "${pkgs.jq}/bin/jq" \
         --replace-fail "sqlite3" "${pkgs.sqlite}/bin/sqlite3" \
-        --replace-fail "fzf" "${pkgs.fzf}/bin/fzf"
+        --replace-fail "fzf" "${pkgs.fzf}/bin/fzf" \
+        --replace-fail '"firefox"' '"${pkgs.firefox}/bin/firefox"'
     '';
   };
 in

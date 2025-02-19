@@ -62,12 +62,18 @@ function books {
     if [[ "$search_path" != "" ]]; then
         file_path=$(fd . "$search_path" -E'*.jpg' -E'*.opf')
         xdg_file_type=$(xdg-mime query filetype "$file_path")
+        program_used=$(xdg-mime query default "$xdg_file_type")
 
         printf \
             "Opening %s with %s\n" \
             "\"${UNDERLINE}${BLUE}$(basename "$file_path")${NORMAL}\"" \
-            "\"${UNDERLINE}${MAGENTA}$(xdg-mime query default "$xdg_file_type")${NORMAL}\""
+            "\"${UNDERLINE}${MAGENTA}"$program_used"${NORMAL}\""
 
-        xdg-open "$file_path"
+        if [[ "$program_used" == "firefox.desktop" ]]; then
+            firefox_exec="firefox"
+            systemd-inhibit --why="Keep book open for reading" $firefox_exec --new-window "$file_path"
+        else
+            systemd-inhibit --why="Keep book open for reading" xdg-open "$file_path"
+        fi
     fi
 }
