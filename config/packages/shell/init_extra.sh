@@ -70,10 +70,11 @@ function books {
             "\"${UNDERLINE}${MAGENTA}"$program_used"${NORMAL}\""
 
         if [[ "$program_used" == "firefox.desktop" ]]; then
+            # Moved into a variable to replace with nixpkgs path
             firefox_exec="firefox"
-            systemd-inhibit --why="Keep book open for reading" $firefox_exec --new-window "$file_path"
+            $firefox_exec --new-window "$file_path"
         else
-            systemd-inhibit --why="Keep book open for reading" xdg-open "$file_path"
+            xdg-open "$file_path"
         fi
     fi
 }
