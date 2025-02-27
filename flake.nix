@@ -5,6 +5,11 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-fork.url = "github:fqidz/nixpkgs/calibre-downgrade";
 
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -25,14 +30,16 @@
       nixpkgs-fork,
       home-manager,
       sops-nix,
+      nix-index-database,
       ...
     }:
     let
       system = "x86_64-linux";
       username = "faidz";
+      pkgs = nixpkgs.legacyPackages.x86_64-linux.${system};
     in
     {
-      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
+      formatter.x86_64-linux = pkgs.nixfmt-rfc-style;
       nixosConfigurations.default = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = {
@@ -52,6 +59,8 @@
           }
 
           ./configuration.nix
+          nix-index-database.nixosModules.nix-index
+          { programs.nix-index-database.comma.enable = true; }
 
           home-manager.nixosModules.home-manager
           {
@@ -71,6 +80,14 @@
               ];
             };
           }
+        ];
+      };
+      homeConfigurations.faidz = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+
+        modules = [
+          nix-index-database.hmModules.nix-index
+          { programs.nix-index-database.comma.enable = true; }
         ];
       };
     };
