@@ -3,6 +3,7 @@
   pkgs,
   inputs,
   username,
+  zen-browser,
   ...
 }:
 let
@@ -17,6 +18,7 @@ in
     username = "${username}";
     homeDirectory = "/home/${username}";
     packages = with pkgs; [
+      zen-browser
       nh
       roboto
       roboto-mono

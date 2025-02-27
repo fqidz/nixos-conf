@@ -21,6 +21,7 @@
     };
 
     sops-nix.url = "github:Mic92/sops-nix";
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };
 
   outputs =
@@ -31,6 +32,8 @@
       home-manager,
       sops-nix,
       nix-index-database,
+      zen-browser,
+      spicetify-nix,
       ...
     }:
     let
@@ -71,11 +74,12 @@
                 inherit inputs;
                 inherit username;
                 inherit self;
+                zen-browser = zen-browser.packages."${system}".twilight;
               };
 
               users.${username}.imports = [
-                inputs.spicetify-nix.homeManagerModules.default
-                inputs.sops-nix.homeManagerModules.sops
+                spicetify-nix.homeManagerModules.default
+                sops-nix.homeManagerModules.sops
                 ./config/home.nix
               ];
             };
