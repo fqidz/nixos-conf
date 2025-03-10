@@ -54,9 +54,11 @@
           "${pkgs.systemd}/bin"
         ];
         ExecStart = "${pkgs.writeShellScript "eww-daemon-start" ''
-          ${pkgs.eww}/bin/eww daemon --no-daemonize -c ~/.config/eww
+          #!${pkgs.bash}/bin/sh
+          ${pkgs.eww}/bin/eww --no-daemonize daemon -c ~/.config/eww
         ''}";
         ExecReload = "${pkgs.writeShellScript "eww-daemon-reload" ''
+          #!${pkgs.bash}/bin/sh
           ${pkgs.eww}/bin/eww reload
         ''}";
         Restart = "on-failure";
@@ -78,14 +80,14 @@
       Service = {
         ExecStart = "${pkgs.writeShellScript "eww-bar-start" ''
           #!${pkgs.bash}/bin/sh
-          ${pkgs.eww}/bin/eww open "bar"
+          ${pkgs.eww}/bin/eww --no-daemonize open "bar"
         ''}";
         Restart = "on-failure";
         RestartSteps = 5;
         RestartMaxDelaySec = 10;
       };
       Install = {
-        WantedBy = [ "graphical-session.target" ];
+        WantedBy = [ "eww-daemon.service" ];
       };
     };
 
