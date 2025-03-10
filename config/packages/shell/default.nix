@@ -42,7 +42,6 @@ in
       };
 
       sessionVariables = {
-        # EDITOR = "nvim";
         IWD_RTNL_DEBUG = "1";
         IWD_GENL_DEBUG = "1";
         IWD_DHCP_DEBUG = "debug";

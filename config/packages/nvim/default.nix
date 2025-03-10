@@ -12,7 +12,8 @@
 
   programs.neovim = {
     enable = true;
-    defaultEditor = true;
+    # not working idk why
+    # defaultEditor = true;
     viAlias = true;
     vimAlias = true;
     plugins = [

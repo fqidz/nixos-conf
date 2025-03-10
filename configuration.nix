@@ -38,6 +38,7 @@
 
 
   environment = {
+    variables.EDITOR = "nvim";
     sessionVariables.NIXOS_OZONE_WL = "1"; # This variable fixes electron apps in wayland
     systemPackages = [
       pkgs.git
