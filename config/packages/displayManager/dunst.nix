@@ -14,7 +14,7 @@
           width = "(200, 300)";
           height = "(100, 200)";
           origin = "top-right";
-          offset = "30x50";
+          offset = "(30, 50)";
           icon_corner_radius = 10;
           corner_radius = 15;
           font = "Roboto Mono";
