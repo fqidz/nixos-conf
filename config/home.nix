@@ -44,6 +44,7 @@ in
       wireshark
       trash-cli
       sqlite
+      nodejs-slim
     ];
     stateVersion = "24.05";
   };

@@ -15,10 +15,11 @@
     enable = true;
     # not working idk why
     # defaultEditor = true;
-    viAlias = true;
-    vimAlias = true;
+
+    # viAlias = true;
+    # vimAlias = true;
     # plugins = [
-    #   pkgs.vimPlugins.markdown-preview-nvim
+    #
     # ];
   };
 
