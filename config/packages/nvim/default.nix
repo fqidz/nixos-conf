@@ -8,6 +8,7 @@
     pkgs.lua
     pkgs.luarocks
     pkgs.marksman
+    pkgs.texpresso
   ];
 
   programs.neovim = {
@@ -16,9 +17,9 @@
     # defaultEditor = true;
     viAlias = true;
     vimAlias = true;
-    plugins = [
-      pkgs.vimPlugins.markdown-preview-nvim
-    ];
+    # plugins = [
+    #   pkgs.vimPlugins.markdown-preview-nvim
+    # ];
   };
 
   # This symlinks the plugin into a directory that lazy.nvim can access
@@ -34,6 +35,11 @@
   #   }
   home.file.".local/share/nvim/nix/markdown-preview-nvim/" = {
     source = pkgs.vimPlugins.markdown-preview-nvim;
+    recursive = true;
+  };
+
+  home.file.".local/share/nvim/nix/texpresso-vim/" = {
+    source = pkgs.vimPlugins.texpresso-vim;
     recursive = true;
   };
 }
