@@ -15,7 +15,8 @@ let
         --replace-fail "fzf" "${pkgs.fzf}/bin/fzf" \
         --replace-fail '"firefox"' '"${pkgs.firefox}/bin/firefox"' \
         --replace-fail "xdg-open" "${pkgs.xdg-utils}/bin/xdg-open" \
-        --replace-fail "xdg-mime" "${pkgs.xdg-utils}/bin/xdg-mime"
+        --replace-fail "xdg-mime" "${pkgs.xdg-utils}/bin/xdg-mime" \
+        --replace-fail "ueberzugpp " "${pkgs.ueberzugpp}/bin/ueberzugpp "
     '';
   };
 in

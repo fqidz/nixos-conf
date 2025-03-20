@@ -29,6 +29,10 @@ function nix-templ {
     fi
 }
 
+function _cleanup_ub {
+    ueberzugpp cmd -s "$UEBERZUGPP_SOCKET" -a exit
+}
+
 function books {
     BOOKS_PATH="$HOME/Books/"
 
@@ -44,13 +48,31 @@ function books {
         printf "%s\t%s%s\n" "$title" "$BOOKS_PATH" "$path"
     done <<< "$data")
 
+    trap _cleanup_ub HUP INT QUIT TERM EXIT
+
+    UB_PID_FILE="/tmp/.$(uuidgen)"
+    ueberzugpp layer --no-stdin --silent --use-escape-codes --pid-file "$UB_PID_FILE"
+    UB_PID=$(cat "$UB_PID_FILE")
+
+    export UEBERZUGPP_SOCKET=/tmp/ueberzugpp-"$UB_PID".socket
+
     search_path=$(
         printf "%s\n" "$processed_data" | \
             fzf \
             -d '\t' \
             --with-nth 1 \
-            --preview='echo {} | cut -f2' \
-            --preview-window=up,1 | \
+            --border rounded \
+            --padding 5% \
+            --preview="ueberzugpp cmd \
+                    -s $UEBERZUGPP_SOCKET \
+                    -i fzfpreview \
+                    -a add \
+                    --xpos \$FZF_PREVIEW_LEFT \
+                    --ypos \$FZF_PREVIEW_TOP \
+                    --max-width \$FZF_PREVIEW_COLUMNS \
+                    --max-height \$FZF_PREVIEW_LINES \
+                    --file {2}/cover.jpg" \
+            --preview-window left,border-block | \
             cut -f2
     )
 
@@ -77,4 +99,6 @@ function books {
             xdg-open "$file_path"
         fi
     fi
+
+    _cleanup_ub
 }
