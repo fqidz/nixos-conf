@@ -59,7 +59,6 @@
         ''}";
         ExecReload = "${pkgs.writeShellScript "eww-daemon-reload" ''
           #!${pkgs.bash}/bin/sh
-          ${pkgs.eww}/bin/eww --no-daemonize kill
           ${pkgs.eww}/bin/eww --no-daemonize reload
         ''}";
         Restart = "on-failure";
