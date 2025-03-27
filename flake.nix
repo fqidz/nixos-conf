@@ -21,6 +21,8 @@
     };
 
     sops-nix.url = "github:Mic92/sops-nix";
+
+    nix-alien.url = "github:thiagokokada/nix-alien";
   };
 
   outputs =
@@ -31,6 +33,7 @@
       home-manager,
       sops-nix,
       nix-index-database,
+      nix-alien,
       ...
     }:
     let
@@ -45,6 +48,7 @@
         specialArgs = {
           inherit inputs;
           inherit username;
+          inherit system;
         };
         modules = [
           {

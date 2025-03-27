@@ -45,6 +45,7 @@ in
       trash-cli
       sqlite
       nodejs-slim
+      weechat
     ];
     stateVersion = "24.05";
   };

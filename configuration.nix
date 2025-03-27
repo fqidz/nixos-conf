@@ -4,6 +4,7 @@
   inputs,
   options,
   username,
+  system,
   ...
 }:
 {
@@ -41,6 +42,7 @@
     variables.EDITOR = "nvim";
     sessionVariables.NIXOS_OZONE_WL = "1"; # This variable fixes electron apps in wayland
     systemPackages = [
+      inputs.nix-alien.packages.${system}.nix-alien
       pkgs.git
       pkgs.vim
       pkgs.wirelesstools
