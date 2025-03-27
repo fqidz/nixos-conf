@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-fork.url = "github:fqidz/nixpkgs/calibre-downgrade";
 
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
@@ -29,7 +28,6 @@
     inputs@{
       self,
       nixpkgs,
-      nixpkgs-fork,
       home-manager,
       sops-nix,
       nix-index-database,
@@ -51,17 +49,6 @@
           inherit system;
         };
         modules = [
-          {
-            nixpkgs.overlays = [
-              (final: prev: {
-                fork = import nixpkgs-fork {
-                  inherit system;
-                  config.allowUnfree = true;
-                };
-              })
-            ];
-          }
-
           ./configuration.nix
           nix-index-database.nixosModules.nix-index
           { programs.nix-index-database.comma.enable = true; }

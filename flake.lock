@@ -112,22 +112,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-fork": {
-      "locked": {
-        "lastModified": 1730057817,
-        "narHash": "sha256-Bp0YtUQ5UbYTYkLjQmAoqnKEYYuDHronsSE6rBkR9eQ=",
-        "owner": "fqidz",
-        "repo": "nixpkgs",
-        "rev": "602dfdbfc7e2f804767b78e84f644d28ea34ae3f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "fqidz",
-        "ref": "calibre-downgrade",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1742889210,
@@ -166,7 +150,6 @@
         "nix-alien": "nix-alien",
         "nix-index-database": "nix-index-database_2",
         "nixpkgs": "nixpkgs_2",
-        "nixpkgs-fork": "nixpkgs-fork",
         "sops-nix": "sops-nix",
         "spicetify-nix": "spicetify-nix"
       }
