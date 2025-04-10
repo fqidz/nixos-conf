@@ -66,8 +66,10 @@ function books {
     export UEBERZUGPP_SOCKET=/tmp/ueberzugpp-"$UB_PID".socket
 
     search_path=$(
+        # Moved into a variable to replace with nixpkgs path
+        fzf_exec="fzf"
         printf "%s\n" "$processed_data" | \
-            fzf \
+            $fzf_exec \
             -d '\t' \
             --with-nth 1 \
             --border rounded \

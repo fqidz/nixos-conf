@@ -28,6 +28,7 @@
       exec-once = [
         "[workspace 1 silent] $terminal"
         "[workspace 2 silent] firefox"
+        "[workspace 3 silent] alacritty --hold -e weechat"
         "hyprctl setcursor $HYPRCURSOR_THEME $HYPRCURSOR_SIZE"
       ];
 

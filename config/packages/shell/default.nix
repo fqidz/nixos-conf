@@ -13,7 +13,7 @@ let
         --replace-fail "jq" "${pkgs.jq}/bin/jq" \
         --replace-fail "sqlite3" "${pkgs.sqlite}/bin/sqlite3" \
         --replace-fail "yazi " "${pkgs.yazi}/bin/yazi "\
-        --replace-fail "fzf" "${pkgs.fzf}/bin/fzf" \
+        --replace-fail '"fzf"' '"${pkgs.fzf}/bin/fzf"' \
         --replace-fail '"firefox"' '"${pkgs.firefox}/bin/firefox"' \
         --replace-fail "xdg-open" "${pkgs.xdg-utils}/bin/xdg-open" \
         --replace-fail "xdg-mime" "${pkgs.xdg-utils}/bin/xdg-mime" \

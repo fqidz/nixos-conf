@@ -46,6 +46,7 @@ in
       sqlite
       nodejs-slim
       weechat
+      mpv
     ];
     stateVersion = "24.05";
   };
@@ -142,10 +143,6 @@ in
         adblockify
         beautifulLyrics
       ];
-    };
-
-    ssh = {
-      enable = true;
     };
   };
 
