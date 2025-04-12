@@ -103,6 +103,10 @@ in
         exec = "btop";
         noDisplay = true;
       };
+      books = {
+        name = "Open books";
+        exec = "alacritty -e zsh -c \"source $HOME/.zshrc && books\"";
+      };
     };
     mimeApps = {
       enable = true;
