@@ -105,7 +105,7 @@ in
       };
       books = {
         name = "Open books";
-        exec = "alacritty -e zsh -c \"source $HOME/.zshrc && books\"";
+        exec = "alacritty -e zsh -c \"source /home/${username}/.zshrc && books\"";
       };
     };
     mimeApps = {
