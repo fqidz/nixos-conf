@@ -104,8 +104,9 @@ in
         noDisplay = true;
       };
       books = {
+        # books function found in config/packages/shell/init_extra.sh
         name = "Open books";
-        exec = "alacritty -e zsh -c \"source /home/${username}/.zshrc && books\"";
+        exec = ''alacritty --option "window.opacity=0.9" --title open-books -e zsh -c "source /home/faidz/.zshrc && books"'';
       };
     };
     mimeApps = {

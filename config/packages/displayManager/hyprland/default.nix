@@ -182,6 +182,9 @@
 
       windowrulev2 = [
         "noanim, class:^(ueberzugpp_.*)$"
+        # open-books window found in config/home.nix: xdg.desktopEntries.books
+        "float, title:open-books"
+        "size 80% 80%, title:open-books"
       ];
     };
   };

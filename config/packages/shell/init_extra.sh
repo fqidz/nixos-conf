@@ -74,6 +74,7 @@ function books {
             --with-nth 1 \
             --border rounded \
             --padding 5% \
+            --color="bg:-1" \
             --preview="ueberzugpp cmd \
                     -s $UEBERZUGPP_SOCKET \
                     -i fzfpreview \
