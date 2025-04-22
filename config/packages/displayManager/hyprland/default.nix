@@ -105,7 +105,10 @@
         ];
         follow_mouse = 1;
         sensitivity = 0;
-        touchpad.natural_scroll = true;
+        touchpad = {
+          natural_scroll = true;
+          disable_while_typing = false;
+        };
         repeat_rate = 25;
         repeat_delay = 200;
       };
