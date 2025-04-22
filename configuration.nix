@@ -17,6 +17,10 @@
     zsh.enable = true;
     nix-ld.enable = true;
 
+    gnupg.agent = {
+      enable = true;
+    };
+
     # Enable Hyprland
     hyprland = {
       enable = true;
