@@ -47,6 +47,7 @@ in
       nodejs-slim
       weechat
       mpv
+      bc
     ];
     stateVersion = "24.05";
   };

@@ -65,7 +65,7 @@ in
         uob = "$HOME/Projects/uob-works/";
       };
 
-      initExtra = builtins.readFile "${initExtraScript}/init_extra.sh";
+      initContent = builtins.readFile "${initExtraScript}/init_extra.sh";
     };
 
     starship = {
