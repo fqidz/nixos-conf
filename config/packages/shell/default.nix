@@ -87,6 +87,9 @@ in
           deleted = " ";
         };
         line_break.disabled = true;
+        c.commands = [
+          [ "clang" "--version" ]
+        ];
       };
     };
   };
