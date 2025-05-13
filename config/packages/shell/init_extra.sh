@@ -11,11 +11,12 @@ function fehv() {
 }
 
 function nix-templ {
+    usage_string="Usage: nix-templ [init|new] [c|java|rust|...]"
     if [[ -z "$1" ]]; then
-        echo "error: no first arg" > /dev/stderr
+        echo "$usage_string"> /dev/stderr
         return 1
     elif [[ -z "$2" ]]; then
-        echo "error: no second arg" > /dev/stderr
+        echo "$usage_string" > /dev/stderr
         return 1
     fi
 
@@ -24,7 +25,8 @@ function nix-templ {
     elif [[ "$1" == "new" ]]; then
         nix flake new --template github:fqidz/nix-templates#$2 $3
     else
-        echo "error: 1st arg either 'init' or 'new'" > /dev/stderr
+        echo "ERROR: unknown \"$1\"" > /dev/stderr
+        echo "$usage_string" > /dev/stderr
         return 1
     fi
 }

@@ -46,7 +46,7 @@ in
       sqlite
       nodejs-slim
       weechat
-      mpv
+      (mpv.override { scripts = [ mpvScripts.mpris ]; })
       bc
     ];
     stateVersion = "24.05";
