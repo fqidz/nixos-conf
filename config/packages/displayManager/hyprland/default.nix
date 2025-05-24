@@ -116,7 +116,7 @@
       gestures.workspace_swipe = false;
 
       workspace = [
-        "special:spotify, on-created-empty:[float] spotify"
+        "special:spotify, on-created-empty:[float; size 80% 80%] spotify"
       ];
 
       bind =

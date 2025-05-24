@@ -407,15 +407,15 @@
       };
     };
 
-    # Open ports in the firewall for syncthing
     firewall = {
       enable = true;
       allowedTCPPorts = [
-        22000
+        22000  # syncthing
+        7171  # website development; open to allow phone to open local website
       ];
       allowedUDPPorts = [
-        22000
-        21027
+        22000  # syncthing
+        21027  # syncthing
       ];
     };
   };

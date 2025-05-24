@@ -142,8 +142,8 @@ in
 
     spicetify = {
       enable = true;
-      theme = spicePkgs.themes.dribbblish;
-      colorScheme = "rosepine";
+      theme = spicePkgs.themes.ziro;
+      colorScheme = "rose-pine";
 
       enabledExtensions = with spicePkgs.extensions; [
         adblockify
