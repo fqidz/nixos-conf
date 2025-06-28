@@ -6,6 +6,7 @@ battery_output() {
         tr ',' '\n' | \
         tr ':' '\n' | \
         tr -d '%' | \
+        tr -d ' ' | \
         jq -R | jq -sc '{
             "status": .[0],
             "capacity": ( .[1] | tonumber ),
