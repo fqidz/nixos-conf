@@ -112,6 +112,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-graalvm-ce-21": {
+      "locked": {
+        "lastModified": 1705980690,
+        "narHash": "sha256-sZUq8SLqJR762b/NGEStB+3bxeKg7cN8wTWn12q9kU8=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "27ec1c9b87f5906fcf94c1e7b2c50ca6c0fc8de5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "27ec1c9b87f5906fcf94c1e7b2c50ca6c0fc8de5",
+        "type": "github"
+      }
+    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1748929857,
@@ -150,6 +166,7 @@
         "nix-alien": "nix-alien",
         "nix-index-database": "nix-index-database_2",
         "nixpkgs": "nixpkgs_2",
+        "nixpkgs-graalvm-ce-21": "nixpkgs-graalvm-ce-21",
         "sops-nix": "sops-nix",
         "spicetify-nix": "spicetify-nix"
       }

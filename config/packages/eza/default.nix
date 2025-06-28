@@ -12,7 +12,7 @@
       "--classify"
       "--oneline"
       "--tree"
-      "--level=1"
+      "--level=0"
       "--group-directories-first"
     ];
   };

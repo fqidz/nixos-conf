@@ -20,14 +20,16 @@
     };
 
     sops-nix.url = "github:Mic92/sops-nix";
-
     nix-alien.url = "github:thiagokokada/nix-alien";
+
+    nixpkgs-graalvm-ce-21.url = "github:nixos/nixpkgs/27ec1c9b87f5906fcf94c1e7b2c50ca6c0fc8de5";
   };
 
   outputs =
     inputs@{
       self,
       nixpkgs,
+      nixpkgs-graalvm-ce-21,
       home-manager,
       sops-nix,
       nix-index-database,
@@ -62,6 +64,9 @@
                 inherit inputs;
                 inherit username;
                 inherit self;
+                pkgs-graalvm-ce-21 = import nixpkgs-graalvm-ce-21 {
+                  inherit system;
+                };
               };
 
               users.${username}.imports = [

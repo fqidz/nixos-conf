@@ -13,5 +13,6 @@
     ./nvim
     ./git
     ./calibre
+    ./minecraft
   ];
 }
