@@ -12,7 +12,8 @@
       "--classify"
       "--oneline"
       "--tree"
-      "--level=0"
+      # https://github.com/eza-community/eza/issues/1499
+      "--level=1"
       "--group-directories-first"
     ];
   };
