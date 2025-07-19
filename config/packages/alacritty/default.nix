@@ -1,34 +1,30 @@
-{ pkgs, ... }:
+{ lib, pkgs, home, ... }:
 let
-  font = "RobotoMono Nerd Font";
+  # fontPkg = pkgs.nerd-fonts.roboto-mono;
+  # fontName = lib.mkIf (builtins.elem fontPkg home.packages) fontPkg.name;
+  fontName = "RobotoMono Nerd Font";
 in
 {
-  home.packages = [
-    pkgs.alacritty
-  ];
-
   programs.alacritty = {
     enable = true;
     settings = {
-      general.import = [ "${./rose-pine.toml}" ];
+      general.import = [ ./rose-pine.toml ];
       font = {
         offset = {
           y = -1;
         };
         size = 12;
-        normal = {
-          family = font;
-        };
+        normal.family = fontName;
         italic = {
-          family = font;
+          family = fontName;
           style = "Italic";
         };
         bold = {
-          family = font;
+          family = fontName;
           style = "Medium";
         };
         bold_italic = {
-          family = font;
+          family = fontName;
           style = "MediumItalic";
         };
       };

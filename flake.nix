@@ -27,7 +27,6 @@
 
   outputs =
     inputs@{
-      self,
       nixpkgs,
       nixpkgs-graalvm-ce-21,
       home-manager,
@@ -43,48 +42,48 @@
     in
     {
       formatter.x86_64-linux = pkgs.nixfmt-rfc-style;
-      nixosConfigurations.default = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = {
-          inherit inputs;
-          inherit username;
+      nixosConfigurations = {
+        "default" = nixpkgs.lib.nixosSystem {
           inherit system;
-        };
-        modules = [
-          ./configuration.nix
-          nix-index-database.nixosModules.nix-index
-          { programs.nix-index-database.comma.enable = true; }
+          specialArgs = {
+            inherit inputs username system;
+          };
+          modules = [
+            ./configuration.nix
+            nix-index-database.nixosModules.nix-index
+            { programs.nix-index-database.comma.enable = true; }
 
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              extraSpecialArgs = {
-                inherit inputs;
-                inherit username;
-                inherit self;
-                pkgs-graalvm-ce-21 = import nixpkgs-graalvm-ce-21 {
-                  inherit system;
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs = {
+                  inherit inputs username;
+                  pkgs-graalvm-ce-21 = import nixpkgs-graalvm-ce-21 {
+                    inherit system;
+                  };
                 };
+
+                users.${username}.imports = [
+                  ./config/home.nix
+                  inputs.spicetify-nix.homeManagerModules.default
+                  inputs.sops-nix.homeManagerModules.sops
+                ];
               };
+            }
+          ];
+        };
+        homeConfigurations = {
+          "faidz" = home-manager.lib.homeManagerConfiguration {
+            inherit pkgs;
 
-              users.${username}.imports = [
-                inputs.spicetify-nix.homeManagerModules.default
-                inputs.sops-nix.homeManagerModules.sops
-                ./config/home.nix
-              ];
-            };
-          }
-        ];
-      };
-      homeConfigurations.faidz = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-
-        modules = [
-          nix-index-database.hmModules.nix-index
-          { programs.nix-index-database.comma.enable = true; }
-        ];
+            modules = [
+              nix-index-database.hmModules.nix-index
+              { programs.nix-index-database.comma.enable = true; }
+            ];
+          };
+        };
       };
     };
 }

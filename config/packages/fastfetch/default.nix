@@ -1,9 +1,5 @@
-{ pkgs, ... }:
+{ ... }:
 {
-  home.packages = [
-    pkgs.fastfetch
-  ];
-
   programs.fastfetch = {
     enable = true;
     settings = {

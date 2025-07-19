@@ -1,7 +1,6 @@
 { pkgs, ... }:
 {
   home.packages = [
-    pkgs.yazi
     pkgs.ueberzugpp
   ];
 
@@ -27,8 +26,6 @@
         image_quality = 50;
         wrap = "no";
       };
-
     };
-
   };
 }

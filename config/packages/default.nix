@@ -1,18 +1,23 @@
 {
   imports = [
-    ./gtk
-    ./shell
-    ./displayManager
-    ./fzf
-    ./direnv
+    ./display-manager
+
     ./alacritty
-    ./eza
-    ./systemd
-    ./yazi
-    ./fastfetch
-    ./nvim
-    ./git
     ./calibre
+    ./direnv
+    ./eza
+    ./fastfetch
+    ./feh
+    ./fonts
+    ./fzf
+    ./git
+    ./gtk
     ./minecraft
+    ./nvim
+    ./shell
+    ./ssh
+    ./systemd
+    ./xdg
+    ./yazi
   ];
 }

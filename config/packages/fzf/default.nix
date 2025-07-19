@@ -1,10 +1,5 @@
 { pkgs, ... }:
 {
-  home.packages = [
-    pkgs.fzf
-    pkgs.fd
-  ];
-
   programs = {
     fd = {
       enable = true;

@@ -22,12 +22,6 @@ let
   };
 in
 {
-  home.packages = [
-    pkgs.zsh
-    pkgs.oh-my-zsh
-    pkgs.starship
-  ];
-
   programs = {
     zsh = {
       enable = true;
@@ -43,19 +37,16 @@ in
         ];
       };
 
-      sessionVariables = {
-        IWD_RTNL_DEBUG = "1";
-        IWD_GENL_DEBUG = "1";
-        IWD_DHCP_DEBUG = "debug";
-        IWD_TLS_DEBUG = "1";
-        IWD_WSC_DEBUG_KEYS = "1";
-      };
+      # sessionVariables = {
+      #   IWD_RTNL_DEBUG = "1";
+      #   IWD_GENL_DEBUG = "1";
+      #   IWD_DHCP_DEBUG = "debug";
+      #   IWD_TLS_DEBUG = "1";
+      #   IWD_WSC_DEBUG_KEYS = "1";
+      # };
 
       shellAliases = {
         nix-rebuild = "sudo nixos-rebuild switch --flake /etc/nixos#default";
-        nh-rebuild = "nh os switch -H default /etc/nixos";
-        spotifyr = "spotify > /dev/null &!";
-        nix-dev = "nix develop -c $SHELL";
         gitroot = "cd \"$(git rev-parse --show-toplevel)\"";
         rm = "printf \"Use the \\`trash\\` command instead. Do \\`%srm\\` if you really need to rm.\\n\" \"\\\\\"; false";
       };
