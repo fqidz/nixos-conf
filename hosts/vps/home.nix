@@ -15,6 +15,7 @@
       ripgrep
       trash-cli
       wget
+      neovim
     ];
     stateVersion = "24.05";
   };
