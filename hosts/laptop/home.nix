@@ -5,11 +5,11 @@
 }:
 {
   imports = [
-    ./packages
+    ../../modules/home-manager/full.nix
   ];
 
   home = {
-    username = "${username}";
+    inherit username;
     homeDirectory = "/home/${username}";
     packages = with pkgs; [
       # Important for sops

@@ -26,7 +26,8 @@
   };
 
   outputs =
-    inputs@{
+    {
+      self,
       nixpkgs,
       nixpkgs-graalvm-ce-21,
       home-manager,
@@ -34,22 +35,33 @@
       nix-index-database,
       nix-alien,
       ...
-    }:
-    let
-      system = "x86_64-linux";
+    } @ inputs: let
+      inherit (self) outputs;
+      systems = [
+        "aarch64-linux"
+        "i686-linux"
+        "x86_64-linux"
+        "aarch64-darwin"
+        "x86_64-darwin"
+      ];
+      forAllSystems = nixpkgs.lib.genAttrs systems;
       username = "faidz";
-      pkgs = nixpkgs.legacyPackages.x86_64-linux.${system};
     in
     {
-      formatter.x86_64-linux = pkgs.nixfmt-rfc-style;
+      packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
+      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-rfc-style);
+      # nixosModules = import ./modules/nixos;
+      # homeManagerModules = import ./modules/home-manager;
+
       nixosConfigurations = {
-        "default" = nixpkgs.lib.nixosSystem {
-          inherit system;
+        "laptop" = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
           specialArgs = {
-            inherit inputs username system;
+            inherit inputs outputs username;
+            system = "x86_64-linux";
           };
           modules = [
-            ./configuration.nix
+            ./hosts/laptop/configuration.nix
             nix-index-database.nixosModules.nix-index
             { programs.nix-index-database.comma.enable = true; }
 
@@ -59,14 +71,16 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 extraSpecialArgs = {
-                  inherit inputs username;
+                  inherit inputs outputs username;
                   pkgs-graalvm-ce-21 = import nixpkgs-graalvm-ce-21 {
-                    inherit system;
+                    system = "x86_64-linux";
                   };
+                  system = "x86_64-linux";
                 };
 
                 users.${username}.imports = [
-                  ./config/home.nix
+                  ./hosts/laptop/home.nix
+                  # ./config/home.nix
                   inputs.spicetify-nix.homeManagerModules.default
                   inputs.sops-nix.homeManagerModules.sops
                 ];
@@ -74,16 +88,53 @@
             }
           ];
         };
-        homeConfigurations = {
-          "faidz" = home-manager.lib.homeManagerConfiguration {
-            inherit pkgs;
 
-            modules = [
-              nix-index-database.hmModules.nix-index
-              { programs.nix-index-database.comma.enable = true; }
-            ];
-          };
+      #   "vps" = nixpkgs.lib.nixosSystem {
+      #     system = "aarch64-linux";
+      #     specialArgs = {
+      #       inherit inputs username;
+      #     };
+      #     modules = [
+      #       ./configuration.nix
+      #       nix-index-database.nixosModules.nix-index
+      #
+      #       home-manager.nixosModules.home-manager
+      #       {
+      #         home-manager = {
+      #           useGlobalPkgs = true;
+      #           useUserPackages = true;
+      #           extraSpecialArgs = {
+      #             inherit inputs username;
+      #           };
+      #
+      #           users.${username}.imports = [
+      #             ./config/home.nix
+      #           ];
+      #         };
+      #       }
+      #     ];
+      #   };
+      };
+
+      homeConfigurations = {
+        "${username}@laptop" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages."x86_64-linux";
+          modules = [
+            # ./hosts/laptop/home.nix
+            nix-index-database.hmModules.nix-index
+            { programs.nix-index-database.comma.enable = true; }
+          ];
         };
+
+        # "faidz@vps" = home-manager.lib.homeManagerConfiguration {
+        #   pkgs = nixpkgs.legacyPackages."aarch64-linux";
+        #   extraSpecialArgs = {
+        #     inherit inputs outputs;
+        #   };
+        #   modules = [
+        #     nix-index-database.hmModules.nix-index
+        #   ];
+        # };
       };
     };
 }
