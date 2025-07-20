@@ -40,16 +40,11 @@
       # Programs (that don't need their own config file)
       (mpv.override { scripts = [ mpvScripts.mpris ]; })
       obsidian
-      # spicetify-cli
       sqlite
       weechat
       wireshark
     ];
     stateVersion = "24.05";
-  };
-
-  programs = {
-    firefox.enable = true;
   };
 
   nixpkgs.config.allowUnfree = true;

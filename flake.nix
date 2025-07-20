@@ -80,7 +80,6 @@
 
                 users.${username}.imports = [
                   ./hosts/laptop/home.nix
-                  # ./config/home.nix
                   inputs.spicetify-nix.homeManagerModules.default
                   inputs.sops-nix.homeManagerModules.sops
                 ];
@@ -120,7 +119,6 @@
         "${username}@laptop" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages."x86_64-linux";
           modules = [
-            # ./hosts/laptop/home.nix
             nix-index-database.hmModules.nix-index
             { programs.nix-index-database.comma.enable = true; }
           ];

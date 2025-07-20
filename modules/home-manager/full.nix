@@ -3,6 +3,7 @@
     ./desktop-environment
 
     ./alacritty
+    ./browser
     ./calibre
     ./direnv
     ./eza
