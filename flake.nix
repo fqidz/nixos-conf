@@ -89,31 +89,35 @@
           ];
         };
 
-        #   "vps" = nixpkgs.lib.nixosSystem {
-        #     system = "aarch64-linux";
-        #     specialArgs = {
-        #       inherit inputs username;
-        #     };
-        #     modules = [
-        #       ./configuration.nix
-        #       nix-index-database.nixosModules.nix-index
-        #
-        #       home-manager.nixosModules.home-manager
-        #       {
-        #         home-manager = {
-        #           useGlobalPkgs = true;
-        #           useUserPackages = true;
-        #           extraSpecialArgs = {
-        #             inherit inputs username;
-        #           };
-        #
-        #           users.${username}.imports = [
-        #             ./config/home.nix
-        #           ];
-        #         };
-        #       }
-        #     ];
-        #   };
+        "vps" = nixpkgs.lib.nixosSystem {
+          system = "aarch64-linux";
+          specialArgs = {
+            inherit inputs outputs username;
+            system = "aarch64-linux";
+          };
+          modules = [
+            ./hosts/vps/configuration.nix
+            nix-index-database.nixosModules.nix-index
+            { programs.nix-index-database.comma.enable = true; }
+
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs = {
+                  inherit inputs outputs username;
+                  system = "aarch64-linux";
+                };
+
+                users.${username}.imports = [
+                  ./hosts/vps/home.nix
+                  # inputs.sops-nix.homeManagerModules.sops
+                ];
+              };
+            }
+          ];
+        };
       };
 
       homeConfigurations = {
@@ -125,15 +129,13 @@
           ];
         };
 
-        # "faidz@vps" = home-manager.lib.homeManagerConfiguration {
-        #   pkgs = nixpkgs.legacyPackages."aarch64-linux";
-        #   extraSpecialArgs = {
-        #     inherit inputs outputs;
-        #   };
-        #   modules = [
-        #     nix-index-database.hmModules.nix-index
-        #   ];
-        # };
+        "${username}@vps" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages."aarch64-linux";
+          modules = [
+            nix-index-database.hmModules.nix-index
+            { programs.nix-index-database.comma.enable = true; }
+          ];
+        };
       };
     };
 }
