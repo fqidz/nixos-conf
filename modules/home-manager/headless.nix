@@ -1,13 +1,17 @@
 {
   imports = [
-    # ./alacritty
-    # ./calibre
     # ./desktop-environment
+
+    # ./alacritty
+    # ./browser
+    # ./calibre
     # ./feh
     # ./fonts
     # ./gtk
     # ./minecraft
+    # ./spicetify
     # ./ssh
+    # ./syncthing
     # ./xdg
 
     ./direnv

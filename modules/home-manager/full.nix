@@ -16,7 +16,9 @@
     ./minecraft
     ./nvim
     ./shell
+    ./spicetify
     ./ssh
+    ./syncthing
     ./systemd
     ./xdg
     ./yazi

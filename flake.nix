@@ -80,7 +80,7 @@
 
                 users.${username}.imports = [
                   ./hosts/laptop/home.nix
-                  inputs.spicetify-nix.homeManagerModules.default
+                  inputs.spicetify-nix.homeManagerModules.spicetify
                   inputs.sops-nix.homeManagerModules.sops
                 ];
               };
