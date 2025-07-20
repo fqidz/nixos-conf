@@ -13,13 +13,13 @@
     # ./ssh
     # ./syncthing
     # ./xdg
+    # ./nvim
 
     ./direnv
     ./eza
     ./fastfetch
     ./fzf
     ./git
-    ./nvim
     ./shell
     ./systemd
     ./yazi
