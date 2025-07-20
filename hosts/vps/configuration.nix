@@ -5,6 +5,7 @@
     ./hardware-configuration.nix
 
     ../../modules/nixos/shell
+    ../../modules/nixos/nginx
   ];
 
   # Use the systemd-boot EFI boot loader.
