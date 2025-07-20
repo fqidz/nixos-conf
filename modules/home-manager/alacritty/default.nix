@@ -1,4 +1,9 @@
-{ lib, pkgs, home, ... }:
+{
+  lib,
+  pkgs,
+  home,
+  ...
+}:
 let
   # fontPkg = pkgs.nerd-fonts.roboto-mono;
   # fontName = lib.mkIf (builtins.elem fontPkg home.packages) fontPkg.name;

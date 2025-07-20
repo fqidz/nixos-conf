@@ -79,7 +79,10 @@ in
         };
         line_break.disabled = true;
         c.commands = [
-          [ "clang" "--version" ]
+          [
+            "clang"
+            "--version"
+          ]
         ];
       };
     };

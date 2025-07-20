@@ -193,12 +193,12 @@
     firewall = {
       enable = true;
       allowedTCPPorts = [
-        22000  # syncthing
-        7171  # website development; open to allow phone to open local website
+        22000 # syncthing
+        7171 # website development; open to allow phone to open local website
       ];
       allowedUDPPorts = [
-        22000  # syncthing
-        21027  # syncthing
+        22000 # syncthing
+        21027 # syncthing
       ];
     };
   };

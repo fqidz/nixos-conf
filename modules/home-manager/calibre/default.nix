@@ -7,7 +7,7 @@
   xdg = {
     desktopEntries = {
       calibre-gui = {
-        name= "Calibre";
+        name = "Calibre";
         type = "Application";
         genericName = "E-book library management";
         comment = "E-book library management: Convert, view, share, catalogue all your e-books";
@@ -44,7 +44,7 @@
       };
 
       calibre-ebook-viewer = {
-        name= "E-book Viewer";
+        name = "E-book Viewer";
         type = "Application";
         genericName = "Viewer of E-books";
         comment = "Viewer for E-books in all the major formats";
@@ -95,7 +95,7 @@
     };
 
     mimeApps.defaultApplications = {
-        "application/lrf" = "calibre-lrfviewer.desktop";
+      "application/lrf" = "calibre-lrfviewer.desktop";
     };
   };
 }

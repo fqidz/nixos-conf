@@ -35,7 +35,8 @@
       nix-index-database,
       nix-alien,
       ...
-    } @ inputs: let
+    }@inputs:
+    let
       inherit (self) outputs;
       systems = [
         "aarch64-linux"
@@ -88,31 +89,31 @@
           ];
         };
 
-      #   "vps" = nixpkgs.lib.nixosSystem {
-      #     system = "aarch64-linux";
-      #     specialArgs = {
-      #       inherit inputs username;
-      #     };
-      #     modules = [
-      #       ./configuration.nix
-      #       nix-index-database.nixosModules.nix-index
-      #
-      #       home-manager.nixosModules.home-manager
-      #       {
-      #         home-manager = {
-      #           useGlobalPkgs = true;
-      #           useUserPackages = true;
-      #           extraSpecialArgs = {
-      #             inherit inputs username;
-      #           };
-      #
-      #           users.${username}.imports = [
-      #             ./config/home.nix
-      #           ];
-      #         };
-      #       }
-      #     ];
-      #   };
+        #   "vps" = nixpkgs.lib.nixosSystem {
+        #     system = "aarch64-linux";
+        #     specialArgs = {
+        #       inherit inputs username;
+        #     };
+        #     modules = [
+        #       ./configuration.nix
+        #       nix-index-database.nixosModules.nix-index
+        #
+        #       home-manager.nixosModules.home-manager
+        #       {
+        #         home-manager = {
+        #           useGlobalPkgs = true;
+        #           useUserPackages = true;
+        #           extraSpecialArgs = {
+        #             inherit inputs username;
+        #           };
+        #
+        #           users.${username}.imports = [
+        #             ./config/home.nix
+        #           ];
+        #         };
+        #       }
+        #     ];
+        #   };
       };
 
       homeConfigurations = {

@@ -82,7 +82,7 @@
               method = "auto";
               addr-gen-mode = "default";
             };
-            "802-11-wireless"  = {
+            "802-11-wireless" = {
               mode = "infrastructure";
               ssid = "Senzid";
               cloned-mac-address = "preserve";
