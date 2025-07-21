@@ -16,6 +16,7 @@
       trash-cli
       wget
       neovim
+      nginxMainline
     ];
     stateVersion = "24.05";
   };
