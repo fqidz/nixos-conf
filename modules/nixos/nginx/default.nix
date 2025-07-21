@@ -26,8 +26,14 @@
 
         locations."/" = {
           proxyPass = "http://127.0.0.1:8080";
-          # root = "/var/www";
+          recommendedProxySettings = true;
+          proxyWebsockets = true;
         };
+        # locations."/websocket/" = {
+        #   proxyPass = "http://127.0.0.1:8080";
+        #   recommendedProxySettings = true;
+        #   proxyWebsockets = true;
+        # };
       };
 
       "updatecountdown.com" = {
