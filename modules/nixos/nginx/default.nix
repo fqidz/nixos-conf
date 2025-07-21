@@ -3,7 +3,10 @@
   security = {
     acme = {
       acceptTerms = true;
-      certs."updatecountdown.com".email = "faidz.arante@gmail.com";
+      defaults.email = "faidz.arante@gmail.com";
+      # certs."updatecountdown.com" = {
+      #   email = "faidz.arante@gmail.com";
+      # };
     };
   };
   services.nginx = {
@@ -14,19 +17,23 @@
     recommendedGzipSettings = true;
     recommendedProxySettings = true;
     package = pkgs.nginxMainline;
-    # appendConfig = "";
     enableReload = true;
 
     virtualHosts = {
-      "updatecountdown.com" = {
+      "www.updatecountdown.com" = {
         forceSSL = true;
         enableACME = true;
 
-        serverAliases = [ "www.updatecountdown.com" ];
         locations."/" = {
-          proxyPass = "http://[::1]:8080";
+          proxyPass = "http://127.0.0.1:8080";
           # root = "/var/www";
         };
+      };
+
+      "updatecountdown.com" = {
+        forceSSL = true;
+        enableACME = true;
+        globalRedirect = "www.updatecountdown.com";
       };
     };
   };
