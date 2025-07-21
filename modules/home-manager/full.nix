@@ -20,6 +20,7 @@
     ./ssh
     ./syncthing
     ./systemd
+    # ./tmux
     ./xdg
     ./yazi
   ];

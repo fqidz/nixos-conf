@@ -4,9 +4,6 @@
     acme = {
       acceptTerms = true;
       defaults.email = "faidz.arante@gmail.com";
-      # certs."updatecountdown.com" = {
-      #   email = "faidz.arante@gmail.com";
-      # };
     };
   };
   services.nginx = {

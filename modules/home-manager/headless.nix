@@ -22,6 +22,7 @@
     ./git
     ./shell
     ./systemd
+    ./tmux
     ./yazi
   ];
 }
