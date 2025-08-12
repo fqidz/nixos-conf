@@ -62,14 +62,6 @@
     ];
   };
 
-  security.sudo.extraConfig = ''
-    # Save sudo across terminals
-    Defaults timestamp_type = global
-
-    # Set sudo timeout to 10 minutes
-    Defaults timestamp_timeout = 10
-  '';
-
   boot = {
     supportedFilesystems = [
       "ntfs"
@@ -121,6 +113,10 @@
     # Needed for MSCHAPV2 ??
     pppd.enable = true;
 
+    # Orca screen reader
+    orca.enable = true;
+    gnome.at-spi2-core.enable = true;
+
     pulseaudio.enable = false;
     fstrim.enable = true;
     tlp.enable = true;
@@ -169,7 +165,26 @@
     graphics.enable = true;
   };
 
-  security.rtkit.enable = true;
+  security = {
+    rtkit.enable = true;
+    sudo.extraConfig = ''
+      # Save sudo across terminals
+      Defaults timestamp_type = global
+
+      # Set sudo timeout to 10 minutes
+      Defaults timestamp_timeout = 10
+    '';
+    # pam.loginLimits = [
+    #   {
+    #     domain = "*";
+    #     type = "-";
+    #     item = "nofile";
+    #     value = "32768";
+    #   }
+    # ];
+  };
+
+  systemd.user.extraConfig = "DefaultLimitNOFILE=32768";
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
