@@ -15,6 +15,7 @@
     ../../modules/nixos/shell
     ../../modules/nixos/sops
     ../../modules/nixos/wifi
+    ../../modules/nixos/containers
   ];
 
   programs = {
