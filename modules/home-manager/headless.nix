@@ -20,6 +20,7 @@
     ./fastfetch
     ./fzf
     ./git
+    ./gnupg
     ./shell
     ./systemd
     ./tmux

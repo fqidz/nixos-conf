@@ -13,6 +13,7 @@
     ./fzf
     ./git
     ./gtk
+    ./gnupg
     ./minecraft
     ./nvim
     ./shell
