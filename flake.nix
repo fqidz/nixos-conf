@@ -14,6 +14,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    quadlet-nix.url = "github:SEIAROTg/quadlet-nix";
+
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -31,6 +33,7 @@
       nixpkgs,
       nixpkgs-graalvm-ce-21,
       home-manager,
+      quadlet-nix,
       sops-nix,
       nix-index-database,
       nix-alien,
@@ -65,6 +68,7 @@
             ./hosts/laptop/configuration.nix
             nix-index-database.nixosModules.nix-index
             { programs.nix-index-database.comma.enable = true; }
+            quadlet-nix.nixosModules.quadlet
 
             home-manager.nixosModules.home-manager
             {
@@ -99,6 +103,7 @@
             ./hosts/vps/configuration.nix
             nix-index-database.nixosModules.nix-index
             { programs.nix-index-database.comma.enable = true; }
+            quadlet-nix.nixosModules.quadlet
 
             home-manager.nixosModules.home-manager
             {
@@ -112,7 +117,7 @@
 
                 users.${username}.imports = [
                   ./hosts/vps/home.nix
-                  # inputs.sops-nix.homeManagerModules.sops
+                  inputs.sops-nix.homeManagerModules.sops
                 ];
               };
             }

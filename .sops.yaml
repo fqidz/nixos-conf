@@ -1,7 +1,12 @@
 keys:
   - &faidz age137vgduqjep676qkkk0s5q23sxd9lq5hdztc6p3phxpytfj9jmcssetgaav
+  - &vps age1ahjyzrlwd03ycd2sqwdpxk7y9c7jualg4a93efd0nfwackf95srq6hmny7
 creation_rules:
-  - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
+  - path_regex: secrets/wifi.yaml$
     key_groups:
     - age:
       - *faidz
+  - path_regex: secrets/db.yaml$
+    key_groups:
+    - age:
+      - *vps

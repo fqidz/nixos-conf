@@ -6,6 +6,7 @@
 {
   imports = [
     ../../modules/home-manager/full.nix
+    ../../modules/home-manager/podman-quadlet
   ];
 
   home = {

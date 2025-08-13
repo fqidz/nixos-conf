@@ -6,6 +6,8 @@
 
     ../../modules/nixos/shell
     ../../modules/nixos/nginx
+    ../../modules/nixos/sops
+    ../../modules/nixos/podman
   ];
 
   # Use the systemd-boot EFI boot loader.

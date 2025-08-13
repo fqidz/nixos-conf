@@ -1,10 +1,10 @@
 { config, ... }:
 {
   sops.secrets = {
-    "wifi.env" = { };
-    "wifi_identity.env" = { };
-    "student_1x_identity" = { };
-    "student_1x" = { };
+    "wifi.env".sopsFile = ../../../secrets/wifi.yaml;
+    "wifi_identity.env".sopsFile = ../../../secrets/wifi.yaml;
+    "student_1x_identity".sopsFile = ../../../secrets/wifi.yaml;
+    "student_1x".sopsFile = ../../../secrets/wifi.yaml;
   };
 
   sops.templates."Student-1X".path = "/var/lib/iwd/Student-1X.8021x";
