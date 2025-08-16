@@ -40,7 +40,7 @@
     };
 
     virtualHosts = {
-      "www.updatecountdown.com" = {
+      "updatecountdown.com" = {
         forceSSL = true;
         enableACME = true;
 
@@ -56,10 +56,10 @@
         };
       };
 
-      "updatecountdown.com" = {
+      "www.updatecountdown.com" = {
         forceSSL = true;
         enableACME = true;
-        globalRedirect = "www.updatecountdown.com";
+        globalRedirect = "updatecountdown.com";
       };
     };
   };
