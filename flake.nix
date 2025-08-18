@@ -52,7 +52,7 @@
       username = "faidz";
     in
     {
-      packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
+      # packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
       formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-rfc-style);
       # nixosModules = import ./modules/nixos;
       # homeManagerModules = import ./modules/home-manager;

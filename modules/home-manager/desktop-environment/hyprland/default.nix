@@ -74,7 +74,8 @@
           "windows, 1, 3, ease-back, popin"
           "border, 1, 10, default"
           "fade, 1, 7, default"
-          "workspaces, 1, 2, default"
+          # "workspaces, 1, 2, default"
+          "workspaces, 0"
           "layers, 1, 1, default"
         ];
         bezier = [
