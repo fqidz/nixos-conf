@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  pkgs-ch341,
   inputs,
   options,
   username,
@@ -71,6 +72,10 @@
       efi.canTouchEfiVariables = true;
     };
     kernelPackages = pkgs.linuxPackages_latest;
+
+    # kernelModules = [ "ch341" ];
+    # # extraModulePackages = [ config.boot.kernelPackages.ch341 ];
+    # extraModulePackages = [ pkgs-ch341.ch341 ];
 
     consoleLogLevel = 0; # silent boot
     kernelParams = [

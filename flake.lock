@@ -112,6 +112,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-ch341": {
+      "locked": {
+        "lastModified": 1755535906,
+        "narHash": "sha256-UmJC7iUmOOAqEoQENEJPeg4dLYEGVwzmrPLLlXNV0UE=",
+        "owner": "fqidz",
+        "repo": "nixpkgs",
+        "rev": "409006cf81ca2664502a4caf41a35b04049b06dc",
+        "type": "github"
+      },
+      "original": {
+        "owner": "fqidz",
+        "ref": "ch341-driver",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-graalvm-ce-21": {
       "locked": {
         "lastModified": 1705980690,
@@ -181,6 +197,7 @@
         "nix-alien": "nix-alien",
         "nix-index-database": "nix-index-database_2",
         "nixpkgs": "nixpkgs_2",
+        "nixpkgs-ch341": "nixpkgs-ch341",
         "nixpkgs-graalvm-ce-21": "nixpkgs-graalvm-ce-21",
         "quadlet-nix": "quadlet-nix",
         "sops-nix": "sops-nix",
