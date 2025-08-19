@@ -1,7 +1,6 @@
 { pkgs, ... }:
 {
   home.packages = [
-    pkgs.nil
     pkgs.tree-sitter
     pkgs.lua-language-server
     pkgs.vscode-langservers-extracted

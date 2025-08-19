@@ -25,7 +25,7 @@
     nix-alien.url = "github:thiagokokada/nix-alien";
 
     nixpkgs-graalvm-ce-21.url = "github:nixos/nixpkgs/27ec1c9b87f5906fcf94c1e7b2c50ca6c0fc8de5";
-    nixpkgs-ch341.url = "github:fqidz/nixpkgs/ch341-driver";
+    nixpkgs-ch341.url = "github:fqidz/nixpkgs/ch341-driver-unstable";
   };
 
   outputs =
@@ -36,9 +36,9 @@
       nixpkgs-ch341,
       home-manager,
       quadlet-nix,
+      spicetify-nix,
       sops-nix,
       nix-index-database,
-      nix-alien,
       ...
     }@inputs:
     let
@@ -56,8 +56,6 @@
     {
       # packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
       formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-rfc-style);
-      # nixosModules = import ./modules/nixos;
-      # homeManagerModules = import ./modules/home-manager;
 
       nixosConfigurations = {
         "laptop" = nixpkgs.lib.nixosSystem {
@@ -90,8 +88,8 @@
 
                 users.${username}.imports = [
                   ./hosts/laptop/home.nix
-                  inputs.spicetify-nix.homeManagerModules.spicetify
-                  inputs.sops-nix.homeManagerModules.sops
+                  spicetify-nix.homeManagerModules.spicetify
+                  sops-nix.homeManagerModules.sops
                 ];
               };
             }
@@ -122,7 +120,7 @@
 
                 users.${username}.imports = [
                   ./hosts/vps/home.nix
-                  inputs.sops-nix.homeManagerModules.sops
+                  sops-nix.homeManagerModules.sops
                 ];
               };
             }

@@ -43,6 +43,7 @@
     systemPackages = [
       pkgs.git
       pkgs.vim
+      pkgs.nixd
 
       inputs.nix-alien.packages.${system}.nix-alien
       pkgs.wirelesstools
@@ -73,9 +74,9 @@
     };
     kernelPackages = pkgs.linuxPackages_latest;
 
-    # kernelModules = [ "ch341" ];
-    # # extraModulePackages = [ config.boot.kernelPackages.ch341 ];
-    # extraModulePackages = [ pkgs-ch341.ch341 ];
+    kernelModules = [ "ch341" ];
+    # extraModulePackages = [ config.boot.kernelPackages.ch341 ];
+    extraModulePackages = [ pkgs-ch341.linuxPackages_latest.ch341 ];
 
     consoleLogLevel = 0; # silent boot
     kernelParams = [
