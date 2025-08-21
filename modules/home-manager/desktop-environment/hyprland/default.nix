@@ -75,7 +75,7 @@
           "border, 1, 10, default"
           "fade, 1, 7, default"
           # "workspaces, 1, 2, default"
-          "workspaces, 0"
+          "workspaces, 1, 0.25, default"
           "layers, 1, 1, default"
         ];
         bezier = [

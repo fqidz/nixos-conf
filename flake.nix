@@ -26,6 +26,7 @@
 
     nixpkgs-graalvm-ce-21.url = "github:nixos/nixpkgs/27ec1c9b87f5906fcf94c1e7b2c50ca6c0fc8de5";
     nixpkgs-ch341.url = "github:fqidz/nixpkgs/ch341-driver-unstable";
+    nixpkgs-memprocfs.url = "github:fqidz/nixpkgs/memprocfs";
   };
 
   outputs =
@@ -34,6 +35,7 @@
       nixpkgs,
       nixpkgs-graalvm-ce-21,
       nixpkgs-ch341,
+      nixpkgs-memprocfs,
       home-manager,
       quadlet-nix,
       spicetify-nix,
@@ -81,6 +83,9 @@
                 extraSpecialArgs = {
                   inherit inputs outputs username;
                   pkgs-graalvm-ce-21 = import nixpkgs-graalvm-ce-21 {
+                    system = "x86_64-linux";
+                  };
+                  pkgs-memprocfs = import nixpkgs-memprocfs {
                     system = "x86_64-linux";
                   };
                   system = "x86_64-linux";

@@ -144,6 +144,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-memprocfs": {
+      "locked": {
+        "lastModified": 1755808826,
+        "narHash": "sha256-IP6rtLYmDeDw9wCK/uMziHNDv5LkRXgPRbaL4FjxZ/A=",
+        "owner": "fqidz",
+        "repo": "nixpkgs",
+        "rev": "abb43e4e30f9984eeedf69ed8ff3f3d41aefb553",
+        "type": "github"
+      },
+      "original": {
+        "owner": "fqidz",
+        "ref": "memprocfs",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1755186698,
@@ -199,6 +215,7 @@
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-ch341": "nixpkgs-ch341",
         "nixpkgs-graalvm-ce-21": "nixpkgs-graalvm-ce-21",
+        "nixpkgs-memprocfs": "nixpkgs-memprocfs",
         "quadlet-nix": "quadlet-nix",
         "sops-nix": "sops-nix",
         "spicetify-nix": "spicetify-nix"
