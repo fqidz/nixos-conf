@@ -146,11 +146,11 @@
     },
     "nixpkgs-memprocfs": {
       "locked": {
-        "lastModified": 1755808826,
-        "narHash": "sha256-IP6rtLYmDeDw9wCK/uMziHNDv5LkRXgPRbaL4FjxZ/A=",
+        "lastModified": 1756193083,
+        "narHash": "sha256-5K13nxAeSXl0Uy5c2jLP8Ou6+cYtn7To1q9iyGTdjnE=",
         "owner": "fqidz",
         "repo": "nixpkgs",
-        "rev": "abb43e4e30f9984eeedf69ed8ff3f3d41aefb553",
+        "rev": "090ced186535092e5a8ca967f1321d63936c7a84",
         "type": "github"
       },
       "original": {

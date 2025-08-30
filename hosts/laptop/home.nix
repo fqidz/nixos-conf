@@ -41,7 +41,6 @@
       socat
       trash-cli
       wget
-      pkgs-memprocfs.memprocfs
 
       # Programs (that don't need their own config file)
       (mpv.override { scripts = [ mpvScripts.mpris ]; })

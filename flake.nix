@@ -68,6 +68,9 @@
             pkgs-ch341 = import nixpkgs-ch341 {
               system = "x86_64-linux";
             };
+            pkgs-memprocfs = import nixpkgs-memprocfs {
+              system = "x86_64-linux";
+            };
           };
           modules = [
             ./hosts/laptop/configuration.nix
@@ -83,9 +86,6 @@
                 extraSpecialArgs = {
                   inherit inputs outputs username;
                   pkgs-graalvm-ce-21 = import nixpkgs-graalvm-ce-21 {
-                    system = "x86_64-linux";
-                  };
-                  pkgs-memprocfs = import nixpkgs-memprocfs {
                     system = "x86_64-linux";
                   };
                   system = "x86_64-linux";

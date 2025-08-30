@@ -17,6 +17,7 @@
     ../../modules/nixos/sops
     ../../modules/nixos/wifi
     ../../modules/nixos/podman
+    ../../modules/nixos/memprocfs
   ];
 
   programs = {
