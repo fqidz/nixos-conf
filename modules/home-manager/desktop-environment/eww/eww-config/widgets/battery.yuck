@@ -1,51 +1,54 @@
-(deflisten battery_json
-  :initial '{"status":"Unknown","capacity":0,"h":0,"m":0,"s":0}'
-  `/usr/bin/env sh ~/.config/eww/scripts/battery.sh`
+(deflisten battery_val
+  ;; https://github.com/fqidz/getinfo
+  :initial '{"status":"Unknown","capacity":0,"time_remaining":{"h":0,"m":0,"s":0}}'
+  `~/.config/eww/scripts/getinfo-6fd8feb battery status,capacity,time --watch --json`
 )
 
 (defwidget battery []
   (box
     :orientation "h"
     :class `battery${
-      battery_json.status == "Charging" ? "-charging" :
-      battery_json.capacity <= 30 ? "-low" : ""
+      battery_val.status == "Charging" ? "-charging" :
+      battery_val.capacity <= 30 ? "-low" : ""
     }`
     :space-evenly false
     (eventbox
-      :tooltip `${
-        battery_json.status == "Discharging" ? (
-          battery_json.h > 0 ?
-            "${battery_json.h}h ${battery_json.m}m to empty" :
-            "${battery_json.m}m to empty"
+      ;; TODO: fix newline in tooltip when battery is full
+      :tooltip `${battery_val.capacity}%
+      ${
+        battery_val.status == "Discharging" ? (
+          battery_val.time_remaining.h > 0 ?
+            "${battery_val.time_remaining.h}h ${battery_val.time_remaining.m}m to empty" :
+            "${battery_val.time_remaining.m}m to empty"
         ) :
-        battery_json.status == "Charging" ? (
-          battery_json.h > 0 ?
-            "${battery_json.h}h ${battery_json.m}m to full" :
-            "${battery_json.m}m to full"
+        battery_val.status == "Charging" ? (
+          battery_val.time_remaining.h > 0 ?
+            "${battery_val.time_remaining.h}h ${battery_val.time_remaining.m}m to full" :
+            "${battery_val.time_remaining.m}m to full"
         ) :
-        battery_json.status == "Full" ? "" : "Unknown";
+        battery_val.status == "Full" ? "" : "Unknown";
       }`
       (box
         (label
           :text `${
-            battery_json.status == "Charging" ? "󰂄" :
-            battery_json.status == "Unknown" ? "󰂃" :
-            battery_json.capacity >= 95 ? "󰁹" :
-            battery_json.capacity >= 85 ? "󰂂" :
-            battery_json.capacity >= 75 ? "󰂁" :
-            battery_json.capacity >= 65 ? "󰂀" :
-            battery_json.capacity >= 55 ? "󰁿" :
-            battery_json.capacity >= 45 ? "󰁾" :
-            battery_json.capacity >= 35 ? "󰁽" :
-            battery_json.capacity >= 25 ? "󰁼" :
-            battery_json.capacity >= 15 ? "󰁻" :
-            battery_json.capacity >=  5 ? "󰁺" : "󰂎"
+            battery_val.status == "Charging" ? "󰂄" :
+            battery_val.status == "Unknown" ? "󰂃" :
+            battery_val.capacity >= 95 ? "󰁹" :
+            battery_val.capacity >= 85 ? "󰂂" :
+            battery_val.capacity >= 75 ? "󰂁" :
+            battery_val.capacity >= 65 ? "󰂀" :
+            battery_val.capacity >= 55 ? "󰁿" :
+            battery_val.capacity >= 45 ? "󰁾" :
+            battery_val.capacity >= 35 ? "󰁽" :
+            battery_val.capacity >= 25 ? "󰁼" :
+            battery_val.capacity >= 15 ? "󰁻" :
+            battery_val.capacity >=  5 ? "󰁺" : "󰂎"
           }`
         )
         (label
           :text `${
-            battery_json.status == "Unknown" ? "?" :
-              "${battery_json.capacity}"
+            battery_val.status == "Unknown" ? "?" :
+              "${floor(battery_val.capacity)}"
           }`
         )
       )
