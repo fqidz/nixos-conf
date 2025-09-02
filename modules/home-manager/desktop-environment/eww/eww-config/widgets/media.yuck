@@ -25,7 +25,7 @@
 
 (defwidget media []
   (box
-    :visible {"${media_status}" != ""}
+    :visible { "${media_status}" != "" }
     :orientation "h"
     :class "media"
     :space-evenly false
@@ -35,6 +35,7 @@
       :onrightclick "playerctl next"
       :onmiddleclick "playerctl previous"
       :cursor "pointer"
+      :tooltip { "${media_artist} - ${media_title}" }
       (box
         :space-evenly false
         :spacing 10

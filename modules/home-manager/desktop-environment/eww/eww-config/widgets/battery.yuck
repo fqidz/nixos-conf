@@ -15,7 +15,7 @@
     (eventbox
       ;; TODO: fix newline in tooltip when battery is full
       :tooltip `${battery_val.capacity}%
-      ${
+${
         battery_val.status == "Discharging" ? (
           battery_val.time_remaining.h > 0 ?
             "${battery_val.time_remaining.h}h ${battery_val.time_remaining.m}m to empty" :
