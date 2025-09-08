@@ -29,6 +29,15 @@ in
       autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
 
+      history = {
+        extended = true;
+        # size/save has limit of LONG_MAX
+        # https://www.zsh.org/mla/users/2013/msg00691.html
+        # https://github.com/zsh-users/zsh/blob/3cd363c8804a4569e601f4486a0001b1de14811f/Src/hist.c#L108
+        save = 2147483647;
+        size = 2147483647;
+      };
+
       oh-my-zsh = {
         enable = true;
         plugins = [

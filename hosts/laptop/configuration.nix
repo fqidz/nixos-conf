@@ -18,6 +18,7 @@
     ../../modules/nixos/wifi
     ../../modules/nixos/podman
     ../../modules/nixos/memprocfs
+    ../../modules/nixos/printing
   ];
 
   programs = {
@@ -141,11 +142,6 @@
 
     xserver = {
       enable = true;
-    };
-
-    printing = {
-      enable = false;
-      browsing = false;
     };
 
     avahi = {
