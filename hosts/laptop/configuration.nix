@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  pkgs-ch341,
   inputs,
   options,
   username,
@@ -19,6 +18,7 @@
     ../../modules/nixos/podman
     ../../modules/nixos/memprocfs
     ../../modules/nixos/printing
+    ../../modules/nixos/monitor-wake
   ];
 
   programs = {
@@ -76,9 +76,8 @@
     };
     kernelPackages = pkgs.linuxPackages_latest;
 
-    kernelModules = [ "ch341" ];
-    # extraModulePackages = [ config.boot.kernelPackages.ch341 ];
-    extraModulePackages = [ pkgs-ch341.linuxPackages_latest.ch341 ];
+    # kernelModules = [ "ch341" ];
+    # extraModulePackages = [ pkgs-ch341.linuxPackages_latest.ch341 ];
 
     consoleLogLevel = 0; # silent boot
     kernelParams = [

@@ -25,7 +25,6 @@
     nix-alien.url = "github:thiagokokada/nix-alien";
 
     nixpkgs-graalvm-ce-21.url = "github:nixos/nixpkgs/27ec1c9b87f5906fcf94c1e7b2c50ca6c0fc8de5";
-    nixpkgs-ch341.url = "github:fqidz/nixpkgs/ch341-driver-unstable";
     nixpkgs-memprocfs.url = "github:fqidz/nixpkgs/memprocfs";
     nixpkgs-dcpt510w.url = "github:fqidz/nixpkgs/brother-dcp-t510w-driver";
   };
@@ -35,7 +34,6 @@
       self,
       nixpkgs,
       nixpkgs-graalvm-ce-21,
-      nixpkgs-ch341,
       nixpkgs-memprocfs,
       nixpkgs-dcpt510w,
       home-manager,
@@ -67,9 +65,6 @@
           specialArgs = {
             inherit inputs outputs username;
             system = "x86_64-linux";
-            pkgs-ch341 = import nixpkgs-ch341 {
-              system = "x86_64-linux";
-            };
             pkgs-memprocfs = import nixpkgs-memprocfs {
               system = "x86_64-linux";
             };
