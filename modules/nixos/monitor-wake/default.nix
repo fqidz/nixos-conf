@@ -1,16 +1,15 @@
-{ pkgs, ... }:
-let
-  monitorWakeConf = pkgs.stdenv.mkDerivation {
-    name = "monitor-wake-conf";
-    phases = "buildPhase";
-    src = ./monitor-wake.conf;
-
-    buildPhase = ''
-      mkdir -p $out/share/dbus-1/system.d/
-      cp $src $out/share/dbus-1/system.d/monitor-wake.conf
-    '';
-  };
-in
+{ pkgs, system, ... }:
 {
-  services.dbus.packages = [ monitorWakeConf ];
+  services.dbus.packages = [
+    (derivation {
+      inherit system;
+      name = "monitor-wake-conf";
+      src = ./monitor-wake.conf;
+      builder = pkgs.writeShellScript "monitor-wake-conf-build" ''
+        ${pkgs.coreutils}/bin/mkdir -p $out/share/dbus-1/system.d/
+        ${pkgs.coreutils}/bin/cp $src $out/share/dbus-1/system.d/monitor-wake.conf
+      '';
+      outputs = [ "out" ];
+    })
+  ];
 }
