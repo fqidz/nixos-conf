@@ -27,6 +27,11 @@
     nixpkgs-graalvm-ce-21.url = "github:nixos/nixpkgs/27ec1c9b87f5906fcf94c1e7b2c50ca6c0fc8de5";
     nixpkgs-memprocfs.url = "github:fqidz/nixpkgs/memprocfs";
     nixpkgs-dcpt510w.url = "github:fqidz/nixpkgs/brother-dcp-t510w-driver";
+
+    monitor-wake = {
+      url = "github:fqidz/monitor-wake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
