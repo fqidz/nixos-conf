@@ -12,22 +12,23 @@
     :spacing 2
     (for workspace in workspaces_json
       (eventbox
-        :onclick `${!workspace.active ? "hyprctl dispatch workspace ${workspace.id}" : ""}`
+        :onclick `${!workspace.active ? "hyprctl dispatch workspace ${workspace.name}" : ""}`
         :cursor `${!workspace.active ? "pointer" : "default"}`
         :width 18
         (box
           :class `${workspace.active ? "active-workspace" : "inactive-workspace"}`
           (label
             :text `${
-              workspace.id == "1" ? "Ⅰ" :
-              workspace.id == "2" ? "Ⅱ" :
-              workspace.id == "3" ? "Ⅲ" :
-              workspace.id == "4" ? "Ⅳ" :
-              workspace.id == "5" ? "Ⅴ" :
-              workspace.id == "6" ? "Ⅵ" :
-              workspace.id == "7" ? "Ⅶ" :
-              workspace.id == "8" ? "Ⅷ" :
-              workspace.id == "9" ? "Ⅸ" : ""
+              workspace.name == "1" ? "Ⅰ" :
+              workspace.name == "2" ? "Ⅱ" :
+              workspace.name == "3" ? "Ⅲ" :
+              workspace.name == "4" ? "Ⅳ" :
+              workspace.name == "5" ? "Ⅴ" :
+              workspace.name == "6" ? "Ⅵ" :
+              workspace.name == "7" ? "Ⅶ" :
+              workspace.name == "8" ? "Ⅷ" :
+              workspace.name == "9" ? "Ⅸ" :
+              workspace.name == "special:spotify" ? "" : "?"
             }`
           )
         )
