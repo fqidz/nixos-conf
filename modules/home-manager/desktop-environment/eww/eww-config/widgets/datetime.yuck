@@ -1,14 +1,8 @@
 (include "widgets/misc/spacer.yuck")
-(defpoll date
-  :interval "60s"
-  :initial '{"week_day":"","month":"","day":""}'
-  `date +'{"week_day":"%a","month":"%b","day":"%d"}'`
-)
 
-(defpoll time
-  :interval "30s"
-  :initial '{"hour":"","minute":""}'
-  `date +'{"hour":"%H","minute":"%M"}'`
+(deflisten datetime
+  :initial '{"week_day":"Thu","month":"Jan","day":"01","hour":"00","minute":"00"}'
+  `/usr/bin/env bash ~/.config/eww/scripts/datetime.sh`
 )
 
 (defwidget datetime []
@@ -19,13 +13,12 @@
     :spacing 5
     (label
       :class "date"
-      :text "${date.week_day} ${date.month} ${date.day}"
+      :text "${datetime.week_day} ${datetime.month} ${datetime.day}"
     )
     (spacer)
     (label
       :class "time"
-      :markup "<span rise='4pt'>${time.hour}:${time.minute}</span>"
+      :text "${datetime.hour}:${datetime.minute}"
     )
   )
 )
-

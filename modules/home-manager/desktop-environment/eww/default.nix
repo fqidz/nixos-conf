@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, system, ... }:
 {
   home = {
     packages = [
@@ -52,6 +52,10 @@
           "${pkgs.networkmanager}/bin"
           # udevadm
           "${pkgs.systemd}/bin"
+          # bc
+          "${pkgs.bc}/bin"
+          # monitor-wake
+          "${inputs.monitor-wake.packages.${system}.default}/bin"
         ];
         ExecStart = "${pkgs.writeShellScript "eww-daemon-start" ''
           #!${pkgs.bash}/bin/sh
