@@ -131,9 +131,10 @@
     udev.extraRules = ''
       KERNEL=="uinput", GROUP="input"
     '';
-    logind = {
-      powerKey = "suspend";
-      powerKeyLongPress = "poweroff";
+
+    logind.settings.Login = {
+      HandlePowerKey = "suspend";
+      HandlePowerKeyLongPress = "poweroff";
     };
 
     flatpak.enable = true;

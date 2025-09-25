@@ -4,7 +4,8 @@
     pkgs.tree-sitter
     pkgs.lua-language-server
     pkgs.vscode-langservers-extracted
-    pkgs.lua
+    pkgs.lua51Packages.lua
+    pkgs.pythonPackages.pynvim
     pkgs.luarocks
     pkgs.marksman
     pkgs.texpresso
