@@ -141,6 +141,7 @@
 
     xserver = {
       enable = true;
+      excludePackages = [ pkgs.xterm ];
     };
 
     avahi = {

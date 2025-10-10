@@ -12,8 +12,8 @@
     ./fonts
     ./fzf
     ./git
-    ./gtk
     ./gnupg
+    ./gtk
     ./minecraft
     ./nvim
     ./shell
@@ -22,6 +22,7 @@
     ./syncthing
     ./systemd
     # ./tmux
+    ./typst
     ./xdg
     ./yazi
   ];
