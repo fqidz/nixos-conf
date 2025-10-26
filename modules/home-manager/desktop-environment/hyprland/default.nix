@@ -10,9 +10,13 @@
     pkgs.hyprpicker
   ];
 
-  home.file.".local/share/icons" = {
-    enable = true;
-    source = ./hyprcursors;
+  # systemd.user.tmpfiles.rules = [
+  #   "d .local/share/icons <MODE> <USER> <GROUP>"
+  # ];
+
+  home.file.".local/share/icons/rose-pine-hyprcursor" = {
+    source = ./hyprcursors/rose-pine-hyprcursor;
+    recursive = true;
   };
 
   wayland.windowManager.hyprland = {

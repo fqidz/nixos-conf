@@ -28,6 +28,8 @@
     };
 
     wireshark.enable = true;
+
+    steam.enable = true;
   };
 
   documentation = {
@@ -42,6 +44,12 @@
   environment = {
     variables.EDITOR = "nvim";
     systemPackages = [
+      # (pkgs.lutris.override {
+      #   extraPkgs = pkgs: [
+      #     pkgs.wineWowPackages.stagingFull
+      #     pkgs.winetricks
+      #   ];
+      # })
       pkgs.git
       pkgs.vim
       pkgs.nixd
