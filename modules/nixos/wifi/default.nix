@@ -140,6 +140,23 @@
             };
           };
 
+          UOB-Students-Beta = {
+            connection = {
+              id = "UOB-Students-Beta";
+              type = "802-11-wireless";
+              autoconnect = "true";
+            };
+            ipv4.method = "auto";
+            ipv6 = {
+              method = "auto";
+              addr-gen-mode = "default";
+            };
+            "802-11-wireless" = {
+              mode = "infrastructure";
+              ssid = "UOB-Students-Beta";
+            };
+          };
+
           Student-1X = {
             connection = {
               id = "Student-1X";
