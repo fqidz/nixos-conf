@@ -10,7 +10,6 @@
     ../../modules/home-manager/git/laptop.nix
     ../../modules/home-manager/podman-quadlet
     ../../modules/home-manager/monitor-wake
-    ../../modules/home-manager/gaming
 
     ../../modules/home-manager/podman-quadlet/containers/timescaledb.nix
   ];
