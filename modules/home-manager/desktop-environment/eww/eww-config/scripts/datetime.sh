@@ -53,10 +53,12 @@ output_datetime() {
 
 TMP_FILE=/tmp/datetime-script-pipe
 
+rm -f "$TMP_FILE"
+
 cleanup() {
-    rm $TMP_FILE
+    rm -f $TMP_FILE
     # TODO: silence output
-    kill -SIGKILL 0
+    kill 0
 }
 
 error=$(mkfifo $TMP_FILE 2>&1)
@@ -65,22 +67,23 @@ if [[ -n $error ]]; then
     exit 1
 fi
 
-trap cleanup TERM EXIT
+trap "exit" INT TERM
+trap cleanup EXIT
 
-# Join the `output_every_minute` and `monitor-wake` stdout streams together so
+# Join the `monitor-wake` and `output_every_minute` stdout streams together so
 # that it outputs the current datetime whenever the next minute comes up OR when
 # the device is awoken from sleep.
 #
-# Pipe these commands into the named pipe and let them running in the
+# Pipe these commands into the named pipe and let them run in the
 # background so they don't block execution.
+#
+# monitor-wake: https://github.com/fqidz/monitor-wake
+monitor-wake > $TMP_FILE &
 output_every_minute > $TMP_FILE &
 
 # Save the pid of the latest background process (the `output_every_minute >
 # ...` so we can kill it later when the device wakes up.
 minute_pid=$(echo $!)
-
-# monitor-wake: https://github.com/fqidz/monitor-wake
-monitor-wake > $TMP_FILE &
 
 # Output the datetime once when the script starts
 output_datetime
