@@ -1,7 +1,6 @@
 {
   pkgs,
   username,
-  pkgs-memprocfs,
   ...
 }:
 {
@@ -10,6 +9,7 @@
     ../../modules/home-manager/git/laptop.nix
     ../../modules/home-manager/podman-quadlet
     ../../modules/home-manager/monitor-wake
+    ../../modules/home-manager/libreoffice
 
     ../../modules/home-manager/podman-quadlet/containers/timescaledb.nix
   ];
