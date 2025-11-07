@@ -8,7 +8,7 @@
       # additionalPrograms = [ ffmpeg ];
 
       jdks = [
-        pkgs.jdk24
+        pkgs.jdk
       ];
     })
   ];

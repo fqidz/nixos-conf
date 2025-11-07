@@ -3,9 +3,11 @@
   programs.git = {
     enable = true;
     lfs.enable = true;
-    userName = "fqidz";
-    userEmail = "faidz.arante@gmail.com";
-    extraConfig = {
+    settings = {
+      user = {
+        name = "fqidz";
+        email = "faidz.arante@gmail.com";
+      };
       init.defaultBranch = "main";
       diff.tool = "nvimdiff";
       merge.tool = "nvimdiff3";
