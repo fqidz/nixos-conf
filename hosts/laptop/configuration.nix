@@ -49,8 +49,8 @@
       inputs.nix-alien.packages.${system}.nix-alien
       pkgs.wirelesstools
       pkgs.wpa_supplicant_gui
-      config.boot.kernelPackages.perf
-      config.boot.kernelPackages.systemtap
+      # config.boot.perf
+      # config.boot.systemtap
     ];
   };
 

@@ -51,17 +51,17 @@ output_datetime() {
     date '+{"week_day":"%a","month":"%b","day":"%d","hour":"%H","minute":"%M"}'
 }
 
-TMP_FILE=/tmp/datetime-script-pipe
+DATETIME_PIPE=$XDG_RUNTIME_DIR/datetime-script-pipe
 
-rm -f "$TMP_FILE"
+rm -f "$DATETIME_PIPE"
 
 cleanup() {
-    rm -f $TMP_FILE
+    rm -f $DATETIME_PIPE
     # TODO: silence output
     kill 0
 }
 
-error=$(mkfifo $TMP_FILE 2>&1)
+error=$(mkfifo $DATETIME_PIPE 2>&1)
 if [[ -n $error ]]; then
     echo $error 1>&2
     exit 1
@@ -78,8 +78,8 @@ trap cleanup EXIT
 # background so they don't block execution.
 #
 # monitor-wake: https://github.com/fqidz/monitor-wake
-monitor-wake > $TMP_FILE &
-output_every_minute > $TMP_FILE &
+monitor-wake > $DATETIME_PIPE &
+output_every_minute > $DATETIME_PIPE &
 
 # Save the pid of the latest background process (the `output_every_minute >
 # ...` so we can kill it later when the device wakes up.
@@ -98,8 +98,8 @@ while read -r msg; do
     # inaccurate (cause it isn't counting down while the device is asleep).
     if [[ $msg == "woken" ]]; then
         kill $minute_pid
-        output_every_minute > $TMP_FILE &
+        output_every_minute > $DATETIME_PIPE &
         minute_pid=$(echo $!)
     fi
 
-done < <(cat $TMP_FILE)
+done < <(cat $DATETIME_PIPE)
