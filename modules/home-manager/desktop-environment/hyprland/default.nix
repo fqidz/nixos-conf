@@ -118,7 +118,9 @@
         repeat_delay = 200;
       };
 
-      gestures.workspace_swipe = false;
+      gesture = [
+        "3, down, fullscreen"
+      ];
 
       workspace = [
         "special:spotify, on-created-empty:[float; size 80% 80%] spotify"
