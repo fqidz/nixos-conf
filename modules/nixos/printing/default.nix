@@ -1,9 +1,9 @@
-{ pkgs-dcpt510w, ... }:
+{ pkgs, ... }:
 {
   services.printing = {
     enable = true;
     drivers = [
-      (pkgs-dcpt510w.dcpt510w.override {
+      (pkgs.dcpt510w.override {
         debugLvl = 2;
       })
     ];

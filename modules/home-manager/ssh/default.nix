@@ -12,7 +12,6 @@
       };
       "hetzner-vps" = {
         hostname = "91.99.219.243";
-        user = "faidz";
         identitiesOnly = true;
         identityFile = "${config.home.homeDirectory}/.ssh/hetzner_id_ed25519";
       };

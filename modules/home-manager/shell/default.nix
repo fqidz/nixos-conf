@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 let
   initExtraScript = pkgs.stdenv.mkDerivation {
     name = "init_extra";
@@ -25,6 +25,7 @@ in
   programs = {
     zsh = {
       enable = true;
+      dotDir = "${config.xdg.configHome}/zsh";
 
       autosuggestion.enable = true;
       syntaxHighlighting.enable = true;

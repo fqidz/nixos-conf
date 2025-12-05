@@ -182,7 +182,11 @@
   };
 
   security = {
-    rtkit.enable = true;
+    rtkit = {
+      enable = true;
+      # https://wiki.archlinux.org/title/PipeWire#Missing_realtime_priority/crackling_under_load_after_suspend
+      args = [ "--no-canary" ];
+    };
     sudo.extraConfig = ''
       # Save sudo across terminals
       Defaults timestamp_type = global

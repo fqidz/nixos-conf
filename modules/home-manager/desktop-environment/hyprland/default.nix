@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   home.packages = [
     pkgs.hyprland
@@ -14,7 +14,7 @@
   #   "d .local/share/icons <MODE> <USER> <GROUP>"
   # ];
 
-  home.file.".local/share/icons/rose-pine-hyprcursor" = {
+  home.file."${config.xdg.dataHome}/icons/rose-pine-hyprcursor" = {
     source = ./hyprcursors/rose-pine-hyprcursor;
     recursive = true;
   };

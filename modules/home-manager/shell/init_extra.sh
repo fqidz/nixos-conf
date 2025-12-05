@@ -49,7 +49,7 @@ function books {
     data=$(
         sqlite3 \
             "${BOOKS_PATH}metadata.db" \
-            "SELECT json_object('title', books.title, 'path', books.path) FROM books"
+            "SELECT json_object('title', books.title, 'path', books.path) FROM books ORDER BY date(books.last_modified) DESC"
     )
 
     processed_data=$(while IFS='\n' read -r line; do

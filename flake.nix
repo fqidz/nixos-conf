@@ -24,7 +24,6 @@
     sops-nix.url = "github:Mic92/sops-nix";
     nix-alien.url = "github:thiagokokada/nix-alien";
 
-    nixpkgs-memprocfs.url = "github:fqidz/nixpkgs/memprocfs";
     nixpkgs-dcpt510w.url = "github:fqidz/nixpkgs/brother-dcp-t510w-driver";
 
     monitor-wake = {
@@ -39,8 +38,6 @@
     {
       self,
       nixpkgs,
-      nixpkgs-memprocfs,
-      nixpkgs-dcpt510w,
       home-manager,
       quadlet-nix,
       spicetify-nix,
@@ -60,10 +57,52 @@
       ];
       forAllSystems = nixpkgs.lib.genAttrs systems;
       username = "faidz";
+      overlays = {
+        nixpkgs.overlays = [
+          (final: prev:
+          let
+            memprocfs-derivation = prev.fetchFromGitHub {
+              owner = "fqidz";
+              repo = "nixpkgs";
+              rev = "memprocfs";
+              sha256 = "sha256-5K13nxAeSXl0Uy5c2jLP8Ou6+cYtn7To1q9iyGTdjnE=";
+            };
+            nixpkgs-master = prev.fetchFromGitHub {
+              owner = "NixOS";
+              repo = "nixpkgs";
+              rev = "master";
+              sha256 = "sha256-cjFQk8+KnnJqpsTDPGQyDU1VEN2wByAYauyX1feTqhs=";
+            };
+          in
+          {
+            prismlauncher-unwrapped =
+              final.callPackage "${nixpkgs-master}/pkgs/by-name/pr/prismlauncher-unwrapped/package.nix" { };
+            prismlauncher =
+              final.callPackage "${nixpkgs-master}/pkgs/by-name/pr/prismlauncher/package.nix" { };
+
+            dcpt510w = final.callPackage "${
+              prev.fetchFromGitHub {
+                owner = "fqidz";
+                repo = "nixpkgs";
+                rev = "brother-dcp-t510w-driver";
+                sha256 = "sha256-l3iAmAbmQu9vqdEclZ/q1a40e50zK21am6Ay6x5V/GY=";
+              }
+            }/pkgs/by-name/dc/dcpt510w/package.nix" { };
+
+            leechcore-plugins =
+              final.callPackage "${memprocfs-derivation}/pkgs/by-name/le/leechcore-plugins/package.nix" { };
+            leechcore =
+              final.callPackage "${memprocfs-derivation}/pkgs/by-name/le/leechcore/package.nix" { };
+            memprocfs =
+              final.callPackage "${memprocfs-derivation}/pkgs/by-name/me/memprocfs/package.nix" { };
+          })
+        ];
+      };
     in
     {
       # packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
       formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-rfc-style);
+
 
       nixosConfigurations = {
         "laptop" = nixpkgs.lib.nixosSystem {
@@ -71,12 +110,6 @@
           specialArgs = {
             inherit inputs outputs username;
             system = "x86_64-linux";
-            pkgs-memprocfs = import nixpkgs-memprocfs {
-              system = "x86_64-linux";
-            };
-            pkgs-dcpt510w = import nixpkgs-dcpt510w {
-              system = "x86_64-linux";
-            };
           };
           modules = [
             ./hosts/laptop/configuration.nix
@@ -84,6 +117,7 @@
             { programs.nix-index-database.comma.enable = true; }
             quadlet-nix.nixosModules.quadlet
 
+            overlays
             home-manager.nixosModules.home-manager
             {
               home-manager = {

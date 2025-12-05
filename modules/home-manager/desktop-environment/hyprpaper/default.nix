@@ -1,8 +1,13 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   home.packages = [
     pkgs.hyprpaper
   ];
+
+  home.file."${config.xdg.dataHome}/wallpapers" = {
+    source = ./wallpapers;
+    recursive = true;
+  };
 
   services = {
     hyprpaper = {
@@ -11,12 +16,16 @@
         ipc = true;
         splash = false;
         preload = [
-          "${./wallpapers/rose-pine-abstract.png}"
-          # ./a_man_standing_on_a_car.png
+          {
+            monitor = "";
+            path = "${config.xdg.dataHome}/wallpapers/rose-pine-abstract.png";
+          }
         ];
         wallpaper = [
-          ", ${./wallpapers/rose-pine-abstract.png}"
-          # ", {./a_man_standing_on_a_car.png}"
+          {
+            monitor = "";
+            path = "${config.xdg.dataHome}/wallpapers/rose-pine-abstract.png";
+          }
         ];
       };
     };

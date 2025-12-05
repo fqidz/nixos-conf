@@ -1,7 +1,7 @@
-{ pkgs-memprocfs, ...}:
+{ pkgs, ...}:
 {
   environment.systemPackages = [
-    (pkgs-memprocfs.memprocfs.override {
+    (pkgs.memprocfs.override {
       withFt601Driver = true;
     })
   ];
