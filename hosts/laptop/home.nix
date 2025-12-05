@@ -10,6 +10,7 @@
     ../../modules/home-manager/podman-quadlet
     ../../modules/home-manager/monitor-wake
     ../../modules/home-manager/libreoffice
+    ../../modules/home-manager/flatpak
 
     ../../modules/home-manager/podman-quadlet/containers/timescaledb.nix
   ];

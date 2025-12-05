@@ -31,6 +31,8 @@
       url = "github:fqidz/monitor-wake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    flatpaks.url = "github:gmodena/nix-flatpak";
   };
 
   outputs =
@@ -44,6 +46,7 @@
       spicetify-nix,
       sops-nix,
       nix-index-database,
+      flatpaks,
       ...
     }@inputs:
     let
@@ -95,6 +98,7 @@
                   ./hosts/laptop/home.nix
                   spicetify-nix.homeManagerModules.spicetify
                   sops-nix.homeManagerModules.sops
+                  flatpaks.homeManagerModules.nix-flatpak
                 ];
               };
             }
