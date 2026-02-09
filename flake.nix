@@ -67,19 +67,8 @@
               rev = "memprocfs";
               sha256 = "sha256-5K13nxAeSXl0Uy5c2jLP8Ou6+cYtn7To1q9iyGTdjnE=";
             };
-            nixpkgs-master = prev.fetchFromGitHub {
-              owner = "NixOS";
-              repo = "nixpkgs";
-              rev = "master";
-              sha256 = "sha256-cjFQk8+KnnJqpsTDPGQyDU1VEN2wByAYauyX1feTqhs=";
-            };
           in
           {
-            prismlauncher-unwrapped =
-              final.callPackage "${nixpkgs-master}/pkgs/by-name/pr/prismlauncher-unwrapped/package.nix" { };
-            prismlauncher =
-              final.callPackage "${nixpkgs-master}/pkgs/by-name/pr/prismlauncher/package.nix" { };
-
             dcpt510w = final.callPackage "${
               prev.fetchFromGitHub {
                 owner = "fqidz";

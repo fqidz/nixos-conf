@@ -130,6 +130,9 @@
     chrony.enable = true;
     udev.extraRules = ''
       KERNEL=="uinput", GROUP="input"
+      # stm32 stlink
+      # https://github.com/stlink-org/stlink/blob/8c34a4ecde7db965f9c1b0ca4e0e23de35918f1c/config/udev/rules.d/49-stlinkv2.rules
+      SUBSYSTEM=="usb", ATTR{idProduct}=="3748", ATTR{idVendor}=="0483", MODE="0666", SYMLINK+="stlinkv2_%n"
     '';
 
     logind.settings.Login = {

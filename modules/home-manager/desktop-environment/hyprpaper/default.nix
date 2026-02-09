@@ -15,12 +15,12 @@
       settings = {
         ipc = true;
         splash = false;
-        preload = [
-          {
-            monitor = "";
-            path = "${config.xdg.dataHome}/wallpapers/rose-pine-abstract.png";
-          }
-        ];
+        # preload = [
+        #   {
+        #     monitor = "";
+        #     path = "${config.xdg.dataHome}/wallpapers/rose-pine-abstract.png";
+        #   }
+        # ];
         wallpaper = [
           {
             monitor = "";
