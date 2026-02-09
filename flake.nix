@@ -16,10 +16,10 @@
 
     quadlet-nix.url = "github:SEIAROTg/quadlet-nix";
 
-    spicetify-nix = {
-      url = "github:Gerg-L/spicetify-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # spicetify-nix = {
+    #   url = "github:Gerg-L/spicetify-nix";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     sops-nix.url = "github:Mic92/sops-nix";
     nix-alien.url = "github:thiagokokada/nix-alien";
@@ -40,7 +40,7 @@
       nixpkgs,
       home-manager,
       quadlet-nix,
-      spicetify-nix,
+      # spicetify-nix,
       sops-nix,
       nix-index-database,
       flatpaks,
@@ -119,7 +119,7 @@
 
                 users.${username}.imports = [
                   ./hosts/laptop/home.nix
-                  spicetify-nix.homeManagerModules.spicetify
+                  # spicetify-nix.homeManagerModules.spicetify
                   sops-nix.homeManagerModules.sops
                   flatpaks.homeManagerModules.nix-flatpak
                 ];

@@ -17,7 +17,7 @@
     ./minecraft
     ./nvim
     ./shell
-    ./spicetify
+    # ./spicetify
     ./ssh
     ./syncthing
     ./systemd
