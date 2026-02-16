@@ -7,12 +7,13 @@
   imports = [
     ../../modules/home-manager/full.nix
     ../../modules/home-manager/git/laptop.nix
-    ../../modules/home-manager/podman-quadlet
+    # ../../modules/home-manager/podman-quadlet
     ../../modules/home-manager/monitor-wake
     ../../modules/home-manager/libreoffice
     ../../modules/home-manager/flatpak
+    ../../modules/home-manager/firefoxpwa
 
-    ../../modules/home-manager/podman-quadlet/containers/timescaledb.nix
+    # ../../modules/home-manager/podman-quadlet/containers/timescaledb.nix
   ];
 
   home = {
@@ -50,6 +51,12 @@
       sqlite
       weechat
       wireshark
+      anki
+      mars-mips
+      logisim
+      # logisim-evolution
+      ruff
+      basedpyright
     ];
     stateVersion = "24.05";
   };

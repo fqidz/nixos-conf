@@ -7,6 +7,27 @@
     xwayland.enable = true;
   };
 
+  xdg.autostart.enable = true;
+  xdg.portal = {
+    enable = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal
+      pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal-hyprland
+    ];
+    config = {
+      # common = {
+      #   default = [ "gtk" ];
+      #   "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
+      # };
+      hyprland = {
+        default = [ "hyprland" "gtk" ];
+        "org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
+        "org.freedesktop.impl.portal.OpenURI" = [ "gtk" ];
+      };
+    };
+  };
+
   environment = {
     sessionVariables.NIXOS_OZONE_WL = "1"; # This variable fixes electron apps in wayland
     systemPackages = [

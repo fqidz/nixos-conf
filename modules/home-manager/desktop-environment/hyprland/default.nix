@@ -187,11 +187,22 @@
         inactive_timeout = 10;
       };
 
-      windowrulev2 = [
-        "noanim, class:^(ueberzugpp_.*)$"
+      windowrule = [
+        {
+          name = "noanim-ueberzugpp";
+          "match:class" = "^(ueberzugpp_.*)$";
+          animation = 0;
+        }
+        {
+          name = "overlay-open-books";
+          "match:title" = "open-books";
+          float = "on";
+          size = "80% 80%";
+        }
+        # "noanim, class:^(ueberzugpp_.*)$"
         # open-books window found in config/home.nix: xdg.desktopEntries.books
-        "float, title:open-books"
-        "size 80% 80%, title:open-books"
+        # "float, title:open-books"
+        # "size 80% 80%, title:open-books"
       ];
     };
   };
