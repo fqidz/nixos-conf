@@ -8,6 +8,7 @@
     pkgs.hyprshot
     pkgs.playerctl
     pkgs.hyprpicker
+    pkgs.hyprpolkitagent
   ];
 
   # systemd.user.tmpfiles.rules = [
@@ -33,6 +34,7 @@
         "[workspace 1 silent] $terminal"
         "[workspace 2 silent] firefox"
         "hyprctl setcursor $HYPRCURSOR_THEME $HYPRCURSOR_SIZE"
+        "systemctl --user start hyprpolkitagent"
       ];
 
       env = [

@@ -28,7 +28,7 @@
       # Compilers
       gcc
       libgcc
-      python311
+      python314
 
       # CLI tools
       acpi

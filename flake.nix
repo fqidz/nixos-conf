@@ -84,6 +84,27 @@
               final.callPackage "${memprocfs-derivation}/pkgs/by-name/le/leechcore/package.nix" { };
             memprocfs =
               final.callPackage "${memprocfs-derivation}/pkgs/by-name/me/memprocfs/package.nix" { };
+
+            libfprint = prev.libfprint.overrideAttrs(oldAttrs: {
+              version = "master";
+              src = prev.fetchFromGitLab {
+                domain = "gitlab.freedesktop.org";
+                owner = "topni1";
+                repo = "libfprint";
+                rev = "master";
+                hash = "sha256-91vOQLwIJ/p+WZgE+NOdPl6L8c97S65SCzWVr7qkt10=";
+              };
+              buildInputs = oldAttrs.buildInputs ++ [ prev.pkgs.nss ];
+            });
+
+            fprintd = final.callPackage "${
+              prev.fetchFromGitHub {
+                owner = "NixOS";
+                repo = "nixpkgs";
+                rev = "ec5881151cfe27e080d7a3e8f25672d83c0a1f44";
+                sha256 = "sha256-5FMuorBuIyxxa+bIPPKSlqOuV0ISUQfzBjyujqOQjvg=";
+              }
+            }/pkgs/by-name/fp/fprintd/package.nix" { };
           })
         ];
       };

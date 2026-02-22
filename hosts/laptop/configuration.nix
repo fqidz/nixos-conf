@@ -116,6 +116,9 @@
   };
 
   services = {
+    fprintd = {
+      enable = true;
+    };
     # Needed for MSCHAPV2 ??
     pppd.enable = true;
 
