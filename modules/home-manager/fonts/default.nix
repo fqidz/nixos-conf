@@ -4,7 +4,7 @@
     pkgs.roboto
     pkgs.roboto-mono
     pkgs.nerd-fonts.roboto-mono
-    pkgs.charis-sil
+    pkgs.charis
     pkgs.inter
   ];
 

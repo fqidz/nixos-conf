@@ -105,6 +105,15 @@
                 sha256 = "sha256-5FMuorBuIyxxa+bIPPKSlqOuV0ISUQfzBjyujqOQjvg=";
               }
             }/pkgs/by-name/fp/fprintd/package.nix" { };
+
+            calibre = final.callPackage "${
+              prev.fetchFromGitHub {
+                owner = "NixOS";
+                repo = "nixpkgs";
+                rev = "3428d5442b9b5c3772c496cbbaf8ba52d86ef667";
+                sha256 = "sha256-XwltZhJ6wH1RrsScO4TvIjtP09PaBcc1NvyoWew4U6s=";
+              }
+            }/pkgs/by-name/ca/calibre/package.nix" { };
           })
         ];
       };
