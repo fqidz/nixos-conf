@@ -1,6 +1,9 @@
 { pkgs, ... }:
+let
+  profile-id = "01KH8P3MWAKD68KT2VQXAKKH6J";
+in
 {
-  programs.firefoxpwa.profiles."01KH8P3MWAKD68KT2VQXAKKH6J" = {
+  programs.firefoxpwa.profiles."${profile-id}" = {
     name = "YouTube Music";
     sites."01KH8P5D2CE8DVWSH80MG1FS6X" = {
       name = "YouTube Music";
@@ -15,5 +18,12 @@
         };
       };
     };
+  };
+
+  home.file.".local/share/firefoxpwa/profiles/${profile-id}/user.js" = {
+    text = ''
+      user_pref("firefoxpwa.enableHidingIconBar", true);
+    '';
+    # force = true;
   };
 }

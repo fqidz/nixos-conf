@@ -37,10 +37,12 @@
   home.file.".local/share/nvim/nix/markdown-preview-nvim/" = {
     source = pkgs.vimPlugins.markdown-preview-nvim;
     recursive = true;
+    force = true;
   };
 
   home.file.".local/share/nvim/nix/texpresso-vim/" = {
     source = pkgs.vimPlugins.texpresso-vim;
     recursive = true;
+    force = true;
   };
 }

@@ -201,6 +201,16 @@
           float = "on";
           size = "80% 80%";
         }
+        {
+          name = "ueberzugpp";
+          "match:class" = "^(ueberzugpp.*)$";
+          float = true;
+          no_anim = true;
+          border_size = 0;
+          no_focus = true;
+          no_follow_mouse = true;
+          no_blur = true;
+        }
         # "noanim, class:^(ueberzugpp_.*)$"
         # open-books window found in config/home.nix: xdg.desktopEntries.books
         # "float, title:open-books"

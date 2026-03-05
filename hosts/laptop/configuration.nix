@@ -34,7 +34,7 @@
   documentation = {
     man = {
       enable = true;
-      generateCaches = true;
+      cache.enable = true;
     };
     nixos.includeAllModules = true;
     dev.enable = true;
