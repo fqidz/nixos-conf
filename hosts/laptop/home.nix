@@ -44,6 +44,7 @@
       socat
       trash-cli
       wget
+      nixfmt
 
       # Programs (that don't need their own config file)
       (mpv.override { scripts = [ mpvScripts.mpris ]; })
