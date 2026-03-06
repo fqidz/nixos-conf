@@ -19,6 +19,7 @@
     ../../modules/nixos/podman
     ../../modules/nixos/memprocfs
     ../../modules/nixos/printing
+    ../../modules/nixos/bluetooth
   ];
 
   programs = {
@@ -117,9 +118,9 @@
   };
 
   services = {
-    fprintd = {
-      enable = true;
-    };
+    # fprintd = {
+    #   enable = true;
+    # };
     # Needed for MSCHAPV2 ??
     pppd.enable = true;
 

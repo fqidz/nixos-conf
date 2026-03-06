@@ -97,14 +97,14 @@
               buildInputs = oldAttrs.buildInputs ++ [ prev.pkgs.nss ];
             });
 
-            fprintd = final.callPackage "${
-              prev.fetchFromGitHub {
-                owner = "NixOS";
-                repo = "nixpkgs";
-                rev = "ec5881151cfe27e080d7a3e8f25672d83c0a1f44";
-                sha256 = "sha256-5FMuorBuIyxxa+bIPPKSlqOuV0ISUQfzBjyujqOQjvg=";
-              }
-            }/pkgs/by-name/fp/fprintd/package.nix" { };
+            # fprintd = final.callPackage "${
+            #   prev.fetchFromGitHub {
+            #     owner = "NixOS";
+            #     repo = "nixpkgs";
+            #     rev = "ec5881151cfe27e080d7a3e8f25672d83c0a1f44";
+            #     sha256 = "sha256-5FMuorBuIyxxa+bIPPKSlqOuV0ISUQfzBjyujqOQjvg=";
+            #   }
+            # }/pkgs/by-name/fp/fprintd/package.nix" { };
 
             calibre = final.callPackage "${
               prev.fetchFromGitHub {

@@ -24,6 +24,5 @@ in
     text = ''
       user_pref("firefoxpwa.enableHidingIconBar", true);
     '';
-    # force = true;
   };
 }
