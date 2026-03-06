@@ -11,7 +11,11 @@ in
       manifestUrl = "https://music.youtube.com/manifest.webmanifest";
       desktopEntry = {
         enable = true;
-        categories = [ "Audio" "AudioVideo" "Music" ];
+        categories = [
+          "Audio"
+          "AudioVideo"
+          "Music"
+        ];
         icon = pkgs.fetchurl {
           url = "https://www.gstatic.com/youtube/media/ytm/images/applauncher/music_icon_192x192.png";
           sha256 = "sha256-HrzWr2z5w0zFn/BatXFikEQmEzDgsCD0qFj+/MvXEio=";

@@ -128,43 +128,42 @@
         "special:spotify, on-created-empty:[float; size 80% 80%] spotify"
       ];
 
-      bind =
-        [
-          "$mod, Q, exec, $terminal"
-          "$mod, C, killactive,"
-          "$mod, M, exit,"
-          "$mod, R, exec, tofi-drun --drun-launch=true"
-          "$mod, V, exec, cliphist list | tofi --width 80% | cliphist decode | wl-copy"
-          "$mod, F, togglefloating,"
-          "$mod, F12, fullscreen,"
-          "$mod, P, pseudo,"
-          "$mod, U, togglesplit,"
-          ", Print, exec, hyprshot --freeze -m region"
-          "ALT, Print, exec, hyprpicker -na"
+      bind = [
+        "$mod, Q, exec, $terminal"
+        "$mod, C, killactive,"
+        "$mod, M, exit,"
+        "$mod, R, exec, tofi-drun --drun-launch=true"
+        "$mod, V, exec, cliphist list | tofi --width 80% | cliphist decode | wl-copy"
+        "$mod, F, togglefloating,"
+        "$mod, F12, fullscreen,"
+        "$mod, P, pseudo,"
+        "$mod, U, togglesplit,"
+        ", Print, exec, hyprshot --freeze -m region"
+        "ALT, Print, exec, hyprpicker -na"
 
-          "$mod, H, movefocus, l"
-          "$mod, J, movefocus, d"
-          "$mod, K, movefocus, u"
-          "$mod, L, movefocus, r"
+        "$mod, H, movefocus, l"
+        "$mod, J, movefocus, d"
+        "$mod, K, movefocus, u"
+        "$mod, L, movefocus, r"
 
-          "$mod, S, togglespecialworkspace, spotify"
-          "$mod SHIFT, S, movetoworkspace, special:spotify"
-        ]
-        # bind = $mainMod, 1, workspace, 1
-        # bind = $mainMod SHIFT, 1, movetoworkspace, 1
-        ++ (builtins.concatLists (
-          builtins.genList (
-            i:
-            let
-              ws = i + 1;
-            in
-            [
-              "$mod, code:1${toString i}, workspace, ${toString ws}"
-              "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
-              "$mod ALT, code:1${toString i}, exec, sh ${./swapworkspace.sh} ${toString ws}"
-            ]
-          ) 9
-        ));
+        "$mod, S, togglespecialworkspace, spotify"
+        "$mod SHIFT, S, movetoworkspace, special:spotify"
+      ]
+      # bind = $mainMod, 1, workspace, 1
+      # bind = $mainMod SHIFT, 1, movetoworkspace, 1
+      ++ (builtins.concatLists (
+        builtins.genList (
+          i:
+          let
+            ws = i + 1;
+          in
+          [
+            "$mod, code:1${toString i}, workspace, ${toString ws}"
+            "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
+            "$mod ALT, code:1${toString i}, exec, sh ${./swapworkspace.sh} ${toString ws}"
+          ]
+        ) 9
+      ));
 
       bindm = [
         "$mod, mouse:272, movewindow"
