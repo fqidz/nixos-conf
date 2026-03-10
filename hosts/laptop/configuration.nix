@@ -19,7 +19,7 @@
     ../../modules/nixos/podman
     ../../modules/nixos/memprocfs
     ../../modules/nixos/printing
-    ../../modules/nixos/bluetooth
+    # ../../modules/nixos/bluetooth
   ];
 
   programs = {
