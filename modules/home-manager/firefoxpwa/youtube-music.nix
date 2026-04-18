@@ -24,9 +24,7 @@ in
     };
   };
 
-  home.file.".local/share/firefoxpwa/profiles/${profile-id}/user.js" = {
-    text = ''
-      user_pref("firefoxpwa.enableHidingIconBar", true);
-    '';
-  };
+  # home.file.".local/share/firefoxpwa/profiles/${profile-id}/user.js" = {
+  #   source = ./user.js;
+  # };
 }

@@ -58,6 +58,8 @@
       # logisim-evolution
       ruff
       basedpyright
+
+      bottles
     ];
     stateVersion = "24.05";
   };
