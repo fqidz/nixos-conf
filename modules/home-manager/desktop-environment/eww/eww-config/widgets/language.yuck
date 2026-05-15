@@ -1,0 +1,14 @@
+(deflisten language_code
+  :initial 'unknown'
+  `xkb-get-layout && tail -f $XKB_CURRENT_LAYOUT_FIFO_PATH`
+)
+
+(defwidget language []
+  (box
+    :orientation "h"
+    :space-evenly false
+    (label
+      :text "${language_code}"
+    )
+  )
+)

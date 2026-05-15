@@ -31,6 +31,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    xkb-get-layout = {
+      url = "github:fqidz/xkb-get-layout";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     flatpaks.url = "github:gmodena/nix-flatpak";
   };
 

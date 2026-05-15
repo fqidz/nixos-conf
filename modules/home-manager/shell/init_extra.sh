@@ -5,6 +5,8 @@ bindkey '^j' down-line-or-history
 typeset -A ZSH_HIGHLIGHT_STYLES
 ZSH_HIGHLIGHT_STYLES[arg0]='fg=magenta,bold'
 
+# alias rga="r
+
 function fehv() {
   feh "$@" > /dev/null &!
 }

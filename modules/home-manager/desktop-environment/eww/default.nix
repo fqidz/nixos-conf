@@ -61,7 +61,12 @@
           "${pkgs.bc}/bin"
           # monitor-wake
           "${inputs.monitor-wake.packages.${system}.default}/bin"
+          # xkb-get-layout
+          "${inputs.xkb-get-layout.packages.${system}.default}/bin"
         ];
+        # %t = $XDG_RUNTIME_DIR
+        # https://www.freedesktop.org/software/systemd/man/latest/systemd.unit.html#Specifiers
+        Environment = [ "XKB_CURRENT_LAYOUT_FIFO_PATH=%t/layout_fifo_pipe" ];
         ExecStart = "${pkgs.writeShellScript "eww-daemon-start" ''
           #!${pkgs.bash}/bin/sh
           ${pkgs.eww}/bin/eww --no-daemonize daemon -c ~/.config/eww

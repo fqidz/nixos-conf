@@ -10,8 +10,8 @@
     # ../../modules/home-manager/podman-quadlet
     ../../modules/home-manager/monitor-wake
     ../../modules/home-manager/libreoffice
-    ../../modules/home-manager/flatpak
-    ../../modules/home-manager/firefoxpwa
+    # ../../modules/home-manager/flatpak
+    # ../../modules/home-manager/firefoxpwa
 
     # ../../modules/home-manager/podman-quadlet/containers/timescaledb.nix
   ];
@@ -45,6 +45,7 @@
       trash-cli
       wget
       nixfmt
+      ripdrag
 
       # Programs (that don't need their own config file)
       (mpv.override { scripts = [ mpvScripts.mpris ]; })

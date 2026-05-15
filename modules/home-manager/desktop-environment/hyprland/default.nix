@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, config, inputs, system, ... }:
 {
   home.packages = [
     pkgs.hyprland
@@ -9,6 +9,7 @@
     pkgs.playerctl
     pkgs.hyprpicker
     pkgs.hyprpolkitagent
+    inputs.xkb-get-layout.packages.${system}.default
   ];
 
   # systemd.user.tmpfiles.rules = [
@@ -106,10 +107,8 @@
       };
 
       input = {
-        kb_layout = "us";
-        kb_options = [
-          "caps:escape"
-        ];
+        kb_layout = "us,ara";
+        kb_options = "caps:escape,grp:win_space_toggle";
         follow_mouse = 1;
         sensitivity = 0;
         touchpad = {
@@ -140,6 +139,8 @@
         "$mod, U, togglesplit,"
         ", Print, exec, hyprshot --freeze -m region"
         "ALT, Print, exec, hyprpicker -na"
+
+        "SUPER, SPACE, exec, sh ${./write_to_layout_pipe.sh}"
 
         "$mod, H, movefocus, l"
         "$mod, J, movefocus, d"
@@ -208,6 +209,15 @@
           border_size = 0;
           no_focus = true;
           no_follow_mouse = true;
+          no_blur = true;
+        }
+        {
+          name = "ripdrag";
+          "match:title" = "ripdrag";
+          float = true;
+          pin = true;
+          no_anim = true;
+          border_size = 0;
           no_blur = true;
         }
         # "noanim, class:^(ueberzugpp_.*)$"
