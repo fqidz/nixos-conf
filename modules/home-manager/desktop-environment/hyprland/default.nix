@@ -25,6 +25,8 @@
     enable = true;
     systemd.enable = false;
     xwayland.enable = true;
+    configType = "hyprlang";
+    # extraConfig = builtins.readFile ./hyprland.lua;
     settings = {
       monitor = [ "eDP-1, 1920x1080@60, 0x0, 1" ];
 
@@ -59,7 +61,7 @@
       };
 
       dwindle = {
-        pseudotile = true;
+        # pseudotile = true;
         preserve_split = true;
       };
 
@@ -100,11 +102,12 @@
         force_default_wallpaper = 0;
         disable_hyprland_logo = true;
         focus_on_activate = 1;
-        vfr = true;
 
         mouse_move_enables_dpms = true;
         key_press_enables_dpms = true;
       };
+
+      debug.vfr = true;
 
       input = {
         kb_layout = "us,ara";

@@ -60,7 +60,7 @@
       ruff
       basedpyright
 
-      bottles
+      # bottles
     ];
     stateVersion = "24.05";
   };

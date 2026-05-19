@@ -13,6 +13,10 @@
 
   programs.neovim = {
     enable = true;
+    # fucking generates init.lua by default without this and home manager
+    # complains about files clobbering because i already have an init.lua and i
+    # don't generate nvim config with fucking home manager
+    sideloadInitLua = true;
     # not working idk why
     # defaultEditor = true;
 
@@ -36,11 +40,11 @@
   #   }
   home.file.".local/share/nvim/nix/markdown-preview-nvim/" = {
     source = pkgs.vimPlugins.markdown-preview-nvim;
-    recursive = true;
+    # recursive = true;
   };
 
   home.file.".local/share/nvim/nix/texpresso-vim/" = {
     source = pkgs.vimPlugins.texpresso-vim;
-    recursive = true;
+    # recursive = true;
   };
 }
