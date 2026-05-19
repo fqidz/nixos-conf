@@ -136,7 +136,7 @@
         "$mod, F, togglefloating,"
         "$mod, F12, fullscreen,"
         "$mod, P, pseudo,"
-        "$mod, U, togglesplit,"
+        "$mod, U, layoutmsg, togglesplit"
         ", Print, exec, hyprshot --freeze -m region"
         "ALT, Print, exec, hyprpicker -na"
 

@@ -60,6 +60,7 @@ in
         gitroot = "cd \"$(git rev-parse --show-toplevel)\"";
         rm = "printf \"Use the \\`trash\\` command instead. Do \\`%srm\\` if you really need to rm.\\n\" \"\\\\\"; false";
         rda = "ripdrag --no-click --icon-size 48 --and-exit";
+        xo = "xdg-open";
       };
 
       dirHashes = {
