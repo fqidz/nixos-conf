@@ -1,0 +1,7 @@
+{
+    "workspace": {
+        "library": [
+            "${env:HYPRLAND_LUA_STUB_PATH}"
+        ]
+    }
+}

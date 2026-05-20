@@ -16,6 +16,9 @@
   #   "d .local/share/icons <MODE> <USER> <GROUP>"
   # ];
 
+  # used by .luarc.json
+  home.sessionVariables.HYPRLAND_LUA_STUB_PATH = "${pkgs.hyprland}/share/hypr/stubs";
+
   home.file."${config.xdg.dataHome}/icons/rose-pine-hyprcursor" = {
     source = ./hyprcursors/rose-pine-hyprcursor;
     recursive = true;
@@ -25,209 +28,23 @@
     enable = true;
     systemd.enable = false;
     xwayland.enable = true;
-    configType = "hyprlang";
-    # extraConfig = builtins.readFile ./hyprland.lua;
-    settings = {
-      monitor = [ "eDP-1, 1920x1080@60, 0x0, 1" ];
-
-      "$mod" = "SUPER";
-      "$terminal" = "alacritty";
-
-      exec-once = [
-        "[workspace 1 silent] $terminal"
-        "[workspace 2 silent] firefox"
-        "hyprctl setcursor $HYPRCURSOR_THEME $HYPRCURSOR_SIZE"
-        "systemctl --user start hyprpolkitagent"
-      ];
-
-      env = [
-        "XCURSOR_SIZE,28"
-        "HYPRCURSOR_SIZE,28"
-        "HYPRCURSOR_THEME,rose-pine-hyprcursor"
-        "HYPRSHOT_DIR,$HOME/Pictures/Screenshots"
-      ];
-
-      general = {
-        gaps_in = 5;
-        # (top, right, bottom, left)
-        gaps_out = "0, 15, 15, 15";
-        border_size = 1;
-        "col.active_border" = "rgba(c4a7e7ff) rgba(9ccfd8ff) 45deg";
-        "col.inactive_border" = "rgba(21202eff)";
-        resize_on_border = false;
-        allow_tearing = false;
-        layout = "dwindle";
-        no_focus_fallback = true;
-      };
-
-      dwindle = {
-        # pseudotile = true;
-        preserve_split = true;
-      };
-
-      master = {
-        new_status = "master";
-      };
-
-      decoration = {
-        rounding = 5;
-        active_opacity = 1.0;
-        inactive_opacity = 1.0;
-        shadow.enabled = false;
-        blur.enabled = false;
-      };
-
-      animations = {
-        enabled = true;
-        animation = [
-          "windows, 1, 3, ease-back, popin"
-          "border, 1, 10, default"
-          "fade, 1, 7, default"
-          # "workspaces, 1, 2, default"
-          "workspaces, 1, 0.25, default"
-          "layers, 1, 1, default"
-        ];
-        bezier = [
-          "out-expo, 0.12, 0.77, 0, 1"
-          "ease-in-out-sine, 0.37, 0, 0.63, 1"
-          "ease-in-out-circ, 0.85, 0, 0.15, 1"
-          "ease-out-circ, 0, 0.55, 0.45, 1"
-          "ease-out-quint, 0.22, 1, 0.36, 1"
-          "ease-in-out-back, 0.68, -0.6, 0.32, 1.6"
-          "ease-back, 0.75, -0.25, 0.35, 1.25"
-        ];
-      };
-
-      misc = {
-        force_default_wallpaper = 0;
-        disable_hyprland_logo = true;
-        focus_on_activate = 1;
-
-        mouse_move_enables_dpms = true;
-        key_press_enables_dpms = true;
-      };
-
-      debug.vfr = true;
-
-      input = {
-        kb_layout = "us,ara";
-        kb_options = "caps:escape,grp:win_space_toggle";
-        follow_mouse = 1;
-        sensitivity = 0;
-        touchpad = {
-          natural_scroll = true;
-          disable_while_typing = false;
-        };
-        repeat_rate = 25;
-        repeat_delay = 200;
-      };
-
-      gesture = [
-        "3, down, fullscreen"
-      ];
-
-      workspace = [
-        "special:spotify, on-created-empty:[float; size 80% 80%] spotify"
-      ];
-
-      bind = [
-        "$mod, Q, exec, $terminal"
-        "$mod, C, killactive,"
-        "$mod, M, exit,"
-        "$mod, R, exec, tofi-drun --drun-launch=true"
-        "$mod, V, exec, cliphist list | tofi --width 80% | cliphist decode | wl-copy"
-        "$mod, F, togglefloating,"
-        "$mod, F12, fullscreen,"
-        "$mod, P, pseudo,"
-        "$mod, U, layoutmsg, togglesplit"
-        ", Print, exec, hyprshot --freeze -m region"
-        "ALT, Print, exec, hyprpicker -na"
-
-        "SUPER, SPACE, exec, sh ${./write_to_layout_pipe.sh}"
-
-        "$mod, H, movefocus, l"
-        "$mod, J, movefocus, d"
-        "$mod, K, movefocus, u"
-        "$mod, L, movefocus, r"
-
-        "$mod, S, togglespecialworkspace, spotify"
-        "$mod SHIFT, S, movetoworkspace, special:spotify"
-      ]
-      # bind = $mainMod, 1, workspace, 1
-      # bind = $mainMod SHIFT, 1, movetoworkspace, 1
-      ++ (builtins.concatLists (
-        builtins.genList (
-          i:
-          let
-            ws = i + 1;
-          in
-          [
-            "$mod, code:1${toString i}, workspace, ${toString ws}"
-            "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
-            "$mod ALT, code:1${toString i}, exec, sh ${./swapworkspace.sh} ${toString ws}"
-          ]
-        ) 9
-      ));
-
-      bindm = [
-        "$mod, mouse:272, movewindow"
-        "$mod, mouse:273, resizewindow"
-      ];
-
-      bindle = [
-        ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+"
-        ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-"
-        ", XF86MonBrightnessUp, exec, brightnessctl -q set +2%"
-        ", XF86MonBrightnessDown, exec, brightnessctl -q set 2%-"
-      ];
-
-      bindl = [
-        ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-        ", XF86AudioPlay, exec, playerctl play-pause"
-        ", XF86AudioNext, exec, playerctl next"
-        ", XF86AudioPrev, exec, playerctl previous"
-      ];
-
-      cursor = {
-        inactive_timeout = 10;
-      };
-
-      windowrule = [
-        {
-          name = "noanim-ueberzugpp";
-          "match:class" = "^(ueberzugpp_.*)$";
-          animation = 0;
-        }
-        {
-          name = "overlay-open-books";
-          "match:title" = "open-books";
-          float = "on";
-          size = "80% 80%";
-        }
-        {
-          name = "ueberzugpp";
-          "match:class" = "^(ueberzugpp.*)$";
-          float = true;
-          no_anim = true;
-          border_size = 0;
-          no_focus = true;
-          no_follow_mouse = true;
-          no_blur = true;
-        }
-        {
-          name = "ripdrag";
-          "match:title" = "ripdrag";
-          float = true;
-          pin = true;
-          no_anim = true;
-          border_size = 0;
-          no_blur = true;
-        }
-        # "noanim, class:^(ueberzugpp_.*)$"
-        # open-books window found in config/home.nix: xdg.desktopEntries.books
-        # "float, title:open-books"
-        # "size 80% 80%, title:open-books"
-      ];
-    };
+    configType = "lua";
+    extraConfig = builtins.readFile (pkgs.replaceVars ./hyprland.lua {
+      alacritty = pkgs.lib.getExe pkgs.alacritty;
+      firefox = pkgs.lib.getExe pkgs.firefox;
+      hyprctl = "${pkgs.hyprland}/bin/hyprctl";
+      systemctl = "${pkgs.systemd}/bin/systmctl";
+      tofi-drun = "${pkgs.tofi}/bin/tofi-drun";
+      cliphist = pkgs.lib.getExe pkgs.cliphist;
+      tofi = pkgs.lib.getExe pkgs.tofi;
+      wl-copy = "${pkgs.wl-clipboard}/bin/wl-copy";
+      hyprshot = pkgs.lib.getExe pkgs.hyprshot;
+      hyprpicker = pkgs.lib.getExe pkgs.hyprpicker;
+      bash = pkgs.lib.getExe pkgs.bash;
+      wpctl = "${pkgs.wireplumber}/bin/wpctl";
+      playerctl = pkgs.lib.getExe pkgs.playerctl;
+      brightnessctl = pkgs.lib.getExe pkgs.brightnessctl;
+      DEFAULT_AUDIO_SINK = null;
+    });
   };
 }
