@@ -1,5 +1,5 @@
 (deflisten language_code
-  :initial 'unknown'
+  :initial '?lang'
   `xkb-get-layout && tail -f $XKB_CURRENT_LAYOUT_FIFO_PATH`
 )
 

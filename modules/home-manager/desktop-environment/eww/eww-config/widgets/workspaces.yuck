@@ -28,7 +28,7 @@
               workspace.name == "7" ? "Ⅶ" :
               workspace.name == "8" ? "Ⅷ" :
               workspace.name == "9" ? "Ⅸ" :
-              workspace.name == "special:spotify" ? "" : "?"
+              workspace.name == "special:music" ? "" : "?"
             }`
           )
         )

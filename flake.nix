@@ -150,6 +150,7 @@
                 extraSpecialArgs = {
                   inherit inputs outputs username;
                   system = "x86_64-linux";
+                  yt-music-pwa-site-id = "01KH8P5D2CE8DVWSH80MG1FS6X";
                 };
 
                 users.${username}.imports = [

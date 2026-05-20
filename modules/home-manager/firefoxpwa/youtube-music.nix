@@ -1,11 +1,11 @@
-{ pkgs, ... }:
+{ pkgs, yt-music-pwa-site-id, ... }:
 let
   profile-id = "01KH8P3MWAKD68KT2VQXAKKH6J";
 in
 {
   programs.firefoxpwa.profiles."${profile-id}" = {
     name = "YouTube Music";
-    sites."01KH8P5D2CE8DVWSH80MG1FS6X" = {
+    sites.${yt-music-pwa-site-id} = {
       name = "YouTube Music";
       url = "https://music.youtube.com/";
       manifestUrl = "https://music.youtube.com/manifest.webmanifest";

@@ -14,8 +14,8 @@ hl.env("HYPRCURSOR_THEME", "rose-pine-hyprcursor")
 hl.env("HYPRSHOT_DIR", "$HOME/Pictures/Screenshots")
 
 hl.on("hyprland.start", function()
-  hl.exec_cmd("[workspace 1 silent] " .. terminal)
-  hl.exec_cmd("[workspace 2 silent] @firefox@")
+  hl.exec_cmd(terminal, { workspace = "1 silent" })
+  hl.exec_cmd("@firefox@", { workspace = "2 silent" })
   hl.exec_cmd("@hyprctl@ set cursor $HYPRCURSOR_THEME $HYPRCURSOR_SIZE")
   hl.exec_cmd("@systemctl@ --user start hyprpolkitagent")
 end)
@@ -134,7 +134,7 @@ hl.gesture({
 
 hl.workspace_rule({
   workspace = "special:music",
-  on_created_empty = "[float; size 80% 80%] spotify"
+  on_created_empty = "@firefoxpwa@ site launch @yt-music-pwa-site-id@",
 })
 
 hl.bind(mod .. " + Q", hl.dsp.exec_cmd(terminal))
@@ -145,7 +145,7 @@ hl.bind(mod .. " + V", hl.dsp.exec_cmd("@cliphist@ list | @tofi@ --width 80% | @
 hl.bind(mod .. " + F", hl.dsp.window.float())
 hl.bind(mod .. " + F12", hl.dsp.window.fullscreen())
 hl.bind(mod .. " + P", hl.dsp.window.pseudo())
-hl.bind(mod .. " + U", hl.dsp.layout("toggle_split"))
+hl.bind(mod .. " + U", hl.dsp.layout("togglesplit"))
 hl.bind("Print", hl.dsp.exec_cmd("@hyprshot@ --freeze -m region"))
 hl.bind("ALT + Print", hl.dsp.exec_cmd("@hyprpicker@ -na"))
 hl.bind(mod .. " + SPACE", hl.dsp.exec_cmd("@bash@ @write_to_layout_pipe.sh@"))
@@ -153,8 +153,8 @@ hl.bind(mod .. " + H", hl.dsp.focus({ direction = "l" }))
 hl.bind(mod .. " + J", hl.dsp.focus({ direction = "d" }))
 hl.bind(mod .. " + K", hl.dsp.focus({ direction = "u" }))
 hl.bind(mod .. " + L", hl.dsp.focus({ direction = "r" }))
-hl.bind(mod .. " + S", hl.dsp.workspace.toggle_special("spotify"))
-hl.bind(mod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:spotify" }))
+hl.bind(mod .. " + S", hl.dsp.workspace.toggle_special("music"))
+hl.bind(mod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:music" }))
 
 for i = 1, 9 do
   hl.bind(mod .. " + " .. i, hl.dsp.focus({ workspace = i }))
@@ -179,7 +179,7 @@ hl.window_rule({
   match = {
     title = "open-books",
   },
-  size = "80% 80%",
+  size = { "monitor_w * 0.8", "monitor_h * 0.8" },
 })
 
 hl.window_rule({
@@ -192,6 +192,7 @@ hl.window_rule({
   no_focus = true,
   no_follow_mouse = true,
   no_blur = true,
+  float = true,
 })
 
 hl.window_rule({
@@ -204,4 +205,14 @@ hl.window_rule({
   no_anim = true,
   border_size = 0,
   no_blur = true,
+})
+
+hl.window_rule({
+  name = "yt-music",
+  match = {
+    class = "FFPWA-@yt-music-pwa-site-id@",
+  },
+  size = { "monitor_w * 0.8", "monitor_h * 0.8" },
+  float = true,
+  center = true,
 })

@@ -325,11 +325,11 @@
         "systems": "systems_2"
       },
       "locked": {
-        "lastModified": 1778790330,
-        "narHash": "sha256-1uMK+1Jgo0HiVFAMj8Fe9ExVsx3j6ErRt6QquaeyDNI=",
+        "lastModified": 1779287440,
+        "narHash": "sha256-2a1DAGuQzXDRh8uJSOGnZ/DI+rIHHHCZXAxJwhU4NIY=",
         "owner": "fqidz",
         "repo": "xkb-get-layout",
-        "rev": "28e11a13e084f22f28385c32ed9fa7d885e02c5c",
+        "rev": "2de3a0acabc460e2bf38cab78f1e265a3748dc8e",
         "type": "github"
       },
       "original": {
