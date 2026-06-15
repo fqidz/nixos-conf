@@ -26,6 +26,7 @@
         image_filter = "triangle";
         image_quality = 50;
         wrap = "no";
+        # ueberzug_offset = [10 10 0 0];
       };
     };
   };

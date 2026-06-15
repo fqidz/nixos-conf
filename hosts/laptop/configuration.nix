@@ -51,6 +51,7 @@
       inputs.nix-alien.packages.${system}.nix-alien
       pkgs.wirelesstools
       pkgs.wpa_supplicant_gui
+      pkgs.gnome-disk-utility
       # config.boot.perf
       # config.boot.systemtap
     ];
@@ -118,6 +119,7 @@
   };
 
   services = {
+    udisks2.enable = true;
     # fprintd = {
     #   enable = true;
     # };

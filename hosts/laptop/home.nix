@@ -60,6 +60,7 @@
       ruff
       basedpyright
 
+      octave
       # bottles
     ];
     stateVersion = "24.05";
