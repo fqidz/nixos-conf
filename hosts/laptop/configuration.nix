@@ -204,14 +204,6 @@
       # Set sudo timeout to 10 minutes
       Defaults timestamp_timeout = 10
     '';
-    # pam.loginLimits = [
-    #   {
-    #     domain = "*";
-    #     type = "-";
-    #     item = "nofile";
-    #     value = "32768";
-    #   }
-    # ];
   };
 
   systemd.user.extraConfig = "DefaultLimitNOFILE=32768";
