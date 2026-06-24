@@ -206,7 +206,6 @@
     '';
   };
 
-  systemd.user.extraConfig = "DefaultLimitNOFILE=32768";
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

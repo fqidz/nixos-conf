@@ -33,11 +33,16 @@
     }
     {
       domain = "*";
-      item = "nofile";
+      item = "memlock";
       type = "-";
-      value = "131072";
+      value = "unlimited";
     }
   ];
+  # Don't know why but `nofile` doesn't work with `security.pam.loginLimits`
+  # and only works with this:
+  systemd.user.settings.Manager = {
+    DefaultLimitNOFILE = 131072;
+  };
 
   # Fix podman quadlet taking so long to start:
   # (podman-user-wait-network-online.service: Failed with result 'timeout'.)
