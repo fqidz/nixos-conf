@@ -17,7 +17,7 @@
 
     ./direnv
     ./eza
-    ./fastfetch
+    # ./fastfetch
     ./fzf
     ./git
     ./gnupg
