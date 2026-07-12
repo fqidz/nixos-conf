@@ -13,6 +13,7 @@
             "en.uobwiki.com"
             "ar.uobwiki.com"
             "files.uobwiki.com"
+            "upload.uobwiki.com"
           ];
         };
       };
