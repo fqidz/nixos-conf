@@ -40,13 +40,13 @@
     };
 
     virtualHosts =
-    let
-      redirect = targetUrl: {
-        globalRedirect = targetUrl;
-        forceSSL = true;
-        enableACME = true;
-      };
-    in
+    # let
+    #   redirect = targetUrl: {
+    #     globalRedirect = targetUrl;
+    #     forceSSL = true;
+    #     enableACME = true;
+    #   };
+    # in
     {
       "updatecountdown.com" = {
         forceSSL = true;
@@ -64,7 +64,7 @@
         };
       };
 
-      "www.updatecountdown.com" = redirect "updatecountdown.com";
+      # "www.updatecountdown.com" = redirect "updatecountdown.com";
 
       # Accept all subdomains
       # https://nginx.org/en/docs/http/ngx_http_core_module.html#server_name
