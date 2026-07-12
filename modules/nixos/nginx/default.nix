@@ -4,6 +4,18 @@
     acme = {
       acceptTerms = true;
       defaults.email = "faidz.arante@gmail.com";
+      certs = {
+        "uobwiki.com" = {
+          email = "admin@uobwiki.com";
+          webroot = "/var/lib/acme/acme-challenge";
+          group = "nginx";
+          extraDomainNames = [
+            "en.uobwiki.com"
+            "ar.uobwiki.com"
+            "files.uobwiki.com"
+          ];
+        };
+      };
     };
   };
 
@@ -70,7 +82,8 @@
       # https://nginx.org/en/docs/http/ngx_http_core_module.html#server_name
       ".uobwiki.com" = {
         forceSSL = true;
-        enableACME = true;
+        # enableACME = true;
+        useACMEHost = "uobwiki.com";
         locations."/" = {
           proxyPass = "http://127.0.0.1:8080";
           extraConfig = ''
