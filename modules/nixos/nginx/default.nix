@@ -40,13 +40,13 @@
     };
 
     virtualHosts =
-    # let
-    #   redirect = targetUrl: {
-    #     globalRedirect = targetUrl;
-    #     forceSSL = true;
-    #     enableACME = true;
-    #   };
-    # in
+    let
+      redirect = targetUrl: {
+        globalRedirect = targetUrl;
+        forceSSL = true;
+        enableACME = true;
+      };
+    in
     {
       "updatecountdown.com" = {
         forceSSL = true;
@@ -64,7 +64,7 @@
         };
       };
 
-      # "www.updatecountdown.com" = redirect "updatecountdown.com";
+      "www.updatecountdown.com" = redirect "updatecountdown.com";
 
       # Accept all subdomains
       # https://nginx.org/en/docs/http/ngx_http_core_module.html#server_name
@@ -74,11 +74,11 @@
         locations."/" = {
           proxyPass = "http://127.0.0.1:8080";
           extraConfig = ''
-            proxy_set_header Host $host
+            proxy_set_header Host $host;
 
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_set_header X-Forwarded-Proto https
+            proxy_set_header X-Forwarded-Proto https;
           '';
         };
       };
