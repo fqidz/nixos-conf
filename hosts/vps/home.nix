@@ -1,7 +1,7 @@
 { pkgs, username, ... }:
 {
   imports = [
-    ../../modules/home-manager/headless.nix
+    ../../modules/home-manager/shell/vps.nix
     ../../modules/home-manager/git/vps.nix
     ../../modules/home-manager/podman-quadlet
     ../../modules/home-manager/podman-quadlet/containers/timescaledb.nix
@@ -18,7 +18,6 @@
       ripgrep
       trash-cli
       wget
-      neovim
       nginxMainline
     ];
     stateVersion = "24.05";
