@@ -17,13 +17,13 @@
 
     ./direnv
     ./eza
-    # ./fastfetch
     ./fzf
     ./git
+    ./git/vps.nix
     ./gnupg
-    ./shell
+    ./shell/vps.nix
     ./systemd
     ./tmux
-    ./yazi
+    ./yazi/vps.nix
   ];
 }

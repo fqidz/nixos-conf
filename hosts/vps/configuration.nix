@@ -4,8 +4,8 @@
   imports = [
     ./hardware-configuration.nix
 
-    ../../modules/nixos/shell
     ../../modules/nixos/nginx
+    ../../modules/nixos/shell
     ../../modules/nixos/sops
     ../../modules/nixos/podman
   ];
