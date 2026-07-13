@@ -81,7 +81,7 @@
 
       # Accept all subdomains
       # https://nginx.org/en/docs/http/ngx_http_core_module.html#server_name
-      ".uobwiki.com" = {
+      "*.uobwiki.com" = {
         forceSSL = true;
         # enableACME = true;
         useACMEHost = "uobwiki.com";
@@ -98,6 +98,13 @@
           '';
         };
       };
+
+      "uobwiki.com" = {
+        globalRedirect = "en.uobwiki.com";
+        forceSSL = true;
+        useACMEHost = "uobwiki.com";
+      };
+
     };
   };
 }
