@@ -62,6 +62,7 @@
       ];
       forAllSystems = nixpkgs.lib.genAttrs systems;
       username = "faidz";
+      homelab_username = "arante";
       overlays = {
         nixpkgs.overlays = [
           (
@@ -194,6 +195,39 @@
             }
           ];
         };
+
+        "homelab" = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = {
+            inherit inputs outputs;
+            username = homelab_username;
+            system = "x86_64-linux";
+          };
+          modules = [
+            ./hosts/homelab/configuration.nix
+            nix-index-database.nixosModules.nix-index
+            { programs.nix-index-database.comma.enable = true; }
+            # quadlet-nix.nixosModules.quadlet
+            # overlays
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs = {
+                  inherit inputs outputs;
+                  username = homelab_username;
+                  system = "x86_64-linux";
+                };
+
+                users.${homelab_username}.imports = [
+                  ./hosts/homelab/home.nix
+                  sops-nix.homeManagerModules.sops
+                ];
+              };
+            }
+          ];
+        };
       };
 
       homeConfigurations = {
@@ -207,6 +241,14 @@
 
         "${username}@vps" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages."aarch64-linux";
+          modules = [
+            nix-index-database.hmModules.nix-index
+            { programs.nix-index-database.comma.enable = true; }
+          ];
+        };
+
+        "${homelab_username}@homelab" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages."x86_64-linux";
           modules = [
             nix-index-database.hmModules.nix-index
             { programs.nix-index-database.comma.enable = true; }
