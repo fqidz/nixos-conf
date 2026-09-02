@@ -34,7 +34,7 @@
     #   vim
     # ];
     openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKuHa7uDvYyYAnEy3Lh8dx5LDDI305OgSUClJ7KI9qji faidz@nixos"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMDws/ORymgRK53xccja0bv6PqPJjqSvGKrDdI6+oXvq faidz@nixos"
     ];
   };
 
