@@ -43,6 +43,10 @@ in
         };
       };
 
+      terminal = {
+        osc52 = "CopyPaste";
+      };
+
       keyboard.bindings = [
         {
           key = "N";
