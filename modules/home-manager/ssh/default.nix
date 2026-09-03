@@ -15,6 +15,11 @@
         identitiesOnly = true;
         identityFile = "${config.home.homeDirectory}/.ssh/hetzner_id_ed25519";
       };
+      "homelab" = {
+        hostname = "192.168.100.216";
+        identitiesOnly = true;
+        identityFile = "${config.home.homeDirectory}/.ssh/homelab";
+      };
       "*" = {
         forwardAgent = false;
         addKeysToAgent = "no";
