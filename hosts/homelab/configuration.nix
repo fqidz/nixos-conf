@@ -7,6 +7,7 @@
     # ../../modules/nixos/nginx
     ../../modules/nixos/shell
     ../../modules/nixos/sops
+    ../../modules/nixos/navidrome
     # ../../modules/nixos/podman
   ];
 
@@ -94,6 +95,8 @@
     80
     443
   ];
+
+  networking.hostName = "nixos-homelab";
 
   nix = {
     settings.experimental-features = [
