@@ -1,6 +1,7 @@
 keys:
   - &faidz age137vgduqjep676qkkk0s5q23sxd9lq5hdztc6p3phxpytfj9jmcssetgaav
   - &vps age1ahjyzrlwd03ycd2sqwdpxk7y9c7jualg4a93efd0nfwackf95srq6hmny7
+  - &homelab age1upz2xqd3kv7qml9nlf5npy3ew8vc0dceggly6cq4zy57hvkl23ksfc2q3r
 creation_rules:
   - path_regex: secrets/wifi.yaml$
     key_groups:
@@ -11,3 +12,7 @@ creation_rules:
     - age:
       - *vps
       - *faidz
+  - path_regex: secrets/navidrome.yaml$
+    key_groups:
+    - age:
+      - *homelab

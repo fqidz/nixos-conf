@@ -36,6 +36,7 @@
     # ];
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMDws/ORymgRK53xccja0bv6PqPJjqSvGKrDdI6+oXvq faidz@nixos"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMfGHnsdDVeOH+Zbfrn0V9mxAd7b2vAmC9h+yzLEmq7+ eddsa-key-20260903"
     ];
   };
 

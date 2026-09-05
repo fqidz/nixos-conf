@@ -252,6 +252,7 @@
           modules = [
             nix-index-database.hmModules.nix-index
             { programs.nix-index-database.comma.enable = true; }
+            sops-nix.nixosModules.sops
           ];
         };
       };
