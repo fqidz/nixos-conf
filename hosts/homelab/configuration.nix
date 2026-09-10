@@ -15,6 +15,9 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # Compatible kernel version for zfs
+  boot.kernelPackages = pkgs.linuxPackages_7_2;
+
   networking.networkmanager.enable = true;
 
   # Set your time zone.
@@ -31,9 +34,9 @@
   users.users.${username} = {
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-    # packages = with pkgs; [
-    #   vim
-    # ];
+    packages = with pkgs; [
+      zfs
+    ];
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMDws/ORymgRK53xccja0bv6PqPJjqSvGKrDdI6+oXvq faidz@nixos"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMfGHnsdDVeOH+Zbfrn0V9mxAd7b2vAmC9h+yzLEmq7+ eddsa-key-20260903"
