@@ -16,3 +16,7 @@ creation_rules:
     key_groups:
     - age:
       - *homelab
+  - path_regex: secrets/ostui.yaml$
+    key_groups:
+    - age:
+      - *faidz
