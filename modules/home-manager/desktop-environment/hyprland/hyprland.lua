@@ -134,7 +134,7 @@ hl.gesture({
 
 hl.workspace_rule({
   workspace = "special:music",
-  on_created_empty = "@firefoxpwa@ site launch @yt-music-pwa-site-id@",
+  on_created_empty = "@music-player-launch-cmd@",
 })
 
 hl.bind(mod .. " + Q", hl.dsp.exec_cmd(terminal))
@@ -209,9 +209,9 @@ hl.window_rule({
 })
 
 hl.window_rule({
-  name = "yt-music",
+  name = "music-player",
   match = {
-    class = "FFPWA-@yt-music-pwa-site-id@",
+    class = "FFPWA-@yt-music-pwa-site-id@|io\\.github\\.supersonic-app\\.supersonic",
   },
   size = { "monitor_w * 0.8", "monitor_h * 0.8" },
   float = true,

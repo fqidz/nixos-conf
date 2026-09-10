@@ -31,11 +31,12 @@
     configType = "lua";
     extraConfig = builtins.readFile (pkgs.replaceVars ./hyprland.lua {
       inherit yt-music-pwa-site-id;
+      # music-player-launch-cmd = "${pkgs.lib.getExe pkgs.firefoxpwa} site launch ${yt-music-pwa-site-id}";
+      music-player-launch-cmd = pkgs.lib.getExe pkgs.supersonic;
       alacritty = pkgs.lib.getExe pkgs.alacritty;
       firefox = pkgs.lib.getExe pkgs.firefox;
       hyprctl = "${pkgs.hyprland}/bin/hyprctl";
       systemctl = "${pkgs.systemd}/bin/systmctl";
-      firefoxpwa = pkgs.lib.getExe pkgs.firefoxpwa;
       tofi-drun = "${pkgs.tofi}/bin/tofi-drun";
       cliphist = pkgs.lib.getExe pkgs.cliphist;
       tofi = pkgs.lib.getExe pkgs.tofi;
