@@ -17,6 +17,60 @@
 
   # Compatible kernel version for zfs
   boot.kernelPackages = pkgs.linuxPackages_7_2;
+  boot.supportedFilesystems = [ "zfs" ];
+  boot.zfs.forceImportRoot = false;
+  networking.hostId = "d7c17120";
+  boot.zfs.extraPools = [ "zpool" ];
+  
+  fileSystems = {
+    "/" = {
+       device = "zpool/root";
+       fsType = "zfs";
+       options = [ "zfsutil" ];
+     };
+
+    "/nix" = {
+       device = "zpool/nix";
+       fsType = "zfs";
+       options = [ "zfsutil" ];
+     };
+
+    "/var" = {
+       device = "zpool/var";
+       fsType = "zfs";
+       options = [ "zfsutil" ];
+     };
+
+    "/home" = {
+       device = "zpool/home";
+       fsType = "zfs";
+       options = [ "zfsutil" ];
+     };
+
+    "/boot" = {
+       device = "/dev/disk/by-id/ata-TOSHIBA_MQ04ABF100_41RSP0PZT-part1";
+       fsType = "vfat";
+       options = [ "fmask=0022" "dmask=0022" ];
+     };
+  };
+
+  swapDevices = [{
+    device = "/dev/disk/by-id/ata-TOSHIBA_MQ04ABF100_41RSP0PZT-part2";
+    randomEncryption = true;
+  }];
+
+  systemd.tmpfiles.settings."01-storage-dir" = {
+    "/storage".d = {
+      group = "root";
+      mode = "0755";
+      user = "root";
+    };
+    "/storage/music/".d = {
+      group = "navidrome";
+      mode = "0757";
+      user = "root";
+    };
+  };
 
   networking.networkmanager.enable = true;
 
@@ -33,7 +87,10 @@
 
   users.users.${username} = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [
+      "wheel"
+      "navidrome"
+    ];
     packages = with pkgs; [
       zfs
     ];
