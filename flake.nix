@@ -2,6 +2,7 @@
   description = "Nixos config flake";
 
   inputs = {
+    # nixpkgs.url = "github:nixos/nixpkgs/pull/560020/head";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     nix-index-database = {

@@ -8,6 +8,7 @@
     ../../modules/nixos/shell
     ../../modules/nixos/sops
     ../../modules/nixos/navidrome
+    ../../modules/nixos/samba
     # ../../modules/nixos/podman
   ];
 
@@ -47,6 +48,12 @@
        options = [ "zfsutil" ];
      };
 
+    "/storage" = {
+       device = "zpool/storage";
+       fsType = "zfs";
+       options = [ "zfsutil" ];
+     };
+
     "/boot" = {
        device = "/dev/disk/by-id/ata-TOSHIBA_MQ04ABF100_41RSP0PZT-part1";
        fsType = "vfat";
@@ -59,18 +66,18 @@
     randomEncryption = true;
   }];
 
-  systemd.tmpfiles.settings."01-storage-dir" = {
-    "/storage".d = {
-      group = "root";
-      mode = "0755";
-      user = "root";
-    };
-    "/storage/music/".d = {
-      group = "navidrome";
-      mode = "0757";
-      user = "root";
-    };
-  };
+  # systemd.tmpfiles.settings."01-storage-dir" = {
+  #   "/storage".d = {
+  #     group = "root";
+  #     mode = "0755";
+  #     user = "root";
+  #   };
+  #   "/storage/music/".d = {
+  #     group = "navidrome";
+  #     mode = "0757";
+  #     user = "root";
+  #   };
+  # };
 
   networking.networkmanager.enable = true;
 
