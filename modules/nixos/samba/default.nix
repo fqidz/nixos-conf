@@ -45,10 +45,10 @@ in
         "security" = "user";
         "use sendfile" = "yes";
         "server max protocol" = "SMB3";
+        "hosts allow" = "192.168.100. 127.0.0.1 localhost";
       };
       "storage" = {
         "path" = "/storage";
-        "hosts allow" = pkgs.lib.strings.join ", " (map (user: user.name) userList) ;
         "browseable" = "yes";
         "writeable" = "yes";
       };
