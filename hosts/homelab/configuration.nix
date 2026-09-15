@@ -9,6 +9,7 @@
     ../../modules/nixos/sops
     ../../modules/nixos/navidrome
     ../../modules/nixos/samba
+    ../../modules/nixos/cloudflared
     # ../../modules/nixos/podman
   ];
 
@@ -158,11 +159,16 @@
     };
   };
 
-  networking.firewall.allowedTCPPorts = [
-    22
-    80
-    443
-  ];
+  networking.firewall = {
+    allowedTCPPorts = [
+      22
+      80
+      443
+
+      18080
+      15234
+    ];
+  };
 
   networking.hostName = "nixos-homelab";
 

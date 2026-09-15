@@ -29,3 +29,7 @@ creation_rules:
     - age:
       - *faidz
       - *homelab
+  - path_regex: secrets/cloudflared.yaml
+    key_groups:
+    - age:
+      - *homelab

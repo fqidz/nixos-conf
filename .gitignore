@@ -1,1 +1,2 @@
 modules/nixos/samba/users.nix
+modules/nixos/cloudflared/ingress.nix
