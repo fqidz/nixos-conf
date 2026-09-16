@@ -165,6 +165,8 @@
       22
       80
       443
+      8384 # syncthing gui
+      22000 # syncthing
 
       18080
       15234

@@ -46,6 +46,7 @@ in
         "use sendfile" = "yes";
         "server max protocol" = "SMB3";
         "hosts allow" = "192.168.100. 127.0.0.1 localhost fd00::/112 10.20.30.";
+        "force group" = "users";
       };
       "storage" = {
         "path" = "/storage";
