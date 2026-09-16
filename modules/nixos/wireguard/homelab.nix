@@ -24,10 +24,8 @@
 
     networks."wg0" = {
       matchConfig.Name = "wg0";
-      address = [ "0.0.0.0/0" ];
+      address = [ "10.20.30.1/24" "fd00::1/64" ];
       networkConfig = {
-        # do not use IPMasquerade,
-        # unnecessary, causes problems with host ipv6
         IPv4Forwarding = true;
         IPv6Forwarding = true;
       };
@@ -42,13 +40,17 @@
       wireguardConfig = {
         ListenPort = 51820;
         PrivateKeyFile = config.sops.secrets."wg-key".path;
-        RouteTable = "main";
+        # RouteTable = "main";
         FirewallMark = 17;
       };
       wireguardPeers = [
         {
           PublicKey = "ff9LSuXOu3AaXoVCqhM4FQwYLwQcNG1JpmdQ5/l1lxA=";
-          AllowedIPs = [ "0.0.0.0/0" ];
+          AllowedIPs = [ "10.20.30.2/32" "fd00::2/128" ];
+        }
+        {
+          PublicKey = "LZUBjJctLqzQoUyuX2KJcWyWhLgSc1ntq3IOOkEn8wM=";
+          AllowedIPs = [ "10.20.30.3/32" "fd00::3/128" ];
         }
       ];
     };

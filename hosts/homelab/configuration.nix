@@ -9,6 +9,7 @@
     ../../modules/nixos/sops
     ../../modules/nixos/navidrome
     ../../modules/nixos/samba
+    ../../modules/nixos/wireguard/homelab.nix
     ../../modules/nixos/cloudflared
     # ../../modules/nixos/podman
   ];
