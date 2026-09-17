@@ -20,6 +20,7 @@
     ../../modules/nixos/memprocfs
     ../../modules/nixos/printing
     ../../modules/nixos/wireguard/laptop.nix
+    ../../modules/nixos/lamp
     # ../../modules/nixos/bluetooth
   ];
 
