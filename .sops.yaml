@@ -23,6 +23,7 @@ creation_rules:
   - path_regex: secrets/samba.yaml$
     key_groups:
     - age:
+      - *faidz
       - *homelab
   - path_regex: secrets/wireguard.yaml$
     key_groups:

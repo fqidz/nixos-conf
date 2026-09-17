@@ -52,6 +52,8 @@ in
         "path" = "/storage";
         "browseable" = "yes";
         "writeable" = "yes";
+        "create mask" = "0774";
+        "directory mask" = "0775";
       };
     };
   };
