@@ -21,6 +21,7 @@
     ../../modules/nixos/printing
     ../../modules/nixos/wireguard/laptop.nix
     ../../modules/nixos/lamp
+    ../../modules/nixos/samba-client
     # ../../modules/nixos/bluetooth
   ];
 
