@@ -217,3 +217,13 @@ hl.window_rule({
   float = true,
   center = true,
 })
+
+hl.window_rule({
+  name = "mpv",
+  match = {
+    class = "mpv",
+  },
+  size = { "monitor_w * 0.9", "monitor_h * 0.9" },
+  float = true,
+  center = true,
+})

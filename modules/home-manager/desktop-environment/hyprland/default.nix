@@ -44,7 +44,24 @@
       hyprshot = pkgs.lib.getExe pkgs.hyprshot;
       hyprpicker = pkgs.lib.getExe pkgs.hyprpicker;
       bash = pkgs.lib.getExe pkgs.bash;
-      "write_to_layout_pipe.sh" = ./write_to_layout_pipe.sh;
+      "write_to_layout_pipe.sh" = "${pkgs.writeShellScript "write_to_layout_pipe" ''
+        #!${pkgs.bash}/bin/sh
+        FIFO_PATH=$XDG_RUNTIME_DIR/layout_fifo_pipe
+
+        if [[ ! -p "$FIFO_PATH" ]]; then
+            echo "Creating fifo pipe at \"$FIFO_PATH\""
+            mkfifo "$FIFO_PATH" 2>&1
+        fi
+        echo "Using existing fifo pipe at \"$FIFO_PATH\""
+
+        echo "Outputting \"${
+          pkgs.lib.getExe inputs.xkb-get-layout.packages.${system}.default
+        }\" to fifo pipe"
+
+        # https://github.com/fqidz/xkb-get-layout
+        ${pkgs.lib.getExe inputs.xkb-get-layout.packages.${system}.default} > "$FIFO_PATH"
+      ''}";
+
       wpctl = "${pkgs.wireplumber}/bin/wpctl";
       playerctl = pkgs.lib.getExe pkgs.playerctl;
       brightnessctl = pkgs.lib.getExe pkgs.brightnessctl;

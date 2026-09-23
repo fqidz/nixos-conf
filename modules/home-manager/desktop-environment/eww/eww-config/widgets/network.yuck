@@ -1,5 +1,5 @@
 (deflisten network_json
-  :initial `{"status":"unavailable","ssid":"","signal":"0"}`
+  :initial `{"status":"unavailable","ssid":"","signal":0,"speed":"0"}`
   `/usr/bin/env sh ~/.config/eww/scripts/network.sh`
 )
 
@@ -10,7 +10,7 @@
     :space-evenly false
     (eventbox
       :tooltip `${
-        network_json.status == "connected" ? "${network_json.ssid} ${network_json.signal}%" :
+        network_json.status == "connected" ? "${network_json.ssid} / ${network_json.signal}% / ${network_json.speed}" :
         network_json.status == "disconnected" ? "Disconnected" :
         network_json.status == "unavailable" ? "Unavailable" : "${network_json.status}"
       }`

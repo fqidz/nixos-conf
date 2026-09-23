@@ -7,10 +7,11 @@ echo_initial() {
     network_string=$(nmcli -t device wifi list ifname "$network_device" | grep '^*' | sed -E 's/\\:/ /g')
     if [[ $status == "connected" ]]; then
         ssid=$(printf '%s\n' "$network_string" | cut -d ":" -f3)
-        signal=$(printf '%s\n' "$network_string" | cut -d ":" -f7)
-        printf '{"status":"%s","ssid":"%s","signal":"%s"}\n' "$status" "$ssid" "$signal"
+        speed=$(printf '%s\n' "$network_string" | cut -d ":" -f7)
+        signal=$(printf '%s\n' "$network_string" | cut -d ":" -f8)
+        printf '{"status":"%s","ssid":"%s","signal":%s,"speed":"%s"}\n' "$status" "$ssid" "$signal" "$speed"
     else
-        printf '{"status":"%s","ssid":"","signal":"0"}\n' $status
+        printf '{"status":"%s","ssid":"","signal":0,"speed":"0"}\n' $status
     fi
 }
 

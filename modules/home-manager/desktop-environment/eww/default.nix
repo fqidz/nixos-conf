@@ -90,6 +90,7 @@
         After = "graphical-session.target";
         PartOf = "graphical-session.target";
         BindsTo = "eww-daemon.service";
+        Requires = "xkb-make-fifo.service";
       };
       Service = {
         ExecStart = "${pkgs.writeShellScript "eww-bar-start" ''
@@ -102,6 +103,34 @@
       };
       Install = {
         WantedBy = [ "eww-daemon.service" ];
+      };
+    };
+
+    # TODO: fix jank
+    xkb-make-fifo = {
+      Unit = {
+        Description = "Makes fifo pip for use for xkb";
+        After = "graphical-session.target";
+        PartOf = "graphical-session.target";
+      };
+      Service = {
+        Type = "oneshot";
+        ExecStart = "${pkgs.writeShellScript "xkb-make-fifo" ''
+          #!${pkgs.bash}/bin/sh
+          FIFO_PATH=$XDG_RUNTIME_DIR/layout_fifo_pipe
+
+          if [[ ! -p "$FIFO_PATH" ]]; then
+              echo "Creating fifo pipe at \"$FIFO_PATH\""
+              mkfifo "$FIFO_PATH" 2>&1
+          fi
+          echo "Already existing fifo pipe at \"$FIFO_PATH\""
+        ''}";
+        Restart = "on-failure";
+        RestartSteps = 5;
+        RestartMaxDelaySec = 10;
+      };
+      Install = {
+        WantedBy = [ "eww-bar.service" ];
       };
     };
 
