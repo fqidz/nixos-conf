@@ -1,6 +1,7 @@
 {
   pkgs,
   username,
+  config,
   ...
 }:
 {
@@ -39,7 +40,7 @@
       file
       jq
       nix-tree
-      nodejs-slim
+      nodejs
       powertop
       pulseaudio
       ripgrep
@@ -56,17 +57,18 @@
       weechat
       wireshark
       anki
-      mars-mips
-      logisim
+      # mars-mips
+      # logisim
       # logisim-evolution
       ruff
       basedpyright
 
-      octave
+      # octave
       # bottles
     ];
     stateVersion = "24.05";
   };
 
   programs.home-manager.enable = true;
+  programs.firefox.configPath = "${config.xdg.configHome}/mozilla/firefox";
 }

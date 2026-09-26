@@ -17,6 +17,8 @@
     # complains about files clobbering because i already have an init.lua and i
     # don't generate nvim config with fucking home manager
     sideloadInitLua = true;
+    withRuby = true;
+    withPython3 = true;
     # not working idk why
     # defaultEditor = true;
 

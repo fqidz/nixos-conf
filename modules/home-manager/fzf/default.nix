@@ -9,7 +9,7 @@
     fzf = {
       enable = true;
       defaultCommand = "fd --hidden --absolute-path --base-directory=$HOME";
-      fileWidgetCommand = "fd --hidden --absolute-path --base-directory=$HOME";
+      fileWidget.command = "fd --hidden --absolute-path --base-directory=$HOME";
       enableZshIntegration = true;
       # rose-pine colors
       colors = {

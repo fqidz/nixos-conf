@@ -9,9 +9,6 @@
       adminAddr = "webmaster@example.org";
       enablePHP = true;
       enablePerl = true;
-      # extraConfig = ''
-      #   Listen *:7000
-      # '';
       virtualHosts = {
         "127.0.0.1:7100" = {
           listen = [
@@ -24,8 +21,6 @@
           locations."/adminer/index.php" = {
             alias = "${pkgs.adminer}/adminer.php";
           };
-          # forceSSL = true;
-          # enableACME = true;
         };
       };
     };
