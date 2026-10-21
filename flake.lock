@@ -191,22 +191,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-dcpt510w": {
-      "locked": {
-        "lastModified": 1757269593,
-        "narHash": "sha256-l3iAmAbmQu9vqdEclZ/q1a40e50zK21am6Ay6x5V/GY=",
-        "owner": "fqidz",
-        "repo": "nixpkgs",
-        "rev": "f4ce4605020e1391718bf916812c0ed5bc6af108",
-        "type": "github"
-      },
-      "original": {
-        "owner": "fqidz",
-        "ref": "brother-dcp-t510w-driver",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1789006805,
@@ -262,7 +246,6 @@
         "nix-alien": "nix-alien",
         "nix-index-database": "nix-index-database_2",
         "nixpkgs": "nixpkgs_2",
-        "nixpkgs-dcpt510w": "nixpkgs-dcpt510w",
         "quadlet-nix": "quadlet-nix",
         "sops-nix": "sops-nix",
         "xkb-get-layout": "xkb-get-layout"

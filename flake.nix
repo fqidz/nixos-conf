@@ -25,8 +25,6 @@
     sops-nix.url = "github:Mic92/sops-nix";
     nix-alien.url = "github:thiagokokada/nix-alien";
 
-    nixpkgs-dcpt510w.url = "github:fqidz/nixpkgs/brother-dcp-t510w-driver";
-
     monitor-wake = {
       url = "github:fqidz/monitor-wake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -85,6 +83,15 @@
                   sha256 = "sha256-l3iAmAbmQu9vqdEclZ/q1a40e50zK21am6Ay6x5V/GY=";
                 }
               }/pkgs/by-name/dc/dcpt510w/package.nix" { };
+
+              subtitleedit = final.callPackage "${
+                prev.fetchFromGitHub {
+                  owner = "fqidz";
+                  repo = "nixpkgs";
+                  rev = "subtitleedit";
+                  sha256 = "sha256-kbXcSh3IicfTletQkv7UO72qBTsDby+WnH5H7U4OIoA=";
+                }
+              }/pkgs/by-name/su/subtitleedit/package.nix" { };
 
               leechcore-plugins =
                 final.callPackage "${memprocfs-derivation}/pkgs/by-name/le/leechcore-plugins/package.nix"

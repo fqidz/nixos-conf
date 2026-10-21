@@ -20,6 +20,11 @@
         IdentitiesOnly = true;
         IdentityFile = "${config.home.homeDirectory}/.ssh/homelab";
       };
+      "bandit14" = {
+        HostName = "bandit.labs.overthewire.org";
+        IdentitiesOnly = true;
+        IdentityFile = "${config.home.homeDirectory}/.ssh/bandit14";
+      };
       "*" = {
         ForwardAgent = false;
         AddKeysToAgent = "no";
