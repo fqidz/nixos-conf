@@ -2,6 +2,7 @@
 {
   imports = [
     ../../modules/home-manager/headless.nix
+    ../../modules/home-manager/systemd/vps.nix
     ../../modules/home-manager/podman-quadlet
     ../../modules/home-manager/podman-quadlet/containers/timescaledb.nix
   ];
@@ -18,6 +19,7 @@
       trash-cli
       wget
       nginxMainline
+      neovim
     ];
     stateVersion = "24.05";
   };
