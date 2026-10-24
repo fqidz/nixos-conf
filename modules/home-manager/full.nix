@@ -4,7 +4,7 @@
 
     ./alacritty
     ./browser
-    ./calibre
+    # ./calibre
     ./direnv
     ./eza
     ./fastfetch

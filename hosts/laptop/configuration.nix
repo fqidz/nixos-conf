@@ -22,6 +22,7 @@
     ../../modules/nixos/wireguard/laptop.nix
     ../../modules/nixos/lamp
     ../../modules/nixos/samba-client
+    ../../modules/nixos/android
     # ../../modules/nixos/bluetooth
   ];
 
@@ -68,6 +69,7 @@
       "wheel"
       "wireshark"
       "input"
+      "kvm"
     ];
   };
 
@@ -93,7 +95,7 @@
       "kernel.nmi_watchdog=0"
       "vm.dirty_writeback_centisecs=6000"
     ];
-    initrd.verbose = false;
+    # initrd.verbose = false;
   };
 
   powerManagement = {

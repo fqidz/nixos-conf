@@ -75,14 +75,14 @@
               };
             in
             {
-              dcpt510w = final.callPackage "${
-                prev.fetchFromGitHub {
-                  owner = "fqidz";
-                  repo = "nixpkgs";
-                  rev = "brother-dcp-t510w-driver";
-                  sha256 = "sha256-l3iAmAbmQu9vqdEclZ/q1a40e50zK21am6Ay6x5V/GY=";
-                }
-              }/pkgs/by-name/dc/dcpt510w/package.nix" { };
+              # dcpt510w = final.callPackage "${
+              #   prev.fetchFromGitHub {
+              #     owner = "fqidz";
+              #     repo = "nixpkgs";
+              #     rev = "brother-dcp-t510w-driver";
+              #     sha256 = "sha256-l3iAmAbmQu9vqdEclZ/q1a40e50zK21am6Ay6x5V/GY=";
+              #   }
+              # }/pkgs/by-name/dc/dcpt510w/package.nix" { };
 
               subtitleedit = final.callPackage "${
                 prev.fetchFromGitHub {
