@@ -15,6 +15,7 @@
     ../../modules/home-manager/ssh/homelab.nix
     ../../modules/home-manager/syncthing/homelab.nix
     ../../modules/home-manager/sops
+    ../../modules/home-manager/systemd/homelab.nix
     # ../../modules/home-manager/podman-quadlet
     # ../../modules/home-manager/podman-quadlet/containers/timescaledb.nix
   ];
