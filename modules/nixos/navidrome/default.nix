@@ -10,6 +10,7 @@
       MusicFolder = "/storage/music";
       # LastFM api & secret keys inside env file
       "LastFM.Enabled" = true;
+      Plugins.Enabled = false;
     };
   };
 }
