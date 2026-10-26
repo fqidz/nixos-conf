@@ -38,3 +38,8 @@ creation_rules:
     key_groups:
     - age:
       - *homelab
+  - path_regex: secrets/duckdns.yaml
+    key_groups:
+    - age:
+      - *faidz
+      - *homelab

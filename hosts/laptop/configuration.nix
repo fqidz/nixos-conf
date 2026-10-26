@@ -23,6 +23,7 @@
     ../../modules/nixos/lamp
     ../../modules/nixos/samba-client
     ../../modules/nixos/android
+    ../../modules/nixos/virtualbox
     # ../../modules/nixos/bluetooth
   ];
 
